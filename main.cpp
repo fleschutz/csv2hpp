@@ -63,10 +63,36 @@ std::string typeOfCell(std::string cell)
 	return "std::string";
 }
 
+void printDatatype(std::string type, std::string name)
+{
+	if (type == "_km" || type == "_m")
+		printf("    SI::length %s,\n", name.c_str());
+	else if (type == "_kg")
+		printf("    SI::mass %s,\n", name.c_str());
+	else if (type == "_h")
+		printf("    SI::time %s,\n", name.c_str());
+	else if (type == "_degC")
+		printf("    SI::temperature %s,\n", name.c_str());
+	else if (type == "_bar")
+		printf("    SI::pressure %s,\n", name.c_str());
+	else if (type == "_m_per_s")
+		printf("    SI::velocity %s,\n", name.c_str());
+	else if (type == "_m_per_s²")
+		printf("    SI::acceleration %s,\n", name.c_str());
+	else if (type == "_kg_per_m³")
+		printf("    SI::density %s,\n", name.c_str());
+	else
+		printf("    %s %s,\n", type.c_str(), name.c_str());
+}
+
 void printValue(std::string type, std::string value)
 {
 	if (type == "std::string")
 		printf("\"%s\", ", value.c_str());
+	else if (type == "bool")
+		printf("%s, ", (value == "Yes" || value == "True") ? "true" : "false");
+	else if (type[0] == '_')
+		printf("%s%s, ", value.c_str(), type.c_str());
 	else
 		printf("%s, ", value.c_str());
 }
@@ -81,7 +107,7 @@ int readCSVHeader(FILE* file)
 	{
 		auto name = nameOfCell(cell);
 		auto type = typeOfCell(cell);
-		printf("    %s %s,\n", type.c_str(), name.c_str());
+		printDatatype(type, name);
 		types[i] = type;
 	}
 	printf("};\n\nconst std::array csv_data{\n");
