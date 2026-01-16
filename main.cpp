@@ -66,23 +66,23 @@ std::string typeOfCell(std::string cell)
 void printDatatype(std::string type, std::string name)
 {
 	if (type == "_km" || type == "_m")
-		printf("    SI::length %s,\n", name.c_str());
+		printf("    SI::length %s;\n", name.c_str());
 	else if (type == "_kg")
-		printf("    SI::mass %s,\n", name.c_str());
+		printf("    SI::mass %s;\n", name.c_str());
 	else if (type == "_h")
-		printf("    SI::time %s,\n", name.c_str());
+		printf("    SI::time %s;\n", name.c_str());
 	else if (type == "_degC")
-		printf("    SI::temperature %s,\n", name.c_str());
+		printf("    SI::temperature %s;\n", name.c_str());
 	else if (type == "_bar")
-		printf("    SI::pressure %s,\n", name.c_str());
+		printf("    SI::pressure %s;\n", name.c_str());
 	else if (type == "_m_per_s")
-		printf("    SI::velocity %s,\n", name.c_str());
+		printf("    SI::velocity %s;\n", name.c_str());
 	else if (type == "_m_per_s²")
-		printf("    SI::acceleration %s,\n", name.c_str());
+		printf("    SI::acceleration %s;\n", name.c_str());
 	else if (type == "_kg_per_m³")
-		printf("    SI::density %s,\n", name.c_str());
+		printf("    SI::density %s;\n", name.c_str());
 	else
-		printf("    %s %s,\n", type.c_str(), name.c_str());
+		printf("    %s %s;\n", type.c_str(), name.c_str());
 }
 
 void printValue(std::string type, std::string value)
@@ -92,7 +92,7 @@ void printValue(std::string type, std::string value)
 	else if (type == "bool")
 		printf("%s, ", (value == "Yes" || value == "True") ? "true" : "false");
 	else if (type[0] == '_')
-		printf("%s%s, ", value.c_str(), type.c_str());
+		printf("%s%s, ", (value == "Unknown*" ? "000" : value.c_str()), type.c_str());
 	else
 		printf("%s, ", value.c_str());
 }
@@ -101,7 +101,7 @@ int readCSVHeader(FILE* file)
 {
 	std::string types[256];
 
-	printf("#pragma once\n\n#include <array>\n#include <string>\n\nstruct csv_data_entry{\n");
+	printf("#pragma once\n\n#include <array>\n#include <string>\n\nstruct csv_data_entry {\n");
 	int i = 0;
 	for (auto cell = nextCell(file); cell != ""; cell = nextCell(file), i++)
 	{
@@ -110,11 +110,11 @@ int readCSVHeader(FILE* file)
 		printDatatype(type, name);
 		types[i] = type;
 	}
-	printf("};\n\nconst std::array csv_data{\n");
+	printf("};\n\nconst std::array csv_data {\n");
 
 	while (!feof(file))
 	{
-		printf("    csv_data_entry{");
+		printf("    {");
 		i = 0;
 		for (auto cell = nextCell(file); cell != ""; cell = nextCell(file), i++)
 		{
