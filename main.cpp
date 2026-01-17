@@ -2,6 +2,8 @@
 #include <string>
 #include <cstring>
 
+const std::string EOL = "<EOL>";
+
 std::string nextCell(FILE* file)
 {
 	std::string result = ""; // empty by default
@@ -14,7 +16,10 @@ std::string nextCell(FILE* file)
 	}
 
 	if (feof(file) || nextChar == '\n' || nextChar == '\r')
-		return ""; // end of line reached
+		return EOL; // end of line reached
+
+	if (nextChar == ',')
+		return ""; // empty cell
 
 	if (nextChar == '\"')
 	{
@@ -103,7 +108,7 @@ int readCSVHeader(FILE* file)
 
 	printf("struct data_entries {\n");
 	int i = 0;
-	for (auto cell = nextCell(file); cell != ""; cell = nextCell(file), i++)
+	for (auto cell = nextCell(file); cell != EOL; cell = nextCell(file), i++)
 	{
 		auto name = nameOfCell(cell);
 		auto type = typeOfCell(cell);
@@ -116,7 +121,7 @@ int readCSVHeader(FILE* file)
 	{
 		printf("    {");
 		i = 0;
-		for (auto cell = nextCell(file); cell != ""; cell = nextCell(file), i++)
+		for (auto cell = nextCell(file); cell != EOL; cell = nextCell(file), i++)
 		{
 			printValue(types[i], cell);
 		}
