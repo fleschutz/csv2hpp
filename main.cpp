@@ -4,7 +4,7 @@
 
 std::string nextCell(FILE* file)
 {
-	std::string result = "";
+	std::string result = ""; // empty by default
 
 	// skip optional space/tab
 	auto nextChar = fgetc(file);
@@ -101,7 +101,7 @@ int readCSVHeader(FILE* file)
 {
 	std::string types[256];
 
-	printf("struct csv_data_entry {\n");
+	printf("struct csv_data_entries {\n");
 	int i = 0;
 	for (auto cell = nextCell(file); cell != ""; cell = nextCell(file), i++)
 	{
@@ -110,7 +110,7 @@ int readCSVHeader(FILE* file)
 		printDatatype(type, name);
 		types[i] = type;
 	}
-	printf("};\n\nconst csv_data_entry csv_data[] {\n");
+	printf("};\n\nconst csv_data_entries csv_data[] {\n");
 
 	while (!feof(file))
 	{
@@ -131,7 +131,7 @@ int convertFile(const char* filename)
 {
 	if (auto file = fopen(filename, "rw"))
 	{
-		printf("// imported from %s by csv2hpp (000=unknown)\n", filename);
+		printf("// converted from %s by csv2hpp (000=unknown)\n", filename);
 		printf("#pragma once\n\n#include <string>\n\nnamespace SI {\n\n");
 		readCSVHeader(file);
 		printf("} // SI::\n\n");
