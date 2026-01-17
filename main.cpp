@@ -101,7 +101,7 @@ int readCSVHeader(FILE* file)
 {
 	std::string types[256];
 
-	printf("struct csv_data_entries {\n");
+	printf("struct data_entries {\n");
 	int i = 0;
 	for (auto cell = nextCell(file); cell != ""; cell = nextCell(file), i++)
 	{
@@ -110,7 +110,7 @@ int readCSVHeader(FILE* file)
 		printDatatype(type, name);
 		types[i] = type;
 	}
-	printf("};\n\nconst csv_data_entries csv_data[] {\n");
+	printf("};\n\nconst data_entries csv_data[] {\n");
 
 	while (!feof(file))
 	{
