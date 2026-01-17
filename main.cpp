@@ -101,7 +101,7 @@ int readCSVHeader(FILE* file)
 {
 	std::string types[256];
 
-	printf("#pragma once\n\n#include <array>\n#include <string>\n\nstruct csv_data_entry {\n");
+	printf("struct csv_data_entry {\n");
 	int i = 0;
 	for (auto cell = nextCell(file); cell != ""; cell = nextCell(file), i++)
 	{
@@ -123,7 +123,7 @@ int readCSVHeader(FILE* file)
 		printf("},\n");
 	}
 
-	printf("};\n");
+	printf("};\n\n");
 	return 0;
 }
 
@@ -131,7 +131,10 @@ int convertFile(const char* filename)
 {
 	if (auto file = fopen(filename, "rw"))
 	{
+		printf("// imported from %s by csv2hpp (000=unknown)\n", filename);
+		printf("#pragma once\n\n#include <array>\n#include <string>\n\nnamespace SI {\n\n");
 		readCSVHeader(file);
+		printf("} // SI::\n\n");
 		fclose(file);
 		return 0;
 	}
