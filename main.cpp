@@ -169,8 +169,8 @@ int convertFile(const char* filename)
 {
 	if (auto file = fopen(filename, "rw"))
 	{
-		printf("// dataset converted from %s by csv2hpp (00=unknown or empty)\n", filename);
-		printf("#pragma once\n\n#include <string>\n#include <SI/literals.h>\n\nnamespace SI { namespace dataset { \n\n");
+		printf("// dataset converted from %s by csv2hpp. NOTE: 00=empty (unknown?)\n", filename);
+		printf("#pragma once\n\n#include <SI/literals.h>\n\nnamespace SI { namespace dataset { \n\n");
 		readCSVHeader(file);
 		printf("} } // SI::dataset\n\n");
 		fclose(file);
