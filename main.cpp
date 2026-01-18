@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string>
+#include <algorithm>
 #include <cstring>
 
 const std::string EOL = "<EOL>";
@@ -68,6 +69,7 @@ std::string typeOfCell(std::string cell)
 	return "const char*";
 }
 
+
 void printDatatype(std::string type, std::string name)
 {
 	if (type == "_km" || type == "_m" || type == "_au" || type == "_pc")
@@ -97,6 +99,18 @@ bool isEmpty(std::string value)
 	return false;
 }
 
+std::string trimFloat(std::string s)
+{
+	if (strchr(s.c_str(), '.')) // has decimal point?
+	{
+		// removing ending '0''s:
+		s.erase(std::find_if(s.rbegin(), s.rend(), [](unsigned char ch) {
+			return ch != '0';
+		}).base(), s.end());
+	}
+	return s;
+}
+
 void printValue(std::string type, std::string value)
 {
 	if (type == "const char*")
@@ -109,12 +123,14 @@ void printValue(std::string type, std::string value)
 		printf("%s, ", value.c_str());
 	else if (type == "float" && isEmpty(value))
 		printf("00, ");
+	else if (type == "float")
+		printf("%s, ", trimFloat(value).c_str());
 	else if (type[0] == '_' && isEmpty(value))
 		printf("00%s, ", type.c_str());
 	else if (type[0] == '_' && value.find("±") != std::string::npos)
 		printf("%.3f%s, ", atof(value.c_str()), type.c_str());
 	else if (type[0] == '_')
-		printf("%s%s, ", value.c_str(), type.c_str());
+		printf("%s%s, ", trimFloat(value).c_str(), type.c_str());
 	else
 		printf("%s, ", value.c_str());
 }
