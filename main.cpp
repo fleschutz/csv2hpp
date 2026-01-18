@@ -84,7 +84,7 @@ void printDatatype(std::string type, std::string name)
 		printf("    SI::velocity %s;\n", name.c_str());
 	else if (type == "_m_per_s²")
 		printf("    SI::acceleration %s;\n", name.c_str());
-	else if (type == "_kg_per_m³")
+	else if (type == "_kg_per_m³" || type == "_g_per_cm³")
 		printf("    SI::density %s;\n", name.c_str());
 	else
 		printf("    %s %s;\n", type.c_str(), name.c_str());
@@ -96,8 +96,14 @@ void printValue(std::string type, std::string value)
 		printf("\"%s\", ", value.c_str());
 	else if (type == "bool")
 		printf("%s, ", (value == "Yes" || value == "True") ? "true" : "false");
+	else if (type == "float")
+		printf("%f, ", atof(value.c_str()));
+	else if (type == "int")
+		printf("%ld, ", atol(value.c_str()));
+	else if (type[0] == '_' && value == "Unknown*")
+		printf("000%s, ", type.c_str());
 	else if (type[0] == '_')
-		printf("%s%s, ", (value == "Unknown*" ? "000" : value.c_str()), type.c_str());
+		printf("%f%s, ", atof(value.c_str()), type.c_str());
 	else
 		printf("%s, ", value.c_str());
 }
@@ -119,7 +125,7 @@ int readCSVHeader(FILE* file)
 
 	while (!feof(file))
 	{
-		printf("    {");
+		printf(" { ");
 		i = 0;
 		for (auto cell = nextCell(file); cell != EOL; cell = nextCell(file), i++)
 		{
@@ -136,10 +142,10 @@ int convertFile(const char* filename)
 {
 	if (auto file = fopen(filename, "rw"))
 	{
-		printf("// converted from %s by csv2hpp (000=unknown)\n", filename);
-		printf("#pragma once\n\n#include <string>\n\nnamespace SI {\n\n");
+		printf("// dataset converted from %s by csv2hpp (000=unknown)\n", filename);
+		printf("#pragma once\n\n#include <string>\n#include <SI/literals.h>\n\nnamespace SI { namespace dataset { \n\n");
 		readCSVHeader(file);
-		printf("} // SI::\n\n");
+		printf("} } // SI::dataset\n\n");
 		fclose(file);
 		return 0;
 	}
