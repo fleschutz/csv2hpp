@@ -65,18 +65,18 @@ std::string typeOfCell(std::string cell)
 		}
 		return result;
 	}
-	return "std::string";
+	return "const char*";
 }
 
 void printDatatype(std::string type, std::string name)
 {
-	if (type == "_km" || type == "_m")
+	if (type == "_km" || type == "_m" || type == "_au" || type == "_pc")
 		printf("    SI::length %s;\n", name.c_str());
 	else if (type == "_kg")
 		printf("    SI::mass %s;\n", name.c_str());
-	else if (type == "_h")
+	else if (type == "_s" || type == "_h" || type == "_days")
 		printf("    SI::time %s;\n", name.c_str());
-	else if (type == "_degC")
+	else if (type == "_K" || type == "_degC" || type == "_degF")
 		printf("    SI::temperature %s;\n", name.c_str());
 	else if (type == "_bar")
 		printf("    SI::pressure %s;\n", name.c_str());
@@ -90,20 +90,31 @@ void printDatatype(std::string type, std::string name)
 		printf("    %s %s;\n", type.c_str(), name.c_str());
 }
 
+bool isEmpty(std::string value)
+{
+	if (value == "" || value == "Unknown*" || value == "unknown*")
+		return true;
+	return false;
+}
+
 void printValue(std::string type, std::string value)
 {
-	if (type == "std::string")
+	if (type == "const char*")
 		printf("\"%s\", ", value.c_str());
 	else if (type == "bool")
-		printf("%s, ", (value == "Yes" || value == "True") ? "true" : "false");
-	else if (type == "float")
-		printf("%f, ", atof(value.c_str()));
+		printf("%s, ", (value == "Yes" || value == "yes" || value == "True" || value == "true" || value == "1") ? "true" : "false");
+	else if (type == "int" && isEmpty(value))
+		printf("00, ");
 	else if (type == "int")
-		printf("%ld, ", atol(value.c_str()));
-	else if (type[0] == '_' && value == "Unknown*")
-		printf("000%s, ", type.c_str());
+		printf("%s, ", value.c_str());
+	else if (type == "float" && isEmpty(value))
+		printf("00, ");
+	else if (type[0] == '_' && isEmpty(value))
+		printf("00%s, ", type.c_str());
+	else if (type[0] == '_' && value.find("±") != std::string::npos)
+		printf("%.3f%s, ", atof(value.c_str()), type.c_str());
 	else if (type[0] == '_')
-		printf("%f%s, ", atof(value.c_str()), type.c_str());
+		printf("%s%s, ", value.c_str(), type.c_str());
 	else
 		printf("%s, ", value.c_str());
 }
@@ -125,7 +136,7 @@ int readCSVHeader(FILE* file)
 
 	while (!feof(file))
 	{
-		printf(" { ");
+		printf("{");
 		i = 0;
 		for (auto cell = nextCell(file); cell != EOL; cell = nextCell(file), i++)
 		{
@@ -142,7 +153,7 @@ int convertFile(const char* filename)
 {
 	if (auto file = fopen(filename, "rw"))
 	{
-		printf("// dataset converted from %s by csv2hpp (000=unknown)\n", filename);
+		printf("// dataset converted from %s by csv2hpp (00=unknown or empty)\n", filename);
 		printf("#pragma once\n\n#include <string>\n#include <SI/literals.h>\n\nnamespace SI { namespace dataset { \n\n");
 		readCSVHeader(file);
 		printf("} } // SI::dataset\n\n");
