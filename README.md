@@ -5,7 +5,7 @@ This command-line tool converts databases in CSV file format (.CSV suffix) into 
 1. Export your database in CSV file format or fetch .CSV files directly.
 2. Adjust the CSV header line by adding the C++ datatype or SI literal in round brackets, e.g.: `NAME (string), AGE (int), DISTANCE (_km)`
 3. Execute: `./csv2hpp input_file.csv > output_file.hpp`.
-4. Include the .hpp file in your software project.
+4. Include the resulting .hpp file in your software project.
 
 Hints
 -----
