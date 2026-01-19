@@ -105,8 +105,12 @@ std::string trimFloat(std::string s)
 		return "00";
 
 	size_t pos = s.find("±");
-	if (pos	!= std::string::npos)
-		s = s.substr(0, pos - 1);
+	if (pos != std::string::npos)
+		s = s.substr(0, pos);
+
+	size_t pos2 = s.find("R");
+	if (pos2 != std::string::npos)
+		s = s.substr(0, pos2);
 	
 	if (strchr(s.c_str(), '.')) // has decimal point?
 	{

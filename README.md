@@ -4,8 +4,8 @@ This little command-line tool converts databases in CSV file format (.CSV suffix
 
 1. **Export** your database in CSV file format, or download and copy the .CSV file.
 2. **Add** datatype hints in round brackets to the CSV header line, e.g.: `Name (string), Age (int), Distance (_km)`
-3. **Execute:** `./csv2hpp .csv object_name > dataset.hpp`.
-4. **Add:** #include "dataset.hpp" to your C++ project and use the objects array.
+3. **Execute:** `./csv2hpp database.csv object_name > dataset.hpp`.
+4. **Add:** `#include "dataset.hpp"` to your C++ project and use the data array.
 
 Hints
 -----
