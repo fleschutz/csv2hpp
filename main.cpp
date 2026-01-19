@@ -103,6 +103,10 @@ std::string trimFloat(std::string s)
 {
 	if (isNumberEmpty(s))
 		return "00";
+
+	size_t pos = s.find("±");
+	if (pos	!= std::string::npos)
+		s = s.substr(0, pos - 1);
 	
 	if (strchr(s.c_str(), '.')) // has decimal point?
 	{
@@ -124,8 +128,6 @@ void printValue(std::string type, std::string value)
 		printf("%s,", isNumberEmpty(value) ? "00" : value.c_str());
 	else if (type == "float" || type == "double")
 		printf("%s,", trimFloat(value).c_str());
-	else if (type[0] == '_' && value.find("±") != std::string::npos)
-		printf("%.3f%s,", atof(value.c_str()), type.c_str());
 	else if (type[0] == '_')
 		printf("%s%s,", trimFloat(value).c_str(), type.c_str());
 	else
