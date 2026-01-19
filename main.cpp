@@ -132,11 +132,11 @@ void printValue(std::string type, std::string value)
 		printf("%s,", value.c_str());
 }
 
-int readCSVHeader(FILE* file)
+int readCSVHeader(FILE* file, const char* objectName)
 {
 	std::string types[1024];
 
-	printf("struct object_data {\n");
+	printf("struct %s_data {\n", objectName);
 	int i = 0;
 	for (auto cell = nextCell(file); cell != EOL; cell = nextCell(file), i++)
 	{
@@ -150,7 +150,7 @@ int readCSVHeader(FILE* file)
 		printDatatype(type, name);
 		types[i] = type;
 	}
-	printf("};\n\nconst object_data objects[] {\n");
+	printf("};\n\nconst %s_data %ss[] {\n", objectName, objectName);
 
 	while (!feof(file))
 	{
@@ -167,13 +167,13 @@ int readCSVHeader(FILE* file)
 	return 0;
 }
 
-int convertFile(const char* filename)
+int convertFile(const char* filename, const char* objectName)
 {
 	if (auto file = fopen(filename, "rw"))
 	{
 		printf("// dataset converted from %s by csv2hpp. NOTE: 00=empty (or unknown)\n", filename);
 		printf("#pragma once\n\n#include <SI/literals.h>\n\nnamespace SI { namespace dataset { \n\n");
-		int result = readCSVHeader(file);
+		int result = readCSVHeader(file, objectName);
 		printf("} } // SI::dataset\n\n");
 		fclose(file);
 		return result;
@@ -185,9 +185,10 @@ int convertFile(const char* filename)
 
 int main(int argc, char **argv)
 {
-	if (argc == 2)
-		return convertFile(argv[1]);
-
-	fprintf(stderr, "csv2hpp <filename>\n");
-	return 0;
+	if (argc != 3)
+	{
+		fprintf(stderr, "Usage: csv2hpp <filename> <objectname>\n");
+		return 1;
+	}
+	return convertFile(argv[1], argv[2]);
 }
