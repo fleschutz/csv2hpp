@@ -96,7 +96,7 @@ void printDatatype(std::string type, std::string name)
 
 bool isNumberEmpty(std::string value)
 {
-	return (value == "" || value == " " || value == "Unknown*" || value == "unknown*");
+	return (value == "" || value == " " || value == "?" || value == "Unknown*" || value == "unknown*");
 }
 
 std::string trimFloat(std::string s)
@@ -111,6 +111,14 @@ std::string trimFloat(std::string s)
 	size_t pos2 = s.find("R");
 	if (pos2 != std::string::npos)
 		s = s.substr(0, pos2);
+
+	size_t pos3 = s.find("r");
+	if (pos3 != std::string::npos)
+		s = s.substr(0, pos3);
+
+	size_t pos4 = s.find("V");
+	if (pos4 != std::string::npos)
+		s = s.substr(0, pos4);
 	
 	if (strchr(s.c_str(), '.')) // has decimal point?
 	{
