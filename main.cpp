@@ -57,16 +57,16 @@ std::string nameOfCell(std::string cell)
 
 std::string typeOfCell(std::string cell)
 {
+	std::string result = "";
+	
 	if (auto ptr = strchr(cell.c_str(), '('))
 	{
-		std::string result = "";
 		for (ptr++; *ptr != ')'; )
 		{
 			result += *ptr++;
 		}
-		return result;
 	}
-	return "const char*";
+	return result;
 }
 
 
@@ -142,6 +142,11 @@ int readCSVHeader(FILE* file)
 	{
 		auto name = nameOfCell(cell);
 		auto type = typeOfCell(cell);
+		if (type == "")
+		{
+			fprintf(stderr, "Please specify a type in round brackets for column #%d\n", i + 1);
+			return 1;
+		}
 		printDatatype(type, name);
 		types[i] = type;
 	}
@@ -168,10 +173,10 @@ int convertFile(const char* filename)
 	{
 		printf("// dataset converted from %s by csv2hpp. NOTE: 00=empty (or unknown)\n", filename);
 		printf("#pragma once\n\n#include <SI/literals.h>\n\nnamespace SI { namespace dataset { \n\n");
-		readCSVHeader(file);
+		int result = readCSVHeader(file);
 		printf("} } // SI::dataset\n\n");
 		fclose(file);
-		return 0;
+		return result;
 	}
 	fprintf(stderr, "Can't open CSV file: %s\n", filename);
 	return 1;
