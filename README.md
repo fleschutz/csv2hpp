@@ -19,4 +19,4 @@ Example
 -------
 * Input file: [planets.csv](planets.csv)
 * Command-line: `csv2hpp planets.csv planet > planets.hpp`
-* Resulting output file: [planets.hpp][planets.hpp]
+* Resulting output file: [planets.hpp](planets.hpp)
