@@ -12,4 +12,4 @@ Hints
 * (string) is mapped to: 'const char*', (int) is mapped to: 'int', (float) is mapped to: 'float', (double) is mapped to: 'double', (_km) is mapped to: SI:length
 * Empty CSV cells are mapped to "" for strings and to 00 for everything else (as a hint).
 * Trailing '0's for float and double are removed (more compact).
-* Supports very large .CSV files by using 'const char*' instead of 'std::string' (breaks some compilers).
+* Supports very large .CSV files by using 'const char*' instead of 'std::string' (breaks some compilers) and by omitting whitespaces.
