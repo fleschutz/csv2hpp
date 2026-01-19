@@ -101,6 +101,9 @@ bool isNumberEmpty(std::string value)
 
 std::string trimFloat(std::string s)
 {
+	if (isNumberEmpty(s))
+		return "00";
+	
 	if (strchr(s.c_str(), '.')) // has decimal point?
 	{
 		// removing ending '0''s:
@@ -117,16 +120,10 @@ void printValue(std::string type, std::string value)
 		printf("\"%s\",", value.c_str());
 	else if (type == "bool")
 		printf("%s,", (value == "Yes" || value == "yes" || value == "True" || value == "true" || value == "1") ? "true" : "false");
-	else if (type == "int" && isNumberEmpty(value))
-		printf("00,");
-	else if (type == "int")
-		printf("%s,", value.c_str());
-	else if (type == "float" && isNumberEmpty(value))
-		printf("00,");
-	else if (type == "float")
+	else if (type == "int" || type == "long")
+		printf("%s,", isNumberEmpty(value) ? "00" : value.c_str());
+	else if (type == "float" || type == "double")
 		printf("%s,", trimFloat(value).c_str());
-	else if (type[0] == '_' && isNumberEmpty(value))
-		printf("00%s,", type.c_str());
 	else if (type[0] == '_' && value.find("±") != std::string::npos)
 		printf("%.3f%s,", atof(value.c_str()), type.c_str());
 	else if (type[0] == '_')
