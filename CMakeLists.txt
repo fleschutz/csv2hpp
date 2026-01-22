@@ -1,6 +1,5 @@
-#
-# Platform-independent CMakefile
-# ------------------------------
+# Cross-platform CMake Build Instructions for csv2hpp
+# ===================================================
 
 cmake_minimum_required(VERSION 3.10)
 
