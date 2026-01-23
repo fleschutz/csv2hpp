@@ -9,7 +9,7 @@ This little command-line tool converts databases from CSV file format into heade
 
 Hints
 -----
-* Datatype hints are mapped as follows: (string) -> 'const char*', (int) -> 'int', (long) -> 'long', (float) -> 'float', (double) -> 'double', (bool) -> 'bool', (_km) -> 'SI:length' and so on.
+* Datatype hints are mapped as follows: `(string) -> const char*`, `(int) -> int`, `(long) -> long`, `(float) -> float`, `(double) -> double`, `(bool) -> bool`, `(_km) -> SI:length` and so on.
 * Empty CSV cells are mapped to "" for strings and to 00 for everything else (as a hint).
 * Trailing '0's for float and double values are removed (more compact).
 * Precision hints (e.g. '±05') are removed for float and double values.
