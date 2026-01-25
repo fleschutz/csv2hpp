@@ -1,6 +1,6 @@
 csv2hpp
 =======
-This little command-line tool converts databases from CSV file format into header files for C++ projects. It allows to immediately work on large, structured, well-formed datasets without the need of loading, allocating, checking, and converting (everything is done by csv2hpp and the compiler itself). Please perform the following steps for conversion:
+This little command-line tool converts databases from CSV file format (.csv suffix) into C/C++ header files. Your software projects can #include them and immediately work on large, structured, well-formed datasets. The time-consuming steps of data loading + allocating + checking + converting are skipped completely (already done by csv2hpp and the compiler). Please perform the following steps for conversion:
 
 1. **Export** the desired database in CSV file format, or directly download and copy the.CSV file.
 2. **Add** datatype hints in round brackets to the CSV header line, e.g.: `Name (string), Age (int), Distance (_km)`
