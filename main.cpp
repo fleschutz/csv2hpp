@@ -186,9 +186,9 @@ int convertFile(const char* filename, const char* objectName)
 	if (auto file = fopen(filename, "rw"))
 	{
 		printf("// dataset converted from %s by csv2hpp. NOTE: 00=empty (or unknown)\n", filename);
-		printf("#pragma once\n\n#include <SI/literals.h>\n\nnamespace SI { namespace dataset { \n\n");
+		printf("#pragma once\n\n#include <SI/literals.h>\nusing namespace SI;\n\nnamespace dataset { \n\n");
 		int result = readCSVHeader(file, objectName);
-		printf("} } // SI::dataset\n\n");
+		printf("} // namespace dataset\n\n");
 		fclose(file);
 		return result;
 	}
@@ -201,7 +201,7 @@ int main(int argc, char **argv)
 {
 	if (argc != 3)
 	{
-		fprintf(stderr, "Usage: csv2hpp <filename> <objectname>\n");
+		fprintf(stderr, "Usage: csv2hpp <csv-filename> <object-name>\n");
 		return 1;
 	}
 	return convertFile(argv[1], argv[2]);
