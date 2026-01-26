@@ -19,7 +19,7 @@ csv2hpp
 
 🎉 Example
 -----------
-Using database [planets.csv](planets.csv) and executing the command-line: `./csv2hpp planets.csv planet > planets.hpp` results in the header file: [planets.hpp](planets.hpp).
+Using database [planets.csv](src/planets.csv) and executing the command-line: `./csv2hpp planets.csv planet > planets.hpp` results in the header file: [planets.hpp](src/planets.hpp).
 
 🤝 Contributing
 ----------------

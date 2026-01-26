@@ -11,7 +11,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 include_directories(.)
 
-add_executable(csv2hpp main.cpp)
+add_executable(csv2hpp csv2hpp.cpp)
 
 install(TARGETS csv2hpp DESTINATION . )
 
