@@ -9,15 +9,26 @@ std::string nextCell(FILE* file)
 {
 	std::string result = ""; // empty by default
 
-	// skip optional space/tab
+	// skip whitespace
 	auto nextChar = fgetc(file);
 	while (nextChar == ' ' || nextChar == '\t')
 	{
 		nextChar = fgetc(file);
 	}
 
-	if (feof(file) || nextChar == '\n' || nextChar == '\r')
-		return EOL; // end of line reached
+	// check for end-of-file
+	if (feof(file))
+		return EOL; 
+
+	// check for end-of-line
+	if (nextChar == '\n' || nextChar == '\r')
+	{
+		nextChar = fgetc(file);
+		if (nextChar != '\n' && nextChar != '\r')
+			ungetc(nextChar, file);
+
+		return EOL;
+	}
 
 	if (nextChar == ',')
 		return ""; // empty cell
@@ -94,9 +105,9 @@ void printDatatype(std::string type, std::string name)
 		printf("    %s %s;\n", type.c_str(), name.c_str());
 }
 
-bool isNumberEmpty(std::string value)
+bool isNumberEmpty(std::string num)
 {
-	return (value == "" || value == " " || value == "?" || value == "Unknown*" || value == "unknown*");
+	return (num == "" || num == " " || num == "?" || num == "-" || num == "Unknown*" || num == "unknown*");
 }
 
 std::string trimFloat(std::string s)
@@ -185,7 +196,7 @@ int convertFile(const char* filename, const char* objectName)
 {
 	if (auto file = fopen(filename, "rw"))
 	{
-		printf("// dataset converted from %s by csv2hpp. NOTE: 00=empty (or unknown)\n", filename);
+		printf("// dataset converted from %s by csv2hpp. NOTE: 00=empty or unknown\n", filename);
 		printf("#pragma once\n\n#include <SI/literals.h>\nusing namespace SI;\n\nnamespace dataset { \n\n");
 		int result = readCSVHeader(file, objectName);
 		printf("} // namespace dataset\n\n");
