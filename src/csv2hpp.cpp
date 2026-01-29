@@ -87,9 +87,9 @@ void printDatatype(std::string type, std::string name)
 		printf("    const char* %s;\n", name.c_str());
 	else if (type == "byte")
 		printf("    unsigned char %s;\n", name.c_str());
-	else if (type == "_km" || type == "_m" || type == "_au" || type == "_pc")
+	else if (type == "_m" || type == "_km" || type == "_cm" || type == "_mm" || type == "_au" || type == "_pc")
 		printf("    SI::length %s;\n", name.c_str());
-	else if (type == "_kg" || type == "_g" || type == "_t")
+	else if (type == "_kg" || type == "_g" || type == "_mg" || type == "_t")
 		printf("    SI::mass %s;\n", name.c_str());
 	else if (type == "_s" || type == "_min" || type == "_h" || type == "_days")
 		printf("    SI::time %s;\n", name.c_str());
@@ -99,10 +99,12 @@ void printDatatype(std::string type, std::string name)
 		printf("    SI::pressure %s;\n", name.c_str());
 	else if (type == "_m_per_s" || type == "_km_per_h")
 		printf("    SI::velocity %s;\n", name.c_str());
-	else if (type == "_m_per_s²")
+	else if (type == "_m_per_s²" || type == "_km_per_s²")
 		printf("    SI::acceleration %s;\n", name.c_str());
 	else if (type == "_kg_per_m³" || type == "_g_per_cm³")
 		printf("    SI::density %s;\n", name.c_str());
+	else if (type == "_km³_per_s²")
+		printf("    SI::volume_per_time_squared %s;\n", name.c_str());
 	else
 		printf("    %s %s;\n", type.c_str(), name.c_str());
 }
