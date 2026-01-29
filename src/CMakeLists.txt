@@ -13,5 +13,9 @@ include_directories(.)
 
 add_executable(csv2hpp csv2hpp.cpp)
 
+# add unit tests
+enable_testing()
+add_test(NAME csv2hpp COMMAND csv2hpp --help)
+
 install(TARGETS csv2hpp DESTINATION . )
 

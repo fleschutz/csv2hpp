@@ -214,8 +214,10 @@ int main(int argc, char **argv)
 {
 	if (argc != 3)
 	{
-		fprintf(stderr, "Usage: csv2hpp <csv-filename> <object-name>\n");
-		return 1;
+		printf("Version 0.1 from https://github.com/fleschutz/csv2hpp\n");
+		printf("\n");
+		printf("Usage:   csv2hpp <path-to-CSV-file> <object-name>\n");
+		return 0;
 	}
 	return convertFile(argv[1], argv[2]);
 }
