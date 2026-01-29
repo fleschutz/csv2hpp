@@ -85,6 +85,8 @@ void printDatatype(std::string type, std::string name)
 {
 	if (type == "string")
 		printf("    const char* %s;\n", name.c_str());
+	else if (type == "byte")
+		printf("    unsigned char %s;\n", name.c_str());
 	else if (type == "_km" || type == "_m" || type == "_au" || type == "_pc")
 		printf("    SI::length %s;\n", name.c_str());
 	else if (type == "_kg" || type == "_g" || type == "_t")
