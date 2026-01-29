@@ -177,7 +177,7 @@ int readCSVHeader(FILE* file, const char* objectName)
 		printDatatype(type, name);
 		types[i] = type;
 	}
-	printf("};\n\nconst %s_data %ss[] {\n", objectName, objectName);
+	printf("};\n\nconst %s_data %ss[] { // NOTE: 00=empty or unknown field\n", objectName, objectName);
 
 	while (!feof(file))
 	{
@@ -198,8 +198,8 @@ int convertFile(const char* filename, const char* objectName)
 {
 	if (auto file = fopen(filename, "rw"))
 	{
-		printf("// dataset converted from %s by csv2hpp. NOTE: 00=empty or unknown\n", filename);
-		printf("#pragma once\n\n#include <SI/literals.h>\nusing namespace SI;\n\nnamespace dataset { \n\n");
+		printf("// dataset converted from %s on 2026-02-01 by csv2hpp 0.1\n", filename);
+		printf("#pragma once\n#include <SI/literals.h>\nusing namespace SI;\n\nnamespace dataset { \n\n");
 		int result = readCSVHeader(file, objectName);
 		printf("} // namespace dataset\n\n");
 		fclose(file);
