@@ -41,5 +41,5 @@ const planet_data planets[] { // NOTE: 00=empty or unknown
 {"Pluto",0.0146_kg,2370_km,2095_kg_per_m³,0.7_m_per_s²,1.3_m_per_s,-153.3_h,153.3_h,5906.4_kg,4436.8,7375.9,90560_h,4.7_m_per_s,17.2,0.244,122.5,-225_degC,0.00001_bar,5,false,false,},
 };
 
-} } // SI::dataset
+} // namespace dataset
 
