@@ -105,6 +105,8 @@ void printDatatype(std::string type, std::string name)
 		printf("    SI::density %s;\n", name.c_str());
 	else if (type == "_km³_per_s²")
 		printf("    SI::volume_per_time_squared %s;\n", name.c_str());
+	else if (type == "skip")
+		; // skip column
 	else
 		printf("    %s %s;\n", type.c_str(), name.c_str());
 }
@@ -155,6 +157,8 @@ void printValue(std::string type, std::string value)
 		printf("%s,", isNumberEmpty(value) ? "00" : value.c_str());
 	else if (type == "float" || type == "double")
 		printf("%s,", trimFloat(value).c_str());
+	else if (type == "skip")
+		; // skip column
 	else if (type[0] == '_')
 		printf("%s%s,", trimFloat(value).c_str(), type.c_str());
 	else
@@ -196,11 +200,11 @@ int readCSVHeader(FILE* file, const char* objectName)
 	return 0;
 }
 
-int convertFile(const char* filename, const char* objectName)
+int convertCSV2HPP(const char* filename, const char* objectName)
 {
 	if (auto file = fopen(filename, "rw"))
 	{
-		printf("// dataset converted from %s on 2026-02-01 by csv2hpp 0.1\n", filename);
+		printf("// dataset from %s (converted by csv2hpp 0.1 on 2026-02-02)\n", filename);
 		printf("#pragma once\n#include <SI/literals.h>\nusing namespace SI;\n\nnamespace dataset { \n\n");
 		int result = readCSVHeader(file, objectName);
 		printf("} // namespace dataset\n\n");
@@ -216,10 +220,11 @@ int main(int argc, char **argv)
 {
 	if (argc != 3)
 	{
-		printf("Version 0.1 from https://github.com/fleschutz/csv2hpp\n");
+		printf("Convert a CSV file into a C/C++ header file for easy #include\n");
+		printf("Version 0.1 (see also: https://github.com/fleschutz/csv2hpp)\n");
 		printf("\n");
-		printf("Usage:   csv2hpp <path-to-CSV-file> <object-name>\n");
+		printf("Usage:   csv2hpp <CSV-filename> <object-name>\n");
 		return 0;
 	}
-	return convertFile(argv[1], argv[2]);
+	return convertCSV2HPP(argv[1], argv[2]);
 }

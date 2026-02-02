@@ -1,8 +1,8 @@
 csv2hpp
 =======
-**This little command-line tool converts databases from CSV file format (.csv suffix) into C/C++ header files. Software projects can #include them and immediately work on large, structured, well-formed datasets. This skips the error-prone and time-consuming steps of data delivering, loading, allocating, checking, and converting.**
+**This utilty converts databases from CSV file format (.csv suffix) into C/C++ header files. Afterward, software projects can #include them and immediately work on structured, well-formed datasets (skipping data delivering, loading, allocating, checking, converting, etc.).**
 
-👉 Usage
+👣 Steps
 ---------
 1. **Export** your database in CSV file format, or directly download the .csv file.
 2. **Add** datatype hints in round brackets to the CSV header line, e.g.: `Name (string), Age (int), Distance (_km)`
@@ -11,7 +11,7 @@ csv2hpp
 
 💡 Hints
 --------
-* Mapping of datatype hints to C++ datatypes is: `(string) -> const char*`, `(int) -> int`, `(long) -> long`, `(float) -> float`, `(double) -> double`, `(byte)` -> unsigned char, `(bool) -> bool`, `(_km) -> SI:length` and so on.
+* Datatype hint to C/C++ datatype mapping is: `(string) -> const char*`, `(int) -> int`, `(long) -> long`, `(float) -> float`, `(double) -> double`, `(byte)` -> unsigned char, `(bool) -> bool`, `(skip) -> skips entire column`, `(_km) -> SI:length` and so on.
 * Empty CSV cells are mapped to "" for strings and to 00 for everything else (as a hint).
 * Trailing '0's for float and double values are removed (more compact).
 * Precision hints (e.g. '±05') are removed for float and double values.
