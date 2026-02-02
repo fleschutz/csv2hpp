@@ -7,7 +7,7 @@ csv2hpp
 1. **Export** your database in CSV file format, or directly download the .csv file.
 2. **Add** datatype hints in round brackets to the CSV header line, e.g.: `Name (string), Age (int), Distance (_km)`
 3. **Execute:** `./csv2hpp database.csv my_object_name > headerfile.hpp`.
-4. **Add:** `#include "headerfile.hpp"` to your C/C++ source code and start developing.
+4. **Add:** `#include "headerfile.hpp"` to your source code and start developing.
 
 💡 Hints
 --------
