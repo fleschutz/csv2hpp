@@ -6,7 +6,7 @@ csv2hpp
 ---------
 1. **Export** your database in CSV file format.
 2. **Edit** the CSV file and add datatype hints to the header line only, e.g.: `Name (string), Age (int), Weight (_kg)`
-3. **Execute:** `$ csv2hpp database.csv my_object_name > headerfile.hpp`.
+3. **Execute:** `csv2hpp database.csv my_object_name > headerfile.hpp`.
 4. **Add:** `#include "headerfile.hpp"` to your source code and start developing.
 
 💡 Hints
@@ -19,7 +19,7 @@ csv2hpp
 
 🎉 Example
 -----------
-Using [planets.csv](src/planets.csv) and executing: `$ csv2hpp planets.csv planet > planets.hpp` results in the header file: [planets.hpp](src/planets.hpp).
+Using [planets.csv](src/planets.csv) and executing: `csv2hpp planets.csv planet > planets.hpp` results in the header file: [planets.hpp](src/planets.hpp).
 
 🤝 Contributing
 ----------------
