@@ -1,6 +1,6 @@
 csv2hpp
 =======
-**This utilty converts databases from CSV file format (.csv suffix) into C/C++ header files. Afterward, software projects can #include them and immediately work on structured, well-formed datasets (skipping CSV file delivering, loading, parsing, converting, etc.).**
+**This utilty converts databases from CSV file format (.csv suffix) into C/C++ header files. Afterward, #include them in your software projects and immediately work on structured, well-formed datasets (skipping CSV file delivering, loading, parsing, converting, etc.).**
 
 👣 Steps
 ---------
