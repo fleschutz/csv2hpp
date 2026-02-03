@@ -1,4 +1,4 @@
-// DO NOT EDIT! Data source is planets.csv (converted by github.com/fleschutz/csv2hpp 0.1 on 2026-02-03)
+// DO NOT EDIT! Data source is planets.csv (converted by github.com/fleschutz/csv2hpp 0.2 on 2026-02-03)
 #pragma once
 #include <SI/literals.h>
 using namespace SI;

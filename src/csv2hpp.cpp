@@ -215,7 +215,7 @@ int convertCSV2HPP(const char* filename, const char* objectName)
 {
 	if (auto file = fopen(filename, "rw"))
 	{
-		printf("// DO NOT EDIT! Data source is %s (converted by github.com/fleschutz/csv2hpp 0.1 on 2026-02-03)\n", filename);
+		printf("// DO NOT EDIT! Data source is %s (converted by github.com/fleschutz/csv2hpp 0.2 on 2026-02-03)\n", filename);
 		printf("#pragma once\n#include <SI/literals.h>\nusing namespace SI;\n\nnamespace dataset { \n\n");
 		int result = readCSVHeader(file, objectName);
 		printf("} // namespace dataset\n\n");
