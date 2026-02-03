@@ -232,7 +232,7 @@ int main(int argc, char **argv)
 	if (argc != 3)
 	{
 		printf("Convert a CSV file into a C/C++ header file for easy #include\n");
-		printf("Version 0.1 (see also: https://github.com/fleschutz/csv2hpp)\n");
+		printf("Version 0.2 (see also: https://github.com/fleschutz/csv2hpp)\n");
 		printf("\n");
 		printf("Usage:   csv2hpp <CSV-filename> <object-name>\n");
 		return 0;
