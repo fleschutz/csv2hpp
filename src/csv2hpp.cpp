@@ -81,34 +81,40 @@ std::string typeOfCell(std::string cell)
 }
 
 
-void printDatatype(std::string type, std::string name)
+void printDatatype(std::string hint, std::string name)
 {
-	if (type == "string")
-		printf("    const char* %s;\n", name.c_str());
-	else if (type == "byte")
-		printf("    unsigned char %s;\n", name.c_str());
-	else if (type == "_m" || type == "_km" || type == "_cm" || type == "_mm" || type == "_au" || type == "_pc")
-		printf("    SI::length %s;\n", name.c_str());
-	else if (type == "_kg" || type == "_g" || type == "_mg" || type == "_t")
-		printf("    SI::mass %s;\n", name.c_str());
-	else if (type == "_s" || type == "_min" || type == "_h" || type == "_days")
-		printf("    SI::time %s;\n", name.c_str());
-	else if (type == "_K" || type == "_degC" || type == "_degF")
-		printf("    SI::temperature %s;\n", name.c_str());
-	else if (type == "_bar" || type == "_mbar")
-		printf("    SI::pressure %s;\n", name.c_str());
-	else if (type == "_m_per_s" || type == "_km_per_h")
-		printf("    SI::velocity %s;\n", name.c_str());
-	else if (type == "_m_per_s²" || type == "_km_per_s²")
-		printf("    SI::acceleration %s;\n", name.c_str());
-	else if (type == "_kg_per_m³" || type == "_g_per_cm³")
-		printf("    SI::density %s;\n", name.c_str());
-	else if (type == "_km³_per_s²")
-		printf("    SI::volume_per_time_squared %s;\n", name.c_str());
-	else if (type == "skip")
-		; // skip column
+	std::string datatype = "";
+
+	if (hint == "string" || hint == "str" || hint == "text")
+		datatype = "const char*";
+	else if (hint == "byte")
+		datatype = "unsigned char";
+	else if (hint == "_m" || hint == "_km" || hint == "_cm" || hint == "_mm" || hint == "_au" || hint == "_pc")
+		datatype = "SI::length";
+	else if (hint == "_kg" || hint == "_g" || hint == "_mg" || hint == "_t")
+		datatype = "SI::mass";
+	else if (hint == "_s" || hint == "_min" || hint == "_h" || hint == "_days")
+		datatype = "SI::time";
+	else if (hint == "_K" || hint == "_degC" || hint == "_degF")
+		datatype = "SI::temperature";
+	else if (hint == "_bar" || hint == "_mbar")
+		datatype = "SI::pressure";
+	else if (hint == "_Hz" || hint == "_kHz" || hint == "_MHz" || hint == "_GHz")
+		datatype = "SI::frequency";
+	else if (hint == "_m_per_s" || hint == "_km_per_h")
+		datatype = "SI::velocity";
+	else if (hint == "_m_per_s²" || hint == "_km_per_s²")
+		datatype = "SI::acceleration";
+	else if (hint == "_kg_per_m³" || hint == "_g_per_cm³")
+		datatype = "SI::density";
+	else if (hint == "_km³_per_s²")
+		datatype = "SI::volume_per_time_squared";
+	else if (hint == "skip")
+		return; // skip this column
 	else
-		printf("    %s %s;\n", type.c_str(), name.c_str());
+		datatype = hint;
+
+	printf("    %s %s;\n", datatype.c_str(), name.c_str());
 }
 
 bool isNumberEmpty(std::string num)
