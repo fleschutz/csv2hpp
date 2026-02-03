@@ -81,7 +81,7 @@ std::string typeOfCell(std::string cell)
 }
 
 
-void printDatatype(std::string hint, std::string name)
+void printDatatype(int column, std::string hint, std::string name)
 {
 	std::string datatype = "";
 
@@ -114,7 +114,7 @@ void printDatatype(std::string hint, std::string name)
 	else
 		datatype = hint;
 
-	printf("    %s %s;\n", datatype.c_str(), name.c_str());
+	printf("/*%02d*/   %s %s;\t\t// (%s)\n", column + 1, datatype.c_str(), name.c_str(), hint.c_str());
 }
 
 bool isNumberEmpty(std::string num)
@@ -153,56 +153,61 @@ std::string trimFloat(std::string s)
 	return s;
 }
 
-void printValue(std::string type, std::string value)
+void printValue(int column, std::string hint, std::string value)
 {
-	if (type == "string")
-		printf("\"%s\",", value.c_str());
-	else if (type == "bool")
-		printf("%s,", (value == "Yes" || value == "yes" || value == "True" || value == "true" || value == "1") ? "true" : "false");
-	else if (type == "int" || type == "long")
-		printf("%s,", isNumberEmpty(value) ? "00" : value.c_str());
-	else if (type == "float" || type == "double")
-		printf("%s,", trimFloat(value).c_str());
-	else if (type == "skip")
-		; // skip column
-	else if (type[0] == '_')
-		printf("%s%s,", trimFloat(value).c_str(), type.c_str());
+	if (hint == "skip")
+		return; // skip this column
+	if (column != 0)
+		printf(",");
+	if (hint == "string")
+		printf("\"%s\"", value.c_str());
+	else if (hint == "bool")
+		printf("%s", (value == "Yes" || value == "yes" || value == "True" || value == "true" || value == "1") ? "true" : "false");
+	else if (hint == "int" || hint == "long")
+		printf("%s", isNumberEmpty(value) ? "00" : value.c_str());
+	else if (hint == "float" || hint == "double")
+		printf("%s", trimFloat(value).c_str());
+	else if (hint[0] == '_')
+		printf("%s%s", trimFloat(value).c_str(), hint.c_str());
 	else
-		printf("%s,", value.c_str());
+		printf("%s", value.c_str());
 }
 
 int readCSVHeader(FILE* file, const char* objectName)
 {
-	std::string types[1024];
+	std::string hints[1024] = {};
 
+	// parse CSV header line
 	printf("struct %s_data {\n", objectName);
 	int i = 0;
 	for (auto cell = nextCell(file); cell != EOL; cell = nextCell(file), i++)
 	{
 		auto name = nameOfCell(cell);
-		auto type = typeOfCell(cell);
-		if (type == "")
+		auto hint = typeOfCell(cell);
+		if (hint == "")
 		{
-			fprintf(stderr, "Please specify a type in round brackets for column #%d\n", i + 1);
+			fprintf(stderr, "Please specify a datatype hint in round brackets for column #%d\n", i + 1);
 			return 1;
 		}
-		printDatatype(type, name);
-		types[i] = type;
+		printDatatype(i, hint, name);
+		hints[i] = hint;
 	}
-	printf("};\n\nconst %s_data %ss[] { // NOTE: 00=empty or unknown field\n", objectName, objectName);
+	printf("};\n\n");
 
-	while (!feof(file))
+	// parse CSV data cells
+	printf("const %s_data %ss[] { // NOTE: 00=empty or unknown field\n", objectName, objectName);
+	int rows = 0, columns = 0;
+	for (; !feof(file); rows++)
 	{
 		printf("{");
-		i = 0;
-		for (auto cell = nextCell(file); cell != EOL; cell = nextCell(file), i++)
+		columns = 0;
+		for (auto cell = nextCell(file); cell != EOL; cell = nextCell(file), columns++)
 		{
-			printValue(types[i], cell);
+			printValue(columns, hints[columns], cell);
 		}
 		printf("},\n");
 	}
-
-	printf("};\n\n");
+	printf("}; // (%d columns x %d rows = %d cells)\n\n", columns, rows, columns * rows);
 	return 0;
 }
 
@@ -210,7 +215,7 @@ int convertCSV2HPP(const char* filename, const char* objectName)
 {
 	if (auto file = fopen(filename, "rw"))
 	{
-		printf("// dataset from %s (converted by csv2hpp 0.1 on 2026-02-02)\n", filename);
+		printf("// DO NOT EDIT! Data source is %s (converted by github.com/fleschutz/csv2hpp 0.1 on 2026-02-03)\n", filename);
 		printf("#pragma once\n#include <SI/literals.h>\nusing namespace SI;\n\nnamespace dataset { \n\n");
 		int result = readCSVHeader(file, objectName);
 		printf("} // namespace dataset\n\n");
