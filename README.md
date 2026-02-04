@@ -1,13 +1,13 @@
 csv2hpp
 =======
-**This utility converts databases from CSV file format into C/C++ header files. Afterward, #include them in your software projects and immediately work on structured, well-formed datasets (and skip CSV file delivering, loading, parsing, converting, etc.).**
+**This utility converts databases from CSV file format into C/C++ header files. Afterward, include them in your software projects and immediately work on structured, well-formed datasets (and skip CSV file delivering, loading, parsing, converting, etc.).**
 
 👣 Steps
 ---------
-1. **Export** your database in CSV file format.
+1. **Export** your database in CSV file format, e.g. to: `database.csv`
 2. **Edit** the CSV file and just add datatype hints to the header line, e.g.: `Name (string), Age (int), Weight (_kg)`
-3. **Execute:** `csv2hpp database.csv name_of_object > headerfile.hpp`.
-4. **Add:** `#include "headerfile.hpp"` to your source code and start developing.
+3. **Convert** by executing: `csv2hpp database.csv name_of_object > headerfile.hpp`.
+4. **Add** the header file and `#include "headerfile.hpp"` to your project and immediately start developing.
 
 💡 Hints
 --------
