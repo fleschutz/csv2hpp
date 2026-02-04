@@ -6,7 +6,7 @@ csv2hpp
 ---------
 1. **Export** your database in CSV file format.
 2. **Edit** the CSV file and just add datatype hints to the header line, e.g.: `Name (string), Age (int), Weight (_kg)`
-3. **Execute:** `csv2hpp database.csv my_object_name > headerfile.hpp`.
+3. **Execute:** `csv2hpp database.csv name_of_object > headerfile.hpp`.
 4. **Add:** `#include "headerfile.hpp"` to your source code and start developing.
 
 💡 Hints
