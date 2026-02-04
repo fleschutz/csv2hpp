@@ -91,7 +91,7 @@ void printDatatype(int column, std::string hint, std::string name)
 		datatype = "unsigned char";
 	else if (hint == "_m" || hint == "_km" || hint == "_cm" || hint == "_mm" || hint == "_nm" || hint == "_pm" || hint == "_au" || hint == "_pc")
 		datatype = "SI::length";
-	else if (hint == "_kg" || hint == "_g" || hint == "_mg" || hint == "_t")
+	else if (hint == "_kg" || hint == "_t" || hint == "_g" || hint == "_mg" || hint == "_Da")
 		datatype = "SI::mass";
 	else if (hint == "_s" || hint == "_min" || hint == "_h" || hint == "_days")
 		datatype = "SI::time";
@@ -114,7 +114,11 @@ void printDatatype(int column, std::string hint, std::string name)
 	else
 		datatype = hint;
 
-	printf("/*%02d*/   %s %s;\t\t// (%s)\n", column + 1, datatype.c_str(), name.c_str(), hint.c_str());
+	printf("\t%s %s;", datatype.c_str(), name.c_str());
+	auto len = strlen(datatype.c_str()) + strlen(name.c_str());
+	for (int i = 0; i < 40 - len; i++)
+		printf(" ");
+	printf("// column %2d (%s) in CSV file\n", column + 1, hint.c_str());
 }
 
 bool isNumberEmpty(std::string num)
@@ -215,7 +219,7 @@ int convertCSV2HPP(const char* filename, const char* objectName)
 {
 	if (auto file = fopen(filename, "rw"))
 	{
-		printf("// DO NOT EDIT! Data source is %s (converted by github.com/fleschutz/csv2hpp 0.2 on 2026-02-03)\n", filename);
+		printf("// DO NOT EDIT! Data source is %s (converted by github.com/fleschutz/csv2hpp 0.3 on 2026-02-04)\n", filename);
 		printf("#pragma once\n#include <SI/literals.h>\nusing namespace SI;\n\nnamespace dataset { \n\n");
 		int result = readCSVHeader(file, objectName);
 		printf("} // namespace dataset\n\n");
@@ -232,7 +236,8 @@ int main(int argc, char **argv)
 	if (argc != 3)
 	{
 		printf("Convert a CSV file into a C/C++ header file for easy #include\n");
-		printf("Version 0.2 (see also: https://github.com/fleschutz/csv2hpp)\n");
+		printf("\n");
+		printf("Version 0.3 of 2026-02-04 (see also: https://github.com/fleschutz/csv2hpp)\n");
 		printf("\n");
 		printf("Usage:   csv2hpp <CSV-filename> <object-name>\n");
 		return 0;
