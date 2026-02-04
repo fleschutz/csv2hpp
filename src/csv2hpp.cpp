@@ -157,24 +157,20 @@ std::string trimFloat(std::string s)
 	return s;
 }
 
-void printValue(int column, std::string hint, std::string value)
+void printValue(std::string hint, std::string value)
 {
-	if (hint == "skip")
-		return; // skip this column
-	if (column != 0)
-		printf(",");
 	if (hint == "string")
-		printf("\"%s\"", value.c_str());
+		printf("\"%s\",", value.c_str());
 	else if (hint == "bool")
-		printf("%s", (value == "Yes" || value == "yes" || value == "True" || value == "true" || value == "1") ? "true" : "false");
+		printf("%s,", (value == "Yes" || value == "yes" || value == "True" || value == "true" || value == "1") ? "true" : "false");
 	else if (hint == "int" || hint == "long")
-		printf("%s", isNumberEmpty(value) ? "00" : value.c_str());
+		printf("%s,", isNumberEmpty(value) ? "00" : value.c_str());
 	else if (hint == "float" || hint == "double")
-		printf("%s", trimFloat(value).c_str());
+		printf("%s,", trimFloat(value).c_str());
 	else if (hint[0] == '_')
-		printf("%s%s", trimFloat(value).c_str(), hint.c_str());
+		printf("%s%s,", trimFloat(value).c_str(), hint.c_str());
 	else
-		printf("%s", value.c_str());
+		printf("%s,", value.c_str());
 }
 
 int readCSVHeader(FILE* file, const char* objectName)
@@ -204,10 +200,13 @@ int readCSVHeader(FILE* file, const char* objectName)
 	for (; !feof(file); rows++)
 	{
 		printf("{");
-		columns = 0;
-		for (auto cell = nextCell(file); cell != EOL; cell = nextCell(file), columns++)
+		i = columns = 0;
+		for (auto cell = nextCell(file); cell != EOL; cell = nextCell(file), i++)
 		{
-			printValue(columns, hints[columns], cell);
+			if (hints[i] == "skip")
+				continue; // skip this column
+			printValue(hints[i], cell);
+			columns++;
 		}
 		printf("},\n");
 	}
