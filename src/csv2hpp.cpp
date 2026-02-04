@@ -89,7 +89,7 @@ void printDatatype(int column, std::string hint, std::string name)
 		datatype = "const char*";
 	else if (hint == "byte")
 		datatype = "unsigned char";
-	else if (hint == "_m" || hint == "_km" || hint == "_cm" || hint == "_mm" || hint == "_au" || hint == "_pc")
+	else if (hint == "_m" || hint == "_km" || hint == "_cm" || hint == "_mm" || hint == "_nm" || hint == "_pm" || hint == "_au" || hint == "_pc")
 		datatype = "SI::length";
 	else if (hint == "_kg" || hint == "_g" || hint == "_mg" || hint == "_t")
 		datatype = "SI::mass";
