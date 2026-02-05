@@ -80,43 +80,44 @@ std::string typeOfCell(std::string cell)
 	return result;
 }
 
-
-void printDatatype(int column, std::string hint, std::string name)
+std::string hint2datatype(std::string hint)
 {
-	std::string datatype = "";
-
 	if (hint == "string" || hint == "str" || hint == "text")
-		datatype = "const char*";
-	else if (hint == "byte")
-		datatype = "unsigned char";
-	else if (hint == "_m" || hint == "_km" || hint == "_cm" || hint == "_mm" || hint == "_nm" || hint == "_pm" || hint == "_au" || hint == "_pc")
-		datatype = "SI::length";
-	else if (hint == "_kg" || hint == "_t" || hint == "_g" || hint == "_mg" || hint == "_Da")
-		datatype = "SI::mass";
-	else if (hint == "_s" || hint == "_min" || hint == "_h" || hint == "_days")
-		datatype = "SI::time";
-	else if (hint == "_K" || hint == "_degC" || hint == "_degF")
-		datatype = "SI::temperature";
-	else if (hint == "_bar" || hint == "_mbar")
-		datatype = "SI::pressure";
-	else if (hint == "_Hz" || hint == "_kHz" || hint == "_MHz" || hint == "_GHz")
-		datatype = "SI::frequency";
-	else if (hint == "_m_per_s" || hint == "_km_per_h")
-		datatype = "SI::velocity";
-	else if (hint == "_m_per_s²" || hint == "_km_per_s²")
-		datatype = "SI::acceleration";
-	else if (hint == "_kg_per_m³" || hint == "_g_per_cm³")
-		datatype = "SI::density";
-	else if (hint == "_J" || hint == "_kJ" || hint == "_MJ" || hint == "_eV")
-		datatype = "SI::energy";
-	else if (hint == "_J_per_mol" || hint == "_kJ_per_mol")
-		datatype = "SI::energy_per_mol";
-	else if (hint == "_km³_per_s²")
-		datatype = "SI::volume_per_time_squared";
-	else if (hint == "skip")
-		return; // skip this column
-	else
-		datatype = hint;
+		return "const char*";
+	if (hint == "byte" || hint == "bit")
+		return "unsigned char";
+
+	if (hint == "_m" || hint == "_km" || hint == "_cm" || hint == "_mm" || hint == "_nm" || hint == "_pm" || hint == "_au" || hint == "_pc")
+		return "SI::length";
+	if (hint == "_kg" || hint == "_t" || hint == "_g" || hint == "_mg" || hint == "_Da")
+		return "SI::mass";
+	if (hint == "_s" || hint == "_min" || hint == "_h" || hint == "_days")
+		return "SI::time";
+	if (hint == "_K" || hint == "_degC" || hint == "_degF")
+		return "SI::temperature";
+	if (hint == "_bar" || hint == "_mbar")
+		return "SI::pressure";
+	if (hint == "_Hz" || hint == "_kHz" || hint == "_MHz" || hint == "_GHz")
+		return "SI::frequency";
+	if (hint == "_m_per_s" || hint == "_km_per_h")
+		return "SI::velocity";
+	if (hint == "_m_per_s²" || hint == "_km_per_s²")
+		return "SI::acceleration";
+	if (hint == "_kg_per_m³" || hint == "_g_per_cm³")
+		return "SI::density";
+	if (hint == "_J" || hint == "_kJ" || hint == "_MJ" || hint == "_eV")
+		return "SI::energy";
+	if (hint == "_J_per_mol" || hint == "_kJ_per_mol")
+		return "SI::energy_per_mol";
+	if (hint == "_km³_per_s²")
+		return "SI::volume_per_time_squared";
+
+	return hint; // fallback
+}
+
+void printDatatype(std::string hint, std::string name, int column)
+{
+	std::string datatype = hint2datatype(hint);
 
 	printf("\t%s %s;", datatype.c_str(), name.c_str());
 	auto len = strlen(datatype.c_str()) + strlen(name.c_str());
@@ -163,13 +164,16 @@ std::string trimFloat(std::string s)
 
 void printValue(std::string hint, std::string value)
 {
-	if (hint == "string")
+	if (hint == "skip")
+		return ; // skip this column
+
+	if (hint == "string" || hint == "str" || hint == "text")
 		printf("\"%s\",", value.c_str());
-	else if (hint == "bool")
+	else if (hint == "bool" || hint == "boolean")
 		printf("%s,", (value == "Yes" || value == "yes" || value == "True" || value == "true" || value == "1") ? "true" : "false");
-	else if (hint == "int" || hint == "long")
+	else if (hint == "short" || hint == "int" || hint == "long" || hint == "long long")
 		printf("%s,", isNumberEmpty(value) ? "00" : value.c_str());
-	else if (hint == "float" || hint == "double")
+	else if (hint == "float" || hint == "double" || hint == "long double")
 		printf("%s,", trimFloat(value).c_str());
 	else if (hint[0] == '_')
 		printf("%s%s,", trimFloat(value).c_str(), hint.c_str());
@@ -183,34 +187,34 @@ int readCSVHeader(FILE* file, const char* objectName)
 
 	// parse CSV header line
 	printf("struct %s_data {\n", objectName);
-	int i = 0;
+	int i = 0, columns = 0;
 	for (auto cell = nextCell(file); cell != EOL; cell = nextCell(file), i++)
 	{
 		auto name = nameOfCell(cell);
-		auto hint = typeOfCell(cell);
-		if (hint == "")
+		hints[i] = typeOfCell(cell);
+		if (hints[i] == "")
 		{
 			fprintf(stderr, "Please specify a datatype hint in round brackets for column #%d\n", i + 1);
 			return 1;
 		}
-		printDatatype(i, hint, name);
-		hints[i] = hint;
+		if (hints[i] == "skip")
+			continue; // skip this column
+
+		printDatatype(hints[i], name, i);
+		columns++;
 	}
 	printf("};\n\n");
 
 	// parse CSV data cells
 	printf("const %s_data %ss[] { // NOTE: 00=empty or unknown field\n", objectName, objectName);
-	int rows = 0, columns = 0;
+	int rows = 0;
 	for (; !feof(file); rows++)
 	{
 		printf("{");
-		i = columns = 0;
+		i = 0;
 		for (auto cell = nextCell(file); cell != EOL; cell = nextCell(file), i++)
 		{
-			if (hints[i] == "skip")
-				continue; // skip this column
 			printValue(hints[i], cell);
-			columns++;
 		}
 		printf("},\n");
 	}
