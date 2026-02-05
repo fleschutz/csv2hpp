@@ -55,7 +55,7 @@ std::string nextCell(FILE* file)
 	return result;
 }
 
-std::string nameOfCell(std::string cell)
+std::string getNameInCell(std::string cell)
 {
 	auto ptr = cell.c_str();
 	std::string result = "";
@@ -66,50 +66,66 @@ std::string nameOfCell(std::string cell)
 	return result;
 }
 
-std::string typeOfCell(std::string cell)
+std::string getHintInCell(std::string cell)
 {
-	std::string result = "";
+	std::string hint = "";
 	
 	if (auto ptr = strchr(cell.c_str(), '('))
 	{
 		for (ptr++; *ptr != ')'; )
 		{
-			result += *ptr++;
+			hint += *ptr++;
 		}
 	}
-	return result;
+	// check for C/C++ datatype alias:
+	// check for SI units alias:
+	if (hint == "km/h")
+		return "_km_per_h";
+	if (hint == "m/s")
+		return "_m_per_s";
+	if (hint == "°C")
+		return "_degC";
+	if (hint == "°F")
+		return "_degF";
+	return hint;
 }
 
 std::string hint2datatype(std::string hint)
 {
+	// check for C/C++ datatypes:
 	if (hint == "string" || hint == "str" || hint == "text")
 		return "const char*";
 	if (hint == "byte" || hint == "bit")
 		return "unsigned char";
+	if (hint == "short" || hint == "int" || hint == "long" || hint == "long long")
+		return hint;
+	if (hint == "float" || hint == "double" || hint == "long double")
+		return hint;
 
+	// check for SI units:
 	if (hint == "_m" || hint == "_km" || hint == "_cm" || hint == "_mm" || hint == "_nm" || hint == "_pm" || hint == "_au" || hint == "_pc")
 		return "SI::length";
 	if (hint == "_kg" || hint == "_t" || hint == "_g" || hint == "_mg" || hint == "_Da")
 		return "SI::mass";
-	if (hint == "_s" || hint == "_min" || hint == "_h" || hint == "_days")
+	if (hint == "_s" || hint == "_min" || hint == "_h" || hint == "_days" || hint == "_ms")
 		return "SI::time";
 	if (hint == "_K" || hint == "_degC" || hint == "_degF")
 		return "SI::temperature";
-	if (hint == "_bar" || hint == "_mbar")
+	if (hint == "bar" || hint == "_bar" || hint == "_mbar")
 		return "SI::pressure";
-	if (hint == "_Hz" || hint == "_kHz" || hint == "_MHz" || hint == "_GHz")
+	if (hint == "_Hz" || hint == "_kHz" || hint == "_MHz" || hint == "_GHz" || hint == "_THz")
 		return "SI::frequency";
 	if (hint == "_m_per_s" || hint == "_km_per_h")
 		return "SI::velocity";
-	if (hint == "_m_per_s²" || hint == "_km_per_s²")
+	if (hint == "m/s²" || hint == "_m_per_s²" || hint == "_km_per_s²")
 		return "SI::acceleration";
-	if (hint == "_kg_per_m³" || hint == "_g_per_cm³")
+	if (hint == "kg/m²" || hint == "g/cm³" || hint == "_kg_per_m³" || hint == "_g_per_cm³")
 		return "SI::density";
 	if (hint == "_J" || hint == "_kJ" || hint == "_MJ" || hint == "_eV")
 		return "SI::energy";
-	if (hint == "_J_per_mol" || hint == "_kJ_per_mol")
+	if (hint == "J/mol" || hint == "_J_per_mol" || hint == "_kJ_per_mol")
 		return "SI::energy_per_mol";
-	if (hint == "_km³_per_s²")
+	if (hint == "km³/s²" || hint == "_km³_per_s²")
 		return "SI::volume_per_time_squared";
 
 	return hint; // fallback
@@ -190,8 +206,8 @@ int readCSVHeader(FILE* file, const char* objectName)
 	int i = 0, columns = 0;
 	for (auto cell = nextCell(file); cell != EOL; cell = nextCell(file), i++)
 	{
-		auto name = nameOfCell(cell);
-		hints[i] = typeOfCell(cell);
+		auto name = getNameInCell(cell);
+		hints[i] = getHintInCell(cell);
 		if (hints[i] == "")
 		{
 			fprintf(stderr, "Please specify a datatype hint in round brackets for column #%d\n", i + 1);
