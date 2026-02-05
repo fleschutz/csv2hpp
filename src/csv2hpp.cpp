@@ -107,6 +107,8 @@ void printDatatype(int column, std::string hint, std::string name)
 		datatype = "SI::acceleration";
 	else if (hint == "_kg_per_m³" || hint == "_g_per_cm³")
 		datatype = "SI::density";
+	else if (hint == "_J" || hint == "_kJ" || hint == "_MJ" || hint == "_eV")
+		datatype = "SI::energy";
 	else if (hint == "_km³_per_s²")
 		datatype = "SI::volume_per_time_squared";
 	else if (hint == "skip")
