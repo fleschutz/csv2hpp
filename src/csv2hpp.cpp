@@ -90,55 +90,60 @@ std::string getHintInCell(std::string cell)
 	return hint;
 }
 
-std::string hint2datatype(std::string hint)
+std::string hint2declaration(std::string hint, std::string name)
 {
 	// check for C/C++ datatypes:
 	if (hint == "string" || hint == "str" || hint == "text")
-		return "const char*";
-	if (hint == "byte" || hint == "bit")
-		return "unsigned char";
-	if (hint == "short" || hint == "int" || hint == "long" || hint == "long long")
-		return hint;
-	if (hint == "float" || hint == "double" || hint == "long double")
-		return hint;
+		return "const char* " + name;
+	if (hint == "4chars")
+		return "char " + name + "[4]";
+	if (hint == "8chars")
+		return "char " + name + "[8]";
+	if (hint == "16chars")
+		return "char " + name + "[16]";
+	if (hint == "byte")
+		return "unsigned char " + name;
+	if (hint == "short" || hint == "int" || hint == "long" || hint == "long long" || hint == "float" || hint == "double" || hint == "long double")
+		return hint + " " + name;
 
 	// check for SI units:
 	if (hint == "_m" || hint == "_km" || hint == "_cm" || hint == "_mm" || hint == "_nm" || hint == "_pm" || hint == "_au" || hint == "_pc")
-		return "SI::length";
+		return "SI::length " + name;
 	if (hint == "_kg" || hint == "_t" || hint == "_g" || hint == "_mg" || hint == "_Da")
-		return "SI::mass";
+		return "SI::mass " + name;
 	if (hint == "_s" || hint == "_min" || hint == "_h" || hint == "_days" || hint == "_ms")
-		return "SI::time";
+		return "SI::time " + name;
 	if (hint == "_K" || hint == "_degC" || hint == "_degF")
-		return "SI::temperature";
+		return "SI::temperature " + name;
 	if (hint == "bar" || hint == "_bar" || hint == "_mbar")
-		return "SI::pressure";
+		return "SI::pressure " + name;
 	if (hint == "_Hz" || hint == "_kHz" || hint == "_MHz" || hint == "_GHz" || hint == "_THz")
-		return "SI::frequency";
+		return "SI::frequency " + name;
 	if (hint == "_m_per_s" || hint == "_km_per_h")
-		return "SI::velocity";
+		return "SI::velocity " + name;
 	if (hint == "m/s²" || hint == "_m_per_s²" || hint == "_km_per_s²")
-		return "SI::acceleration";
+		return "SI::acceleration " + name;
 	if (hint == "kg/m²" || hint == "g/cm³" || hint == "_kg_per_m³" || hint == "_g_per_cm³")
-		return "SI::density";
+		return "SI::density " + name;
 	if (hint == "_J" || hint == "_kJ" || hint == "_MJ" || hint == "_eV")
-		return "SI::energy";
+		return "SI::energy " + name;
 	if (hint == "J/mol" || hint == "_J_per_mol" || hint == "_kJ_per_mol")
-		return "SI::energy_per_mol";
+		return "SI::energy_per_mol " + name;
 	if (hint == "km³/s²" || hint == "_km³_per_s²")
-		return "SI::volume_per_time_squared";
+		return "SI::volume_per_time_squared " + name;
 
-	return hint; // fallback
+	return hint + " " + name; // fallback
 }
 
 void printDatatype(std::string hint, std::string name, int column)
 {
-	std::string datatype = hint2datatype(hint);
+	std::string declaration = hint2declaration(hint, name);
+	printf("\t%s;", declaration.c_str());
 
-	printf("\t%s %s;", datatype.c_str(), name.c_str());
-	auto len = strlen(datatype.c_str()) + strlen(name.c_str());
+	auto len = strlen(declaration.c_str());
 	for (int i = 0; i < 40 - len; i++)
 		printf(" ");
+
 	printf("// column %2d (%s) in CSV file\n", column + 1, hint.c_str());
 }
 
@@ -183,14 +188,14 @@ void printValue(std::string hint, std::string value)
 	if (hint == "skip")
 		return ; // skip this column
 
-	if (hint == "string" || hint == "str" || hint == "text")
+	if (hint == "string" || hint == "str" || hint == "text" || hint == "4chars" || hint == "8chars" || hint == "16chars")
 		printf("\"%s\",", value.c_str());
-	else if (hint == "bool" || hint == "boolean")
-		printf("%s,", (value == "Yes" || value == "yes" || value == "True" || value == "true" || value == "1") ? "true" : "false");
-	else if (hint == "short" || hint == "int" || hint == "long" || hint == "long long")
+	else if (hint == "byte" || hint == "short" || hint == "int" || hint == "long" || hint == "long long")
 		printf("%s,", isNumberEmpty(value) ? "00" : value.c_str());
 	else if (hint == "float" || hint == "double" || hint == "long double")
 		printf("%s,", trimFloat(value).c_str());
+	else if (hint == "bool" || hint == "boolean")
+		printf("%s,", (value == "Yes" || value == "yes" || value == "True" || value == "true" || value == "1") ? "true" : "false");
 	else if (hint[0] == '_')
 		printf("%s%s,", trimFloat(value).c_str(), hint.c_str());
 	else
