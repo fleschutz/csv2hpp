@@ -257,7 +257,7 @@ int convertCSV2HPP(const char* filename, const char* objectName)
 {
 	if (auto file = fopen(filename, "rw"))
 	{
-		printf("// DO NOT EDIT! Data source is %s (converted by github.com/fleschutz/csv2hpp 0.3 on 2026-02-04)\n", filename);
+		printf("// DO NOT EDIT! Data source is %s (converted by github.com/fleschutz/csv2hpp 0.4 on 2026-02-06)\n", filename);
 		printf("#pragma once\n#include <SI/literals.h>\nusing namespace SI;\n\nnamespace dataset { \n\n");
 		int result = readCSVHeader(file, objectName);
 		printf("} // namespace dataset\n\n");
@@ -273,9 +273,9 @@ int main(int argc, char **argv)
 {
 	if (argc != 3)
 	{
-		printf("Convert a CSV file into a C/C++ header file for easy #include\n");
+		printf("Convert CSV files into C/C++ header files for easy #include.\n");
 		printf("\n");
-		printf("Version 0.3 of 2026-02-04 (see also: https://github.com/fleschutz/csv2hpp)\n");
+		printf("Version 0.4 of 2026-02-06 (see also: https://github.com/fleschutz/csv2hpp)\n");
 		printf("\n");
 		printf("Usage:   csv2hpp <CSV-filename> <object-name>\n");
 		return 0;
