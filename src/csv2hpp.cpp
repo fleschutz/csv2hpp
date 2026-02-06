@@ -95,12 +95,16 @@ std::string hint2declaration(std::string hint, std::string name)
 	// check for C/C++ datatypes:
 	if (hint == "string" || hint == "str" || hint == "text")
 		return "const char* " + name;
-	if (hint == "4chars")
+	if (hint == "char[4]")
 		return "char " + name + "[4]";
-	if (hint == "8chars")
+	if (hint == "char[8]")
 		return "char " + name + "[8]";
-	if (hint == "16chars")
+	if (hint == "char[16]")
 		return "char " + name + "[16]";
+	if (hint == "char[32]")
+		return "char " + name + "[32]";
+	if (hint == "char[64]")
+		return "char " + name + "[64]";
 	if (hint == "byte")
 		return "unsigned char " + name;
 	if (hint == "short" || hint == "int" || hint == "long" || hint == "long long" || hint == "float" || hint == "double" || hint == "long double")
@@ -185,21 +189,18 @@ std::string trimFloat(std::string s)
 
 void printValue(std::string hint, std::string value)
 {
-	if (hint == "skip")
-		return ; // skip this column
-
-	if (hint == "string" || hint == "str" || hint == "text" || hint == "4chars" || hint == "8chars" || hint == "16chars")
-		printf("\"%s\",", value.c_str());
+	if (hint == "string" || hint == "str" || hint == "text" || hint == "char[4]" || hint == "char[8]" || hint == "char[16]" || hint == "char[32]" || hint == "char[64]")
+		printf("\"%s\"", value.c_str());
 	else if (hint == "byte" || hint == "short" || hint == "int" || hint == "long" || hint == "long long")
-		printf("%s,", isNumberEmpty(value) ? "00" : value.c_str());
+		printf("%s", isNumberEmpty(value) ? "00" : value.c_str());
 	else if (hint == "float" || hint == "double" || hint == "long double")
-		printf("%s,", trimFloat(value).c_str());
+		printf("%s", trimFloat(value).c_str());
 	else if (hint == "bool" || hint == "boolean")
-		printf("%s,", (value == "Yes" || value == "yes" || value == "True" || value == "true" || value == "1") ? "true" : "false");
+		printf("%s", (value == "Yes" || value == "yes" || value == "True" || value == "true" || value == "1") ? "true" : "false");
 	else if (hint[0] == '_')
-		printf("%s%s,", trimFloat(value).c_str(), hint.c_str());
+		printf("%s%s", trimFloat(value).c_str(), hint.c_str());
 	else
-		printf("%s,", value.c_str());
+		printf("%s", value.c_str());
 }
 
 int readCSVHeader(FILE* file, const char* objectName)
@@ -231,13 +232,22 @@ int readCSVHeader(FILE* file, const char* objectName)
 	int rows = 0;
 	for (; !feof(file); rows++)
 	{
-		printf("{");
+		bool gotOne = false;
 		i = 0;
 		for (auto cell = nextCell(file); cell != EOL; cell = nextCell(file), i++)
 		{
+			if (hints[i] == "skip")
+				continue; // skip this column
+			if (!gotOne)
+				printf("{");
+			else
+				printf(",");
+
 			printValue(hints[i], cell);
+			gotOne = true;
 		}
-		printf("},\n");
+		if (gotOne)
+			printf("},\n");
 	}
 	printf("}; // (%d columns x %d rows = %d cells)\n\n", columns, rows, columns * rows);
 	return 0;
