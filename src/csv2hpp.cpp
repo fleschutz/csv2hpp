@@ -193,7 +193,9 @@ void printValue(std::string hint, std::string value)
 		printf("\"%s\"", value.c_str());
 	else if (hint == "byte" || hint == "short" || hint == "int" || hint == "long" || hint == "long long")
 		printf("%s", isNumberEmpty(value) ? "00" : value.c_str());
-	else if (hint == "float" || hint == "double" || hint == "long double")
+	else if (hint == "float")
+		printf("%sf", trimFloat(value).c_str());
+	else if (hint == "double" || hint == "long double")
 		printf("%s", trimFloat(value).c_str());
 	else if (hint == "bool" || hint == "boolean")
 		printf("%s", (value == "Yes" || value == "yes" || value == "True" || value == "true" || value == "1") ? "true" : "false");
