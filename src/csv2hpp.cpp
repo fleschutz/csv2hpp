@@ -148,7 +148,7 @@ void printDatatype(std::string hint, std::string name, int column)
 	for (int i = 0; i < 40 - len; i++)
 		printf(" ");
 
-	printf("// column %2d (%s) in CSV file\n", column + 1, hint.c_str());
+	printf("// CSV column %2d (%s)\n", column + 1, hint.c_str());
 }
 
 bool isNumberEmpty(std::string num)
@@ -193,6 +193,8 @@ void printValue(std::string hint, std::string value)
 		printf("\"%s\"", value.c_str());
 	else if (hint == "byte" || hint == "short" || hint == "int" || hint == "long" || hint == "long long")
 		printf("%s", isNumberEmpty(value) ? "00" : value.c_str());
+	else if (hint == "float" && isNumberEmpty(value))
+		printf("00");
 	else if (hint == "float")
 		printf("%sf", trimFloat(value).c_str());
 	else if (hint == "double" || hint == "long double")
@@ -257,17 +259,19 @@ int readCSVHeader(FILE* file, const char* objectName)
 
 int convertCSV2HPP(const char* filename, const char* objectName)
 {
-	if (auto file = fopen(filename, "rw"))
+	auto file = fopen(filename, "rw");
+	if (!file)
 	{
-		printf("// DO NOT EDIT! Data source is %s (converted by github.com/fleschutz/csv2hpp 0.4 on 2026-02-06)\n", filename);
-		printf("#pragma once\n#include <SI/literals.h>\nusing namespace SI;\n\nnamespace dataset { \n\n");
-		int result = readCSVHeader(file, objectName);
-		printf("} // namespace dataset\n\n");
-		fclose(file);
-		return result;
+		fprintf(stderr, "Can't open CSV file: %s\n", filename);
+		return 1;
 	}
-	fprintf(stderr, "Can't open CSV file: %s\n", filename);
-	return 1;
+	printf("// DO NOT EDIT! File converted from %s on 2026-02-08 by github.com/fleschutz/csv2hpp 0.4.\n", filename);
+	printf("//              Usage: #include \"%ss.hpp\" ... for(const auto& %s : %ss) { ...\n", objectName, objectName, objectName);
+	printf("#pragma once\n#include <SI/literals.h>\nusing namespace SI;\n\nnamespace dataset { \n\n");
+	int result = readCSVHeader(file, objectName);
+	printf("} // namespace dataset\n\n");
+	fclose(file);
+	return result;
 }
 
 
