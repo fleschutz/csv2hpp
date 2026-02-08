@@ -1,5 +1,6 @@
-// DO NOT EDIT! File converted from planets.csv on 2026-02-08 by github.com/fleschutz/csv2hpp 0.4.
-//              Usage: #include "planets.hpp" ... for(const auto& planet : planets) { ...
+// DO NOT EDIT! File converted from planets.csv on 2026-02-08 by csv2hpp 0.4.
+//              See https://github.com/fleschutz/csv2hpp for details
+//              Usage: #include "planets.hpp" ... for (auto& planet : planets) { ...
 #pragma once
 #include <SI/literals.h>
 using namespace SI;
