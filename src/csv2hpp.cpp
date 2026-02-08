@@ -265,9 +265,9 @@ int convertCSV2HPP(const char* filename, const char* objectName)
 		fprintf(stderr, "Can't open CSV file: %s\n", filename);
 		return 1;
 	}
-	printf("// DO NOT EDIT! File converted from %s on 2026-02-08 by csv2hpp 0.4.\n", filename);
-	printf("//              See https://github.com/fleschutz/csv2hpp for details\n");
-	printf("//              Usage: #include \"%ss.hpp\" ... for (auto& %s : %ss) { ...\n", objectName, objectName, objectName);
+	printf("// DO NOT EDIT! File converted from %s on 2026-02-08 by csv2hpp 0.4\n", filename);
+	printf("//              (see https://github.com/fleschutz/csv2hpp for details)\n");
+	printf("// USAGE: #include \"%ss.hpp\" ... for (auto& %s : %ss) { ...\n", objectName, objectName, objectName);
 	printf("#pragma once\n#include <SI/literals.h>\nusing namespace SI;\n\nnamespace dataset { \n\n");
 	int result = readCSVHeader(file, objectName);
 	printf("} // namespace dataset\n\n");
