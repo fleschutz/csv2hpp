@@ -1,6 +1,6 @@
 // DO NOT EDIT! File converted from hints.csv on 2026-02-08 by csv2hpp 0.4
 //              (see https://github.com/fleschutz/csv2hpp for details)
-// USAGE: #include "hints.hpp" ... for (auto& hint : hints) { ...
+// USAGE: #include "hints.hpp" ... for (auto& hint : dataset::hints) { ...
 #pragma once
 
 namespace dataset { 
