@@ -1,0 +1,11 @@
+HINT (string), DECLARATION (string), NUMBER_EXPECTED (bool), COMMENT (skip) ## (sorted alphabetically)
+double,double %s,true,C/C++ datatype for floating point values (mostly 64-bit)
+float,float %s,true,C/C++ datatype for floating point values (mostly 32-bit)
+int,int %s,true,C/C++ datatype for integer values (mostly 32-bit)
+long double,long double %s,true,C/C++ datatype for big floating values (mostly 64/128-bit)
+short,short %s,true,C/C++ datatype for short integer values (mostly 16-bit)
+unsigned int, unsigned int %s,true,C/C++ datatype for unsigned integer values (mostly 32-bit)
+unsigned short, unsigned short %s,true,C/C++ datatype for unsigned short integer values (mostly 16-bit)
+unsigned long, unsigned long %s,true,C/C++ datatype for unsigned long integer values (mostly 64-bit)
+unsigned long long, unsigned long long %s,true,C/C++ datatype for big unsigned integers (64/128-bit)
+
