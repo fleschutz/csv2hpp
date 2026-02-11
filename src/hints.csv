@@ -1,20 +1,20 @@
 HINT (string), DECLARATION (string), NUMBER_EXPECTED (bool), COMMENT (skip)
-char[4],char %s[4],false,C/C++ datatype to hold 4 characters maximum
-char[8],char %s[8],false,C/C++ datatype to hold 8 characters maximum
-char[12],char %s[12],false,C/C++ datatype to hold 12 characters maximum
-char[16],char %s[16],false,C/C++ datatype to hold 16 characters maximum
-char[32],char %s[32],false,C/C++ datatype to hold 32 characters maximum
-char[64],char %s[64],false,C/C++ datatype to hold 64 characters maximum
-char[128],char %s[128],false,C/C++ datatype to hold 128 characters maximum
-double,double %s,true,C/C++ datatype for floating point values (mostly 64-bit)
-float,float %s,true,C/C++ datatype for floating point values (mostly 32-bit)
-int,int %s,true,C/C++ datatype for integer values (mostly 32-bit)
-long double,long double %s,true,C/C++ datatype for big floating values (mostly 64/128-bit)
-short,short %s,true,C/C++ datatype for short integer values (mostly 16-bit)
-string,const char* %s,false,C/C++ datatype to hold a string
-std::string,std::string %s,false,C/C++ datatype to hold a string
-unsigned int, unsigned int %s,true,C/C++ datatype for unsigned integer values (mostly 32-bit)
-unsigned short, unsigned short %s,true,C/C++ datatype for unsigned short integer values (mostly 16-bit)
-unsigned long, unsigned long %s,true,C/C++ datatype for unsigned long integer values (mostly 64-bit)
-unsigned long long, unsigned long long %s,true,C/C++ datatype for big unsigned integers (64/128-bit)
+"char[4]","char %s[4];",false,"C/C++ datatype to hold 4 characters maximum"
+"char[8]","char %s[8];",false,"C/C++ datatype to hold 8 characters maximum"
+"char[12]","char %s[12];",false,"C/C++ datatype to hold 12 characters maximum"
+"char[16]","char %s[16];",false,"C/C++ datatype to hold 16 characters maximum"
+"char[32]","char %s[32];",false,"C/C++ datatype to hold 32 characters maximum"
+"char[64]","char %s[64];",false,"C/C++ datatype to hold 64 characters maximum"
+"char[128]","char %s[128];",false,"C/C++ datatype to hold 128 characters maximum"
+"double","double %s;",true,"C/C++ datatype for floating point values (mostly 64-bit)"
+"float","float %s;",true,"C/C++ datatype for floating point values (mostly 32-bit)"
+"int","int %s;",true,"C/C++ datatype for integer values (mostly 32-bit)"
+"long double","long double %s;",true,"C/C++ datatype for big floating values (mostly 64/128-bit)"
+"short","short %s;",true,"C/C++ datatype for short integer values (mostly 16-bit)"
+"string","const char* %s;",false,"C/C++ datatype to hold a string"
+"std::string","std::string %s;",false,"C++ datatype to hold a string"
+"unsigned int","unsigned int %s;",true,"C/C++ datatype for unsigned integer values (mostly 32-bit)"
+"unsigned short","unsigned short %s;",true,"C/C++ datatype for unsigned short integer values (mostly 16-bit)"
+"unsigned long","unsigned long %s;",true,"C/C++ datatype for unsigned long integer values (mostly 64-bit)"
+"unsigned long long","unsigned long long %s;",true,"C/C++ datatype for big unsigned integers (mostly 64/128-bit)"
 
