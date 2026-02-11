@@ -4,7 +4,7 @@ csv2hpp
 
 👣 Steps
 ---------
-1. **Export** your database in CSV file format, e.g. to: `database.csv`
+1. **Export** or download your database in CSV file format, e.g. to: `database.csv`
 2. **Edit** the CSV file and just add datatype hints to the header line, e.g.: `Name (string), Age (int), Weight (float)`
 3. **Convert** by executing: `csv2hpp database.csv name_of_object > headerfile.hpp`.
 4. **Add** the header file to your project, add: `#include "headerfile.hpp"` and immediately start developing.
