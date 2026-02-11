@@ -12,6 +12,10 @@ struct hint_data {
 };
 
 const hint_data hints[] { // NOTE: 00=empty or unknown field
+{"_cm","SI::length %s;",true},
+{"_km","SI::length %s;",true},
+{"_m","SI::length %s;",true},
+{"_mm","SI::length %s;",true},
 {"char[4]","char %s[4];",false},
 {"char[8]","char %s[8];",false},
 {"char[12]","char %s[12];",false},
@@ -30,7 +34,7 @@ const hint_data hints[] { // NOTE: 00=empty or unknown field
 {"unsigned short","unsigned short %s;",true},
 {"unsigned long","unsigned long %s;",true},
 {"unsigned long long","unsigned long long %s;",true},
-}; // (3 columns x 19 rows = 57 cells)
+}; // (3 columns x 23 rows = 69 cells)
 
 } // namespace dataset
 
