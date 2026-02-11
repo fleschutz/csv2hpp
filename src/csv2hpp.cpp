@@ -3,7 +3,7 @@
 #include <string>
 #include <algorithm>
 #include <cstring>
-#include "hints.hpp" // <-- hint to datatype mapping
+#include "supported_hints.hpp" // <-- hint to datatype mapping
 
 const std::string EOL = "<EOL>";
 
@@ -127,11 +127,11 @@ void printDatatype(std::string hint, std::string name, int column)
 {
 	std::string declaration = hint2declaration(hint, name) + ";";
 
-	for (auto& supportedHint : dataset::hints)
+	for (auto& supported_hint : dataset::supported_hints)
 	{
-		if (supportedHint.HINT != hint)
+		if (supported_hint.HINT != hint)
 			continue;
-		declaration = supportedHint.DECLARATION;
+		declaration = supported_hint.DECLARATION;
 		break;
 	}
 	printf("\t%s", declaration.c_str());

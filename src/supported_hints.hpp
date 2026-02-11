@@ -1,17 +1,17 @@
-// DO NOT EDIT! File converted from hints.csv on 2026-02-08 by csv2hpp 0.4
+// DO NOT EDIT! File converted from supported_hints.csv on 2026-02-08 by csv2hpp 0.4
 //              (see https://github.com/fleschutz/csv2hpp for details)
-// USAGE: #include "hints.hpp" ... for (auto& hint : dataset::hints) { ...
+// USAGE: #include "supported_hints.hpp" ... for (auto& supported_hint : dataset::supported_hints) { ...
 #pragma once
 
 namespace dataset { 
 
-struct hint_data {
+struct supported_hint_data {
 	const char* HINT;                        // CSV column  1 (string)
 	const char* DECLARATION;                 // CSV column  2 (string)
 	bool NUMBER_EXPECTED;                    // CSV column  3 (bool)
 };
 
-const hint_data hints[] { // NOTE: 00=empty or unknown field
+const supported_hint_data supported_hints[] { // NOTE: 00=empty or unknown field
 {"bool","bool %s;",false},
 {"byte","unsigned char %s;",true},
 {"char[4]","char %s[4];",false},
