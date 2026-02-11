@@ -1,7 +1,9 @@
+// csv2hpp.cpp - the 'main' code
 #include <stdio.h>
 #include <string>
 #include <algorithm>
 #include <cstring>
+#include "hints.hpp" // <-- hint to datatype mapping
 
 const std::string EOL = "<EOL>";
 
@@ -92,24 +94,6 @@ std::string getHintInCell(std::string cell)
 
 std::string hint2declaration(std::string hint, std::string name)
 {
-	// check for C/C++ datatypes:
-	if (hint == "string" || hint == "str" || hint == "text")
-		return "const char* " + name;
-	if (hint == "char[4]")
-		return "char " + name + "[4]";
-	if (hint == "char[8]")
-		return "char " + name + "[8]";
-	if (hint == "char[16]")
-		return "char " + name + "[16]";
-	if (hint == "char[32]")
-		return "char " + name + "[32]";
-	if (hint == "char[64]")
-		return "char " + name + "[64]";
-	if (hint == "byte")
-		return "unsigned char " + name;
-	if (hint == "short" || hint == "int" || hint == "long" || hint == "long long" || hint == "float" || hint == "double" || hint == "long double")
-		return hint + " " + name;
-
 	// check for SI units:
 	if (hint == "_m" || hint == "_km" || hint == "_cm" || hint == "_mm" || hint == "_nm" || hint == "_pm" || hint == "_au" || hint == "_pc")
 		return "SI::length " + name;
@@ -141,8 +125,16 @@ std::string hint2declaration(std::string hint, std::string name)
 
 void printDatatype(std::string hint, std::string name, int column)
 {
-	std::string declaration = hint2declaration(hint, name);
-	printf("\t%s;", declaration.c_str());
+	std::string declaration = hint2declaration(hint, name) + ";";
+
+	for (auto& supportedHint : dataset::hints)
+	{
+		if (supportedHint.HINT != hint)
+			continue;
+		declaration = supportedHint.DECLARATION;
+		break;
+	}
+	printf("\t%s", declaration.c_str());
 
 	auto len = strlen(declaration.c_str());
 	for (int i = 0; i < 40 - len; i++)
@@ -280,11 +272,11 @@ int main(int argc, char **argv)
 {
 	if (argc != 3)
 	{
-		printf("Convert CSV files into C/C++ header files for easy #include.\n");
+		printf("Converts a CSV file into a C/C++ header file for easy #include.\n");
 		printf("\n");
 		printf("Version 0.4 of 2026-02-06 (see also: https://github.com/fleschutz/csv2hpp)\n");
 		printf("\n");
-		printf("Usage:   csv2hpp <CSV-filename> <object-name>\n");
+		printf("Usage:  csv2hpp <CSV-filename> <object-name>\n");
 		return 0;
 	}
 	return convertCSV2HPP(argv[1], argv[2]);

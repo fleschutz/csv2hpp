@@ -28,6 +28,7 @@ const hint_data hints[] { // NOTE: 00=empty or unknown field
 {"short","short %s;",true},
 {"string","const char* %s;",false},
 {"std::string","std::string %s;",false},
+{"text","const char* %s;",false},
 {"unsigned int","unsigned int %s;",true},
 {"unsigned short","unsigned short %s;",true},
 {"unsigned long","unsigned long %s;",true},
@@ -39,7 +40,7 @@ const hint_data hints[] { // NOTE: 00=empty or unknown field
 {"_m","SI::length %s;",true},
 {"_mm","SI::length %s;",true},
 {"_t","SI::mass %s;",true},
-}; // (3 columns x 28 rows = 84 cells)
+}; // (3 columns x 29 rows = 87 cells)
 
 } // namespace dataset
 
