@@ -5,13 +5,13 @@ csv2hpp
 👣 Steps
 ---------
 1. **Export** your database in CSV file format, e.g. to: `database.csv`
-2. **Edit** the CSV file and just add datatype hints to the header line, e.g.: `Name (string), Age (int), Weight (_kg)`
+2. **Edit** the CSV file and just add datatype hints to the header line, e.g.: `Name (string), Age (int), Weight (float)`
 3. **Convert** by executing: `csv2hpp database.csv name_of_object > headerfile.hpp`.
 4. **Add** the header file to your project, add: `#include "headerfile.hpp"` and immediately start developing.
 
 💡 Hints
 --------
-* Datatype hints are mapped to C/C++ datatypes as follows: `(string) -> const char*`, `(int) -> int`, `(long) -> long`, `(float) -> float`, `(double) -> double`, `(byte) -> unsigned char`, `(bool) -> bool`, `(skip)` skips the entire column, `(_km) -> SI:length` and so on.
+* Datatype hints are mapped to C/C++ datatypes as follows: `(skip)` skips the column, `(string) -> const char*`, `(int) -> int`, `(float) -> float`, and so on. See [hints.csv](src/hints.csv) for the full mapping.
 * Empty CSV cells are mapped to "" for strings and to 00 for everything else (as a hint).
 * Trailing '0's for float and double values are removed (more compact).
 * Precision hints (e.g. '±05') are removed for float and double values.
