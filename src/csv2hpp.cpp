@@ -82,6 +82,7 @@ std::string getHintInCell(std::string cell)
 	return hint;
 }
 
+#if 0
 std::string hint2declaration(std::string hint, std::string name)
 {
 	// check for SI units:
@@ -100,6 +101,7 @@ std::string hint2declaration(std::string hint, std::string name)
 
 	return hint + " " + name; // fallback
 }
+#endif
 
 bool printDeclaration(const std::string& hint, const std::string& name, int column)
 {
