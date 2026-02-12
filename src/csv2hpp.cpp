@@ -95,12 +95,6 @@ std::string getHintInCell(std::string cell)
 std::string hint2declaration(std::string hint, std::string name)
 {
 	// check for SI units:
-	if (hint == "_m" || hint == "_km" || hint == "_cm" || hint == "_mm" || hint == "_nm" || hint == "_pm" || hint == "_au" || hint == "_pc")
-		return "SI::length " + name;
-	if (hint == "_kg" || hint == "_t" || hint == "_g" || hint == "_mg" || hint == "_Da")
-		return "SI::mass " + name;
-	if (hint == "_s" || hint == "_min" || hint == "_h" || hint == "_days" || hint == "_ms")
-		return "SI::time " + name;
 	if (hint == "_K" || hint == "_degC" || hint == "_degF")
 		return "SI::temperature " + name;
 	if (hint == "bar" || hint == "_bar" || hint == "_mbar")
@@ -134,7 +128,8 @@ void printDatatype(std::string hint, std::string name, int column)
 		declaration = supported_hint.DECLARATION;
 		break;
 	}
-	printf("\t%s", declaration.c_str());
+	printf("\t");
+	printf(declaration.c_str(), name.c_str());
 
 	auto len = strlen(declaration.c_str());
 	for (int i = 0; i < 40 - len; i++)
@@ -257,7 +252,7 @@ int convertCSV2HPP(const char* filename, const char* objectName)
 		fprintf(stderr, "Can't open CSV file: %s\n", filename);
 		return 1;
 	}
-	printf("// DO NOT EDIT! File converted from %s on 2026-02-08 by csv2hpp 0.4\n", filename);
+	printf("// DO NOT EDIT! File converted from %s on 2026-02-12 by csv2hpp 0.4\n", filename);
 	printf("//              (see https://github.com/fleschutz/csv2hpp for details)\n");
 	printf("// USAGE: #include \"%ss.hpp\" ... for (auto& %s : dataset::%ss) { ...\n", objectName, objectName, objectName);
 	printf("#pragma once\n#include <SI/literals.h>\nusing namespace SI;\n\nnamespace dataset { \n\n");

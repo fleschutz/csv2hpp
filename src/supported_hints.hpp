@@ -1,4 +1,4 @@
-// DO NOT EDIT! File converted from supported_hints.csv on 2026-02-08 by csv2hpp 0.4
+// DO NOT EDIT! File converted from supported_hints.csv on 2026-02-12 by csv2hpp 0.4
 //              (see https://github.com/fleschutz/csv2hpp for details)
 // USAGE: #include "supported_hints.hpp" ... for (auto& supported_hint : dataset::supported_hints) { ...
 #pragma once
@@ -6,9 +6,9 @@
 namespace dataset { 
 
 struct supported_hint_data {
-	const char* HINT;                        // CSV column  1 (string)
-	const char* DECLARATION;                 // CSV column  2 (string)
-	bool NUMBER_EXPECTED;                    // CSV column  3 (bool)
+	const char* HINT;                         // CSV column  1 (string)
+	const char* DECLARATION;                         // CSV column  2 (string)
+	bool NUMBER_EXPECTED;                                // CSV column  3 (bool)
 };
 
 const supported_hint_data supported_hints[] { // NOTE: 00=empty or unknown field
@@ -33,14 +33,34 @@ const supported_hint_data supported_hints[] { // NOTE: 00=empty or unknown field
 {"unsigned short","unsigned short %s;",true},
 {"unsigned long","unsigned long %s;",true},
 {"unsigned long long","unsigned long long %s;",true},
+{"int8_t","int8_t %s;",true},
+{"int16_t","int16_t %s;",true},
+{"int32_t","int32_t %s;",true},
+{"int64_t","int64_t %s;",true},
+{"int128_t","int128_t %s;",true},
+{"uint8_t","uint8_t %s;",true},
+{"uint16_t","uint16_t %s;",true},
+{"uint32_t","uint32_t %s;",true},
+{"uint64_t","uint64_t %s;",true},
+{"uint128_t","uint128_t %s;",true},
+{"_nm","SI::length %s;",true},
+{"_mm","SI::length %s;",true},
 {"_cm","SI::length %s;",true},
+{"_m","SI::length %s;",true},
+{"_km","SI::length %s;",true},
+{"_au","SI::length %s;",true},
+{"_pc","SI::length %s;",true},
+{"_Da","SI::mass %s;",true},
+{"_mg","SI::mass %s;",true},
 {"_g","SI::mass %s;",true},
 {"_kg","SI::mass %s;",true},
-{"_km","SI::length %s;",true},
-{"_m","SI::length %s;",true},
-{"_mm","SI::length %s;",true},
 {"_t","SI::mass %s;",true},
-}; // (3 columns x 29 rows = 87 cells)
+{"_ms","SI::time %s;",true},
+{"_s","SI::time %s;",true},
+{"_min","SI::time %s;",true},
+{"_h","SI::time %s;",true},
+{"_days","SI::time %s;",true},
+}; // (3 columns x 48 rows = 144 cells)
 
 } // namespace dataset
 
