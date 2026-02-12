@@ -101,7 +101,7 @@ std::string hint2declaration(std::string hint, std::string name)
 	return hint + " " + name; // fallback
 }
 
-bool printDatatype(std::string hint, std::string name, int column)
+bool printDeclaration(const std::string& hint, const std::string& name, int column)
 {
 	for (auto& supported_hint : dataset::supported_hints)
 	{
@@ -197,7 +197,7 @@ int readCSVHeader(FILE* file, const char* objectName)
 		if (hints[i] == "skip")
 			continue; // skip this column
 
-		if (!printDatatype(hints[i], name, i))
+		if (!printDeclaration(hints[i], name, i))
 		{
 			fprintf(stderr, "Datatype hint '%s' in column #%d not listed in supported_hints.csv yet\n", hints[i].c_str(), i + 1);
 			return 1;
