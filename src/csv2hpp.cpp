@@ -160,8 +160,36 @@ std::string trimFloat(std::string s)
 	return s;
 }
 
-void printValue(std::string hint, std::string value)
+bool printValue(std::string hint, std::string value)
 {
+	for (auto& supported_hint : dataset::supported_hints)
+	{
+		if (supported_hint.HINT != hint)
+			continue;
+
+		if (supported_hint.TYPE == "TEXT")
+			printf("\"%s\"", value.c_str());
+		else if (supported_hint.TYPE == "BOOL")
+			printf("%s", (value == "Yes" || value == "yes" || value == "True" || value == "true" || value == "1") ? "true" : "false");
+		else if (supported_hint.TYPE == "CARD")
+			printf("%s", isNumberEmpty(value) ? "00" : value.c_str());
+		else if (supported_hint.TYPE == "FLOAT")
+		{
+			if (isNumberEmpty(value))
+				printf("00");
+			else if (hint == "float")
+				printf("%sf", trimFloat(value).c_str());
+			else
+				printf("%s", trimFloat(value).c_str());
+		}
+		else if (supported_hint.TYPE == "SI")
+			printf("%s%s", trimFloat(value).c_str(), hint.c_str());
+		else
+			return false;
+
+		return true;
+	}
+#if 0
 	if (hint == "string" || hint == "str" || hint == "text" || hint == "char[4]" || hint == "char[8]" || hint == "char[16]" || hint == "char[32]" || hint == "char[64]")
 		printf("\"%s\"", value.c_str());
 	else if (hint == "byte" || hint == "short" || hint == "int" || hint == "long" || hint == "long long")
@@ -178,6 +206,8 @@ void printValue(std::string hint, std::string value)
 		printf("%s%s", trimFloat(value).c_str(), hint.c_str());
 	else
 		printf("%s", value.c_str());
+#endif
+	return false;
 }
 
 int readCSVHeader(FILE* file, const char* objectName)
@@ -224,7 +254,11 @@ int readCSVHeader(FILE* file, const char* objectName)
 			else
 				printf(",");
 
-			printValue(hints[i], cell);
+			if (!printValue(hints[i], cell))
+			{
+				fprintf(stderr, "Unhandled type for '%s' in column #%d\n", hints[i].c_str(), i);
+				return 1;
+			}
 			gotOne = true;
 		}
 		if (gotOne)
