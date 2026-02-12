@@ -6,9 +6,9 @@
 namespace dataset { 
 
 struct supported_hint_data {
-	const char* HINT;                         // CSV column  1 (string)
-	const char* DECLARATION;                         // CSV column  2 (string)
-	bool NUMBER_EXPECTED;                                // CSV column  3 (bool)
+	const char* HINT;                       // CSV column  1 (string)
+	const char* DECLARATION;                // CSV column  2 (string)
+	bool NUMBER_EXPECTED;                   // CSV column  3 (bool)
 };
 
 const supported_hint_data supported_hints[] { // NOTE: 00=empty or unknown field

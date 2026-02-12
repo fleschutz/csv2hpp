@@ -101,25 +101,25 @@ std::string hint2declaration(std::string hint, std::string name)
 	return hint + " " + name; // fallback
 }
 
-void printDatatype(std::string hint, std::string name, int column)
+bool printDatatype(std::string hint, std::string name, int column)
 {
-	std::string declaration = hint2declaration(hint, name) + ";";
-
 	for (auto& supported_hint : dataset::supported_hints)
 	{
 		if (supported_hint.HINT != hint)
 			continue;
-		declaration = supported_hint.DECLARATION;
-		break;
+		char buf[1024] = "";
+		sprintf(buf, supported_hint.DECLARATION, name.c_str());
+
+		printf("\t%s", buf);
+
+		auto len = strlen(buf);
+		for (int i = 0; i < 40 - len; i++)
+			printf(" ");
+
+		printf("// CSV column %2d (%s)\n", column + 1, hint.c_str());
+		return true;
 	}
-	printf("\t");
-	printf(declaration.c_str(), name.c_str());
-
-	auto len = strlen(declaration.c_str());
-	for (int i = 0; i < 40 - len; i++)
-		printf(" ");
-
-	printf("// CSV column %2d (%s)\n", column + 1, hint.c_str());
+	return false;
 }
 
 bool isNumberEmpty(std::string num)
@@ -197,7 +197,11 @@ int readCSVHeader(FILE* file, const char* objectName)
 		if (hints[i] == "skip")
 			continue; // skip this column
 
-		printDatatype(hints[i], name, i);
+		if (!printDatatype(hints[i], name, i))
+		{
+			fprintf(stderr, "Datatype hint '%s' in column #%d not listed in supported_hints.csv yet\n", hints[i].c_str(), i + 1);
+			return 1;
+		}
 		columns++;
 	}
 	printf("};\n\n");
