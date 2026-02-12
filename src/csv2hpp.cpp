@@ -79,28 +79,12 @@ std::string getHintInCell(std::string cell)
 			hint += *ptr++;
 		}
 	}
-	// check for C/C++ datatype alias:
-	// check for SI units alias:
-	if (hint == "km/h")
-		return "_km_per_h";
-	if (hint == "m/s")
-		return "_m_per_s";
-	if (hint == "°C")
-		return "_degC";
-	if (hint == "°F")
-		return "_degF";
 	return hint;
 }
 
 std::string hint2declaration(std::string hint, std::string name)
 {
 	// check for SI units:
-	if (hint == "_K" || hint == "_degC" || hint == "_degF")
-		return "SI::temperature " + name;
-	if (hint == "bar" || hint == "_bar" || hint == "_mbar")
-		return "SI::pressure " + name;
-	if (hint == "_Hz" || hint == "_kHz" || hint == "_MHz" || hint == "_GHz" || hint == "_THz")
-		return "SI::frequency " + name;
 	if (hint == "_m_per_s" || hint == "_km_per_h")
 		return "SI::velocity " + name;
 	if (hint == "m/s²" || hint == "_m_per_s²" || hint == "_km_per_s²")

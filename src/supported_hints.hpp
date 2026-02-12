@@ -60,7 +60,18 @@ const supported_hint_data supported_hints[] { // NOTE: 00=empty or unknown field
 {"_min","SI::time %s;",true},
 {"_h","SI::time %s;",true},
 {"_days","SI::time %s;",true},
-}; // (3 columns x 48 rows = 144 cells)
+{"_K","SI::temperature %s;",true},
+{"_degC","SI::temperature %s;",true},
+{"_degF","SI::temperature %s;",true},
+{"_bar","SI::pressure %s;",true},
+{"_mbar","SI::pressure %s;",true},
+{"_Hz","SI::frequency %s;",true},
+{"_mHz","SI::frequency %s;",true},
+{"_kHz","SI::frequency %s;",true},
+{"_MHz","SI::frequency %s;",true},
+{"_GHz","SI::frequency %s;",true},
+{"_THz","SI::frequency %s;",true},
+}; // (3 columns x 59 rows = 177 cells)
 
 } // namespace dataset
 
