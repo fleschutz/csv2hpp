@@ -73,7 +73,9 @@ const supported_hint_data supported_hints[] { // NOTE: 00=empty or unknown field
 {"_MHz","SI::frequency %s;","SI","Frequency in megahertz (using SI lib for C++)"},
 {"_GHz","SI::frequency %s;","SI","Frequency in gigahertz (using SI lib for C++)"},
 {"_THz","SI::frequency %s;","SI","Frequency in terahertz (using SI lib for C++)"},
-}; // (4 columns x 60 rows = 240 cells)
+{"_kg_per_m³","SI::density %s;","SI","Density in kilograms per square meter (using SI lib for C++)"},
+{"_m_per_s³","SI::acceleration %s;","SI","Acceleration in meter per square second (using SI lib for C++)"},
+}; // (4 columns x 62 rows = 248 cells)
 
 } // namespace dataset
 
