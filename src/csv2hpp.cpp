@@ -118,7 +118,7 @@ bool printDeclaration(const std::string& hint, const std::string& name, int colu
 		for (int i = 0; i < 40 - len; i++)
 			printf(" ");
 
-		printf("// CSV column %2d (%s)\n", column + 1, hint.c_str());
+		printf("// from column %2d (%s)\n", column + 1, hint.c_str());
 		return true;
 	}
 	return false;
@@ -221,11 +221,6 @@ int readCSVHeader(FILE* file, const char* objectName)
 	{
 		auto name = getNameInCell(cell);
 		hints[i] = getHintInCell(cell);
-		if (hints[i] == "")
-		{
-			fprintf(stderr, "Please specify a datatype hint in round brackets for column #%d\n", i + 1);
-			return 1;
-		}
 		if (hints[i] == "skip")
 			continue; // skip this column
 
@@ -276,7 +271,7 @@ int convertCSV2HPP(const char* filename, const char* objectName)
 		fprintf(stderr, "Can't open CSV file: %s\n", filename);
 		return 1;
 	}
-	printf("// DO NOT EDIT! File converted from %s on 2026-02-12 by csv2hpp 0.4\n", filename);
+	printf("// DO NOT EDIT! File converted from %s on 2026-02-19 by csv2hpp 0.5\n", filename);
 	printf("//              (see https://github.com/fleschutz/csv2hpp for details)\n");
 	printf("// USAGE: #include \"%ss.hpp\" ... for (auto& %s : dataset::%ss) { ...\n", objectName, objectName, objectName);
 	printf("#pragma once\n#include <SI/literals.h>\nusing namespace SI;\n\nnamespace dataset { \n\n");
