@@ -1,4 +1,4 @@
-// DO NOT EDIT! File converted from planets.csv on 2026-02-08 by csv2hpp 0.4
+// DO NOT EDIT! File converted from planets.csv on 2026-02-19 by csv2hpp 0.5
 //              (see https://github.com/fleschutz/csv2hpp for details)
 // USAGE: #include "planets.hpp" ... for (auto& planet : dataset::planets) { ...
 #pragma once
@@ -8,27 +8,27 @@ using namespace SI;
 namespace dataset { 
 
 struct planet_data {
-	char name[16];                           // CSV column  1 (char[16])
-	SI::mass mass;                           // CSV column  2 (_kg)
-	SI::length diameter;                     // CSV column  3 (_km)
-	SI::density density;                     // CSV column  4 (_kg_per_m³)
-	SI::acceleration gravity;                // CSV column  5 (_m_per_s²)
-	SI::velocity escape_velocity;            // CSV column  6 (_m_per_s)
-	SI::time rotation_period;                // CSV column  7 (_h)
-	SI::time length_of_day;                  // CSV column  8 (_h)
-	SI::mass distance_from_sun;              // CSV column  9 (_kg)
-	float perihelion;                        // CSV column 10 (float)
-	float aphelion;                          // CSV column 11 (float)
-	SI::time orbital_period;                 // CSV column 12 (_h)
-	SI::velocity orbital_velocity;           // CSV column 13 (_m_per_s)
-	float orbital_inclination;               // CSV column 14 (float)
-	float orbital_eccentricity;              // CSV column 15 (float)
-	float obliquity_to_orbit;                // CSV column 16 (float)
-	SI::temperature mean_temperature;        // CSV column 17 (_degC)
-	SI::pressure surface_pressure;           // CSV column 18 (_bar)
-	int number_of_moons;                     // CSV column 19 (int)
-	bool has_ring_system;                    // CSV column 20 (bool)
-	bool has_global_magnetic_field;          // CSV column 21 (bool)
+	char name[16];                          // from column  1 (char[16])
+	SI::mass mass;                          // from column  2 (_kg)
+	SI::length diameter;                    // from column  3 (_km)
+	SI::density density;                    // from column  4 (_kg_per_m³)
+	SI::acceleration gravity;               // from column  5 (_m_per_s²)
+	SI::velocity escape_velocity;           // from column  6 (_m_per_s)
+	SI::time rotation_period;               // from column  7 (_h)
+	SI::time length_of_day;                 // from column  8 (_h)
+	SI::mass distance_from_sun;             // from column  9 (_kg)
+	float perihelion;                       // from column 10 (float)
+	float aphelion;                         // from column 11 (float)
+	SI::time orbital_period;                // from column 12 (_h)
+	SI::velocity orbital_velocity;          // from column 13 (_m_per_s)
+	float orbital_inclination;              // from column 14 (float)
+	float orbital_eccentricity;             // from column 15 (float)
+	float obliquity_to_orbit;               // from column 16 (float)
+	SI::temperature mean_temperature;       // from column 17 (_degC)
+	SI::pressure surface_pressure;          // from column 18 (_bar)
+	int number_of_moons;                    // from column 19 (int)
+	bool has_ring_system;                   // from column 20 (bool)
+	bool has_global_magnetic_field;         // from column 21 (bool)
 };
 
 const planet_data planets[] { // NOTE: 00=empty or unknown field
