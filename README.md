@@ -11,7 +11,7 @@ csv2hpp
 
 💡 Hints
 --------
-* Datatype hints are mapped to C/C++ datatypes as follows: `(skip)` skips the column, `(string) -> const char*`, `(int) -> int`, `(float) -> float`, and so on. See [supported_hints.csv](src/supported_hints.csv) for all available hints.
+* The mapping of datatype hints to C/C++ datatypes is: `(int)` → `int`, `(float)` → `float`, `(string)` → `const char*`, `(skip)` skips the entire column. All available datatype hints are listed at: [supported_hints.csv](src/supported_hints.csv)
 * Empty CSV cells are mapped to "" for strings and to 00 for everything else (as a hint).
 * Trailing '0's for float and double values are removed (more compact).
 * Precision hints (e.g. '±05') are removed for float and double values.
