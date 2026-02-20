@@ -98,7 +98,7 @@ static bool printDeclaration(const std::string& hint, const std::string& name, i
 		printf("\t%s", buf);
 
 		auto len = strlen(buf);
-		for (int i = 0; i < 40 - len; i++)
+		for (int i = 0; i < 35 - len; i++)
 			printf(" ");
 
 		printf("// from column %2d %s\n", column + 1, hint.c_str());
@@ -160,13 +160,13 @@ static bool printValue(std::string hint, std::string value)
 		{
 			if (isNumberEmpty(value))
 				printf("00");
-			else if (hint == "float")
+			else if (hint == "(float)")
 				printf("%sf", trimFloat(value).c_str());
 			else
 				printf("%s", trimFloat(value).c_str());
 		}
-		else if (supported_hint.TYPE == "SI")
-			printf("%s%s", trimFloat(value).c_str(), hint.c_str());
+		else if (supported_hint.TYPE[0] == '_')
+			printf("%s%s", trimFloat(value).c_str(), supported_hint.TYPE); // using C++ literal
 		else
 			return false;
 
