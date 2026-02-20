@@ -1,9 +1,7 @@
-// DO NOT EDIT! File converted from POI.csv on 2026-02-20 by csv2hpp 0.5
+// DO NOT EDIT! File converted from POIs.csv on 2026-02-20 by csv2hpp 0.5
 //              (see https://github.com/fleschutz/csv2hpp for details)
 // USAGE: #include "POIs.hpp" ... for (auto& POI : dataset::POIs) { ...
 #pragma once
-#include <SI/literals.h>
-using namespace SI;
 
 namespace dataset { 
 
