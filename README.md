@@ -4,10 +4,10 @@ csv2hpp
 
 👣 Steps
 ---------
-1. **Export** or download the database in CSV file format, e.g. to: `[POIs.csv](examples/POIs.csv)`
+1. **Export** or download the database in CSV file format, e.g. to: [POIs.csv](examples/POIs.csv)
 2. **Edit** the CSV file and add datatype hints to the header line, e.g.: `Location (string), Latitude (double), Longitude (double)`
 3. **Convert** by executing: `csv2hpp POIs.csv POI > POIs.hpp`.
-4. **Add** the header file to your project (`#include "[POIs.hpp](examples/POIs.hpp)"` and immediately start to develop.
+4. **Add** the header file to your project (#include "[POIs.hpp](examples/POIs.hpp)") and immediately start to develop.
 
 💡 Hints
 --------
