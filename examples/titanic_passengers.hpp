@@ -22,7 +22,7 @@ struct titanic_passenger_data {
 	const char* Embarked;              // from column 12 (string)
 };
 
-const titanic_passenger_data titanic_passengers[] { // NOTE: 00=empty or unknown field
+const titanic_passenger_data titanic_passengers[] { // HINT: 00=empty or unknown field
 {1,false,3,"Braund, Mr. Owen Harris","male",22,1,0,"A/5 21171",7.25f,"","S"},
 {2,true,1,"Cumings, Mrs. John Bradley (Florence Briggs Thayer)","female",38,1,0,"PC 17599",71.2833f,"C85","C"},
 {3,true,3,"Heikkinen, Miss. Laina","female",26,0,0,"STON/O2. 3101282",7.925f,"","S"},

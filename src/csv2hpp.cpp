@@ -199,7 +199,7 @@ static int readCSVHeader(FILE* file, const char* objectName)
 	printf("};\n\n");
 
 	// parse CSV data cells
-	printf("const %s_data %ss[] { // NOTE: 00=empty or unknown field\n", objectName, objectName);
+	printf("const %s_data %ss[] { // HINT: 00=empty or unknown field\n", objectName, objectName);
 	int rows = 0;
 	for (; !feof(file); rows++)
 	{

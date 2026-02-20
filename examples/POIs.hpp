@@ -11,7 +11,7 @@ struct POI_data {
 	double Longitude;                  // from column  3 (double)
 };
 
-const POI_data POIs[] { // NOTE: 00=empty or unknown field
+const POI_data POIs[] { // HINT: 00=empty or unknown field
 {"Bell Rock Lighthouse",56.43416667,-2.387222222},
 {"Brooklyn Bridge",40.70555556,-73.99638889},
 {"Catacombs of Kom el Shoqafa",31.178558,29.892954},

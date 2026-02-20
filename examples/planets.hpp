@@ -31,7 +31,7 @@ struct planet_data {
 	bool has_global_magnetic_field;    // from column 21 (bool)
 };
 
-const planet_data planets[] { // NOTE: 00=empty or unknown field
+const planet_data planets[] { // HINT: 00=empty or unknown field
 {"Mercury",0.33_kg,4879_km,5427_kg_per_m³,3.7_m_per_s²,4.3_m_per_s,1407.6_h,4222.6_h,57.9_km,46.f,69.8f,88._h,47.4_m_per_s,7.f,0.205f,0.034f,167_degC,0_bar,0,false,true},
 {"Venus",4.87_kg,12104_km,5243_kg_per_m³,8.9_m_per_s²,10.4_m_per_s,-5832.5_h,2802._h,108.2_km,107.5f,108.9f,224.7_h,35._m_per_s,3.4f,0.007f,177.4f,464_degC,92_bar,0,false,false},
 {"Earth",5.97_kg,12756_km,5514_kg_per_m³,9.8_m_per_s²,11.2_m_per_s,23.9_h,24._h,149.6_km,147.1f,152.1f,365.2_h,29.8_m_per_s,0.f,0.017f,23.4f,15_degC,1_bar,1,false,true},
