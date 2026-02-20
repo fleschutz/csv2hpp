@@ -4,10 +4,10 @@ csv2hpp
 
 👣 Steps
 ---------
-1. **Export** or download the database in CSV file format, e.g. to: `database.csv`
-2. **Edit** the CSV file and just add datatype hints to the header line, e.g.: `Name (string), Age (int), Weight (float)`
-3. **Convert** by executing: `csv2hpp database.csv name_of_object > headerfile.hpp`.
-4. **Add** the header file to your project, add: `#include "headerfile.hpp"` and immediately start developing.
+1. **Export** or download the database in CSV file format, e.g. to: `[POIs.csv](examples/POIs.csv)`
+2. **Edit** the CSV file and add datatype hints to the header line, e.g.: `Location (string), Latitude (double), Longitude (double)`
+3. **Convert** by executing: `csv2hpp POIs.csv POI > POIs.hpp`.
+4. **Add** the header file to your project (`#include "[POIs.hpp](examples/POIs.hpp)"` and immediately start to develop.
 
 💡 Hints
 --------
@@ -16,10 +16,6 @@ csv2hpp
 * Trailing '0's for float and double values are removed (more compact).
 * Precision hints (e.g. '±05') are removed for float and double values.
 * Supports very large .CSV files by using 'const char*' instead of 'std::string' (breaks some compilers) and by omitting whitespaces.
-
-🎉 Example
------------
-Using [planets.csv](examples/planets.csv) and executing: `csv2hpp planets.csv planet > planets.hpp` results in the header file: [planets.hpp](examples/planets.hpp).
 
 🤝 Contributing
 ----------------
