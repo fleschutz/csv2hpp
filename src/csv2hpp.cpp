@@ -3,7 +3,7 @@
 #include <string>
 #include <algorithm>
 #include <cstring>
-#include "supported_hints.hpp" // <-- hint to datatype mapping
+#include "datatype_hints.hpp" 
 
 static const std::string EOL = "<EOL>";
 
@@ -88,12 +88,12 @@ static std::string getDatatypeHint(std::string cell)
 // Prints the C/C++ declaration line, e.g. int value; // from column 1 (int)
 static bool printDeclaration(const std::string& hint, const std::string& name, int column)
 {
-	for (auto& supported_hint : dataset::supported_hints)
+	for (auto& datatype_hint : dataset::datatype_hints)
 	{
-		if (supported_hint.HINT != hint)
+		if (datatype_hint.HINT != hint)
 			continue;
 		char buf[1024] = "";
-		sprintf(buf, supported_hint.DECLARATION, name.c_str());
+		sprintf(buf, datatype_hint.DECLARATION, name.c_str());
 
 		printf("\t%s", buf);
 
@@ -145,18 +145,18 @@ static std::string trimFloat(std::string s)
 
 static bool printValue(std::string hint, std::string value)
 {
-	for (auto& supported_hint : dataset::supported_hints)
+	for (auto& datatype_hint : dataset::datatype_hints)
 	{
-		if (supported_hint.HINT != hint)
+		if (datatype_hint.HINT != hint)
 			continue;
 
-		if (supported_hint.TYPE == "TEXT")
+		if (datatype_hint.TYPE == "TEXT")
 			printf("\"%s\"", value.c_str());
-		else if (supported_hint.TYPE == "BOOL")
+		else if (datatype_hint.TYPE == "BOOL")
 			printf("%s", (value == "Yes" || value == "yes" || value == "True" || value == "true" || value == "1") ? "true" : "false");
-		else if (supported_hint.TYPE == "CARD")
+		else if (datatype_hint.TYPE == "CARD")
 			printf("%s", isNumberEmpty(value) ? "00" : value.c_str());
-		else if (supported_hint.TYPE == "FLOAT")
+		else if (datatype_hint.TYPE == "FLOAT")
 		{
 			if (isNumberEmpty(value))
 				printf("00");
@@ -165,8 +165,8 @@ static bool printValue(std::string hint, std::string value)
 			else
 				printf("%s", trimFloat(value).c_str());
 		}
-		else if (supported_hint.TYPE[0] == '_')
-			printf("%s%s", trimFloat(value).c_str(), supported_hint.TYPE); // using C++ literal
+		else if (datatype_hint.TYPE[0] == '_')
+			printf("%s%s", trimFloat(value).c_str(), datatype_hint.TYPE); // using C++ literal
 		else
 			return false;
 
@@ -191,7 +191,7 @@ static int readCSVHeader(FILE* file, const char* objectName)
 
 		if (!printDeclaration(hints[i], name, i))
 		{
-			fprintf(stderr, "Datatype hint '%s' in column #%d not listed in supported_hints.csv yet\n", hints[i].c_str(), i + 1);
+			fprintf(stderr, "Datatype hint '%s' in column #%d not listed in datatype_hints.csv yet\n", hints[i].c_str(), i + 1);
 			return 1;
 		}
 		columns++;

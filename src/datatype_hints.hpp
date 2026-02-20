@@ -1,18 +1,18 @@
-// DO NOT EDIT! File converted from supported_hints.csv on 2026-02-20 by csv2hpp 0.5
+// DO NOT EDIT! File converted from datatype_hints.csv on 2026-02-20 by csv2hpp 0.5
 //              (see https://github.com/fleschutz/csv2hpp for details)
-// USAGE: #include "supported_hints.hpp" ... for (auto& supported_hint : dataset::supported_hints) { ...
+// USAGE: #include "datatype_hints.hpp" ... for (auto& datatype_hint : dataset::datatype_hints) { ...
 #pragma once
 
 namespace dataset { 
 
-struct supported_hint_data {
+struct datatype_hint_data {
 	const char* HINT;                  // from column  1 
 	const char* DECLARATION;           // from column  2 
 	const char* TYPE;                  // from column  3 
 	const char* DESCRIPTION;           // from column  4 
 };
 
-const supported_hint_data supported_hints[] { // NOTE: 00=empty or unknown field
+const datatype_hint_data datatype_hints[] { // NOTE: 00=empty or unknown field
 {"","const char* %s;","TEXT","C/C++ datatype to hold a string when no datatype hint is given"},
 {"(bool)","bool %s;","BOOL","C/C++ datatype to hold either true or false"},
 {"(byte)","unsigned char %s;","CARD","C/C++ datatype to hold one byte"},
