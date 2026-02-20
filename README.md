@@ -19,7 +19,7 @@ csv2hpp
 
 🎉 Example
 -----------
-Using [planets.csv](src/planets.csv) and executing: `csv2hpp planets.csv planet > planets.hpp` results in the header file: [planets.hpp](src/planets.hpp).
+Using [planets.csv](examples/planets.csv) and executing: `csv2hpp planets.csv planet > planets.hpp` results in the header file: [planets.hpp](examples/planets.hpp).
 
 🤝 Contributing
 ----------------
