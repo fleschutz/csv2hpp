@@ -5,9 +5,9 @@
 #include <cstring>
 #include "supported_hints.hpp" // <-- hint to datatype mapping
 
-const std::string EOL = "<EOL>";
+static const std::string EOL = "<EOL>";
 
-std::string nextCell(FILE* file)
+static std::string nextCell(FILE* file)
 {
 	std::string result = ""; // empty by default
 
@@ -57,7 +57,7 @@ std::string nextCell(FILE* file)
 	return result;
 }
 
-std::string getNameInCell(std::string cell)
+static std::string getNameInCell(std::string cell)
 {
 	auto ptr = cell.c_str();
 	std::string result = "";
@@ -68,7 +68,7 @@ std::string getNameInCell(std::string cell)
 	return result;
 }
 
-std::string getHintInCell(std::string cell)
+static std::string getHintInCell(std::string cell)
 {
 	std::string hint = "";
 	
@@ -82,28 +82,8 @@ std::string getHintInCell(std::string cell)
 	return hint;
 }
 
-#if 0
-std::string hint2declaration(std::string hint, std::string name)
-{
-	// check for SI units:
-	if (hint == "_m_per_s" || hint == "_km_per_h")
-		return "SI::velocity " + name;
-	if (hint == "m/s²" || hint == "_m_per_s²" || hint == "_km_per_s²")
-		return "SI::acceleration " + name;
-	if (hint == "kg/m²" || hint == "g/cm³" || hint == "_kg_per_m³" || hint == "_g_per_cm³")
-		return "SI::density " + name;
-	if (hint == "_J" || hint == "_kJ" || hint == "_MJ" || hint == "_eV")
-		return "SI::energy " + name;
-	if (hint == "J/mol" || hint == "_J_per_mol" || hint == "_kJ_per_mol")
-		return "SI::energy_per_mol " + name;
-	if (hint == "km³/s²" || hint == "_km³_per_s²")
-		return "SI::volume_per_time_squared " + name;
-
-	return hint + " " + name; // fallback
-}
-#endif
-
-bool printDeclaration(const std::string& hint, const std::string& name, int column)
+// Prints the C/C++ declaration line, e.g. int value; // from column 1 (int)
+static bool printDeclaration(const std::string& hint, const std::string& name, int column)
 {
 	for (auto& supported_hint : dataset::supported_hints)
 	{
@@ -124,12 +104,12 @@ bool printDeclaration(const std::string& hint, const std::string& name, int colu
 	return false;
 }
 
-bool isNumberEmpty(std::string num)
+static bool isNumberEmpty(std::string num)
 {
 	return (num == "" || num == " " || num == "?" || num == "-" || num == "Unknown*" || num == "unknown*");
 }
 
-std::string trimFloat(std::string s)
+static std::string trimFloat(std::string s)
 {
 	if (isNumberEmpty(s))
 		return "00";
@@ -160,7 +140,7 @@ std::string trimFloat(std::string s)
 	return s;
 }
 
-bool printValue(std::string hint, std::string value)
+static bool printValue(std::string hint, std::string value)
 {
 	for (auto& supported_hint : dataset::supported_hints)
 	{
@@ -189,28 +169,10 @@ bool printValue(std::string hint, std::string value)
 
 		return true;
 	}
-#if 0
-	if (hint == "string" || hint == "str" || hint == "text" || hint == "char[4]" || hint == "char[8]" || hint == "char[16]" || hint == "char[32]" || hint == "char[64]")
-		printf("\"%s\"", value.c_str());
-	else if (hint == "byte" || hint == "short" || hint == "int" || hint == "long" || hint == "long long")
-		printf("%s", isNumberEmpty(value) ? "00" : value.c_str());
-	else if (hint == "float" && isNumberEmpty(value))
-		printf("00");
-	else if (hint == "float")
-		printf("%sf", trimFloat(value).c_str());
-	else if (hint == "double" || hint == "long double")
-		printf("%s", trimFloat(value).c_str());
-	else if (hint == "bool" || hint == "boolean")
-		printf("%s", (value == "Yes" || value == "yes" || value == "True" || value == "true" || value == "1") ? "true" : "false");
-	else if (hint[0] == '_')
-		printf("%s%s", trimFloat(value).c_str(), hint.c_str());
-	else
-		printf("%s", value.c_str());
-#endif
 	return false;
 }
 
-int readCSVHeader(FILE* file, const char* objectName)
+static int readCSVHeader(FILE* file, const char* objectName)
 {
 	std::string hints[1024] = {};
 
@@ -263,7 +225,7 @@ int readCSVHeader(FILE* file, const char* objectName)
 	return 0;
 }
 
-int convertCSV2HPP(const char* filename, const char* objectName)
+static int convertCSV2HPP(const char* filename, const char* objectName)
 {
 	auto file = fopen(filename, "rw");
 	if (!file)
@@ -286,9 +248,9 @@ int main(int argc, char **argv)
 {
 	if (argc != 3)
 	{
-		printf("Converts a CSV file into a C/C++ header file for easy #include.\n");
+		printf("csv2hpp - converts a CSV file into a C/C++ header file for easy #include.\n");
 		printf("\n");
-		printf("Version 0.4 of 2026-02-06 (see also: https://github.com/fleschutz/csv2hpp)\n");
+		printf("Version 0.5 of 2026-02-20, documentation at: https://github.com/fleschutz/csv2hpp\n");
 		printf("\n");
 		printf("Usage:  csv2hpp <CSV-filename> <object-name>\n");
 		return 0;
