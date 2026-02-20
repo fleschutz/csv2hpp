@@ -68,15 +68,18 @@ static std::string getNameInCell(std::string cell)
 	return result;
 }
 
-static std::string getHintInCell(std::string cell)
+static std::string getDatatypeHint(std::string cell)
 {
 	std::string hint = "";
 	
 	if (auto ptr = strchr(cell.c_str(), '('))
 	{
-		for (ptr++; *ptr != ')'; )
+		for (;;)
 		{
-			hint += *ptr++;
+			hint += *ptr;
+			if (*ptr == ')' || *ptr == '\0')
+				break;
+			ptr++;
 		}
 	}
 	return hint;
@@ -98,7 +101,7 @@ static bool printDeclaration(const std::string& hint, const std::string& name, i
 		for (int i = 0; i < 40 - len; i++)
 			printf(" ");
 
-		printf("// from column %2d (%s)\n", column + 1, hint.c_str());
+		printf("// from column %2d %s\n", column + 1, hint.c_str());
 		return true;
 	}
 	return false;
@@ -182,8 +185,8 @@ static int readCSVHeader(FILE* file, const char* objectName)
 	for (auto cell = nextCell(file); cell != EOL; cell = nextCell(file), i++)
 	{
 		auto name = getNameInCell(cell);
-		hints[i] = getHintInCell(cell);
-		if (hints[i] == "skip")
+		hints[i] = getDatatypeHint(cell);
+		if (hints[i] == "(skip)")
 			continue; // skip this column
 
 		if (!printDeclaration(hints[i], name, i))
@@ -204,7 +207,7 @@ static int readCSVHeader(FILE* file, const char* objectName)
 		i = 0;
 		for (auto cell = nextCell(file); cell != EOL; cell = nextCell(file), i++)
 		{
-			if (hints[i] == "skip")
+			if (hints[i] == "(skip)")
 				continue; // skip this column
 			if (!gotOne)
 				printf("{");
@@ -233,7 +236,7 @@ static int convertCSV2HPP(const char* filename, const char* objectName)
 		fprintf(stderr, "Can't open CSV file: %s\n", filename);
 		return 1;
 	}
-	printf("// DO NOT EDIT! File converted from %s on 2026-02-19 by csv2hpp 0.5\n", filename);
+	printf("// DO NOT EDIT! File converted from %s on 2026-02-20 by csv2hpp 0.5\n", filename);
 	printf("//              (see https://github.com/fleschutz/csv2hpp for details)\n");
 	printf("// USAGE: #include \"%ss.hpp\" ... for (auto& %s : dataset::%ss) { ...\n", objectName, objectName, objectName);
 	printf("#pragma once\n#include <SI/literals.h>\nusing namespace SI;\n\nnamespace dataset { \n\n");
