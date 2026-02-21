@@ -97,8 +97,8 @@ static bool printDeclaration(const std::string& hint, const std::string& name, i
 
 		printf("\t%s", buf);
 
-		auto len = strlen(buf);
-		for (int i = 0; i < 35 - len; i++)
+		int numWhitespaces = 35 - strlen(buf);
+		for (int i = 0; i < numWhitespaces; i++)
 			printf(" ");
 
 		printf("// from column %2d %s\n", column + 1, hint.c_str());
