@@ -1,4 +1,4 @@
-Code,Symbol,Name
+Code (char[4]),Symbol (string),Name (string)
 AED,د.إ,United Arab Emirates d
 AFN,؋,Afghan afghani
 ALL,L,Albanian lek
@@ -23,7 +23,7 @@ BSD,$,Bahamian dollar
 BTC,฿,Bitcoin
 BTN,Nu.,Bhutanese ngultrum
 BWP,P,Botswana pula
-BYR,Br,Belarusian ruble (old)'
+BYR,Br,Belarusian ruble (old)
 BYN,Br,Belarusian ruble
 BZD,$,Belize dollar
 CAD,$,Canadian dollar
@@ -33,7 +33,7 @@ CLP,$,Chilean peso
 CNY,¥,Chinese yuan
 COP,$,Colombian peso
 CRC,₡,Costa Rican colón
-CUC,$,Cuban convertible peso')
+CUC,$,Cuban convertible peso
 CUP,$,Cuban peso
 CVE,$,Cape Verdean escudo
 CZK,Kč,Czech koruna
@@ -46,7 +46,7 @@ ERN,Nfk,Eritrean nakfa
 ETB,Br,Ethiopian birr
 EUR,€,Euro
 FJD,$,Fijian dollar
-FKP,£,Falkland Islands pound')
+FKP,£,Falkland Islands pound
 GBP,£,Pound sterling
 GEL,₾,Georgian lari
 GGP,£,Guernsey pound
@@ -111,7 +111,7 @@ NZD,$,New Zealand dollar
 OMR,ر.ع.,Omani rial
 PAB,B/.,Panamanian balboa
 PEN,S/,Sol
-PGK,K,Papua New Guinean kina')
+PGK,K,Papua New Guinean kina
 PHP,₱,Philippine peso
 PKR,₨,Pakistani rupee
 PLN,zł,Polish złoty
@@ -123,7 +123,7 @@ RSD,рсд,Serbian dinar
 RUB,₽,Russian ruble
 RWF,Fr,Rwandan franc
 SAR,ر.س,Saudi riyal
-SBD,$,Solomon Islands dollar')
+SBD,$,Solomon Islands dollar
 SCR,₨,Seychellois rupee
 SDG,ج.س.,Sudanese pound
 SEK,kr,Swedish krona
@@ -142,12 +142,12 @@ TMT,m,Turkmenistan manat
 TND,د.ت,Tunisian dinar
 TOP,T$,Tongan paʻanga
 TRY,₺,Turkish lira
-TTD,$,Trinidad and Tobago doll
+TTD,$,Trinidad and Tobago dollar
 TWD,NT$,New Taiwan dollar
 TZS,Sh,Tanzanian shilling
 UAH,₴,Ukrainian hryvnia
 UGX,UGX,Ugandan shilling
-USD,$,United States (US) dolla
+USD,$,United States (US) dollar
 UYU,$,Uruguayan peso
 UZS,UZS,Uzbekistani som
 VEF,Bs F,Venezuelan bolívar
@@ -155,7 +155,7 @@ VES,Bs.S,Bolívar soberano
 VND,₫,Vietnamese đồng
 VUV,Vt,Vanuatu vatu
 WST,T,Samoan tālā
-XAF,CFA,Central African CFA fr
+XAF,CFA,Central African CFA franc
 XCD,$,East Caribbean dollar
 XOF,CFA,West African CFA franc
 XPF,Fr,CFP franc
