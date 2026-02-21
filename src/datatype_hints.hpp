@@ -12,10 +12,12 @@ struct datatype_hint_data {
 	const char* DESCRIPTION;           // from column  4 
 };
 
-const datatype_hint_data datatype_hints[] { // NOTE: 00=empty or unknown field
+const datatype_hint_data datatype_hints[] { // HINT: 00=empty or unknown field
 {"","const char* %s;","TEXT","C/C++ datatype to hold a string when no datatype hint is given"},
 {"(bool)","bool %s;","BOOL","C/C++ datatype to hold either true or false"},
 {"(byte)","unsigned char %s;","CARD","C/C++ datatype to hold one byte"},
+{"(char)","char %s;","CARD","C/C++ datatype to hold one character"},
+{"(unsigned char)","unsigned char %s;","CARD","C/C++ datatype to hold one character"},
 {"(char[4])","char %s[4];","TEXT","C/C++ datatype to hold 3 characters maximum"},
 {"(char[8])","char %s[8];","TEXT","C/C++ datatype to hold 7 characters maximum"},
 {"(char[12])","char %s[12];","TEXT","C/C++ datatype to hold 11 characters maximum"},
@@ -77,7 +79,7 @@ const datatype_hint_data datatype_hints[] { // NOTE: 00=empty or unknown field
 {"(km/h)","SI::velocity %s;","_km_per_h","Velocity in kilometer per hour (using SI lib)"},
 {"(kg/m³)","SI::density %s;","_kg_per_m³","Density in kilograms per square meter (using SI lib)"},
 {"(m/s²)","SI::acceleration %s;","_m_per_s²","Acceleration in meter per square second (using SI lib)"},
-}; // (4 columns x 64 rows = 256 cells)
+}; // (4 columns x 66 rows = 264 cells)
 
 } // namespace dataset
 
