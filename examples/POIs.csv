@@ -1,4 +1,4 @@
-Location (string),Latitude (double),Longitude (double)
+Location (std::string),Latitude (double),Longitude (double)
 Bell Rock Lighthouse,56.43416667,-2.387222222
 Brooklyn Bridge,40.70555556,-73.99638889
 Catacombs of Kom el Shoqafa,31.178558,29.892954
