@@ -2,8 +2,6 @@
 //              (see https://github.com/fleschutz/csv2hpp for details)
 // USAGE: #include "titanic_passengers.hpp" ... for (auto& titanic_passenger : dataset::titanic_passengers) { ...
 #pragma once
-#include <SI/literals.h>
-using namespace SI;
 
 namespace dataset { 
 
