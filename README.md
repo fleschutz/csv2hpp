@@ -16,7 +16,7 @@ csv2hpp
 * Trailing '0's for float and double values are removed (more compact).
 * Precision hints (e.g. '±05') are removed for float and double values.
 * Supports very large .CSV files by using 'const char*' instead of 'std::string' (breaks some compilers) and by omitting whitespaces.
-* See the [examples](examples/) subfolder for more examples.
+* More examples can be found in the [examples](examples/) subfolder.
 
 🤝 Contributing
 ----------------
