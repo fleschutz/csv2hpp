@@ -69,6 +69,10 @@ const datatype_hint_data datatype_hints[] { // HINT: 00=empty or unknown field
 {"(°F)","SI::temperature %s;","_degF","Temperature in °Fahrenheit (using SI lib)"},
 {"(bar)","SI::pressure %s;","_bar","Pressure in bar (using SI lib)"},
 {"(mbar)","SI::pressure %s;","_mbar","Pressure in millibars (using SI lib)"},
+{"(Pa)","SI::pressure %s;","_Pa","Pressure in pascals (using SI lib)"},
+{"(kPa)","SI::pressure %s;","_kPa","Pressure in kilopascals (using SI lib)"},
+{"(MPa)","SI::pressure %s;","_MPa","Pressure in megapascals (using SI lib)"},
+{"(GPa)","SI::pressure %s;","_GPa","Pressure in gigapascals (using SI lib)"},
 {"(Hz)","SI::frequency %s;","_Hz","Frequency in Hz (using SI lib)"},
 {"(mHz)","SI::frequency %s;","_mHz","Frequency in millihertz (using SI lib)"},
 {"(kHz)","SI::frequency %s;","_kHz","Frequency in kilohertz (using SI lib)"},
@@ -79,7 +83,7 @@ const datatype_hint_data datatype_hints[] { // HINT: 00=empty or unknown field
 {"(km/h)","SI::velocity %s;","_km_per_h","Velocity in kilometer per hour (using SI lib)"},
 {"(kg/m³)","SI::density %s;","_kg_per_m³","Density in kilograms per square meter (using SI lib)"},
 {"(m/s²)","SI::acceleration %s;","_m_per_s²","Acceleration in meter per square second (using SI lib)"},
-}; // (4 columns x 66 rows = 264 cells)
+}; // (4 columns x 70 rows = 280 cells)
 
 } // namespace dataset
 
