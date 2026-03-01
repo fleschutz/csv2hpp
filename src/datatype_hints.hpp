@@ -81,9 +81,11 @@ const datatype_hint_data datatype_hints[] { // HINT: 00=empty or unknown field
 {"(THz)","SI::frequency %s;","_THz","Frequency in terahertz (using SI lib)"},
 {"(m/s)","SI::velocity %s;","_m_per_s","Velocity in meter per second (using SI lib)"},
 {"(km/h)","SI::velocity %s;","_km_per_h","Velocity in kilometer per hour (using SI lib)"},
-{"(kg/m³)","SI::density %s;","_kg_per_m³","Density in kilograms per square meter (using SI lib)"},
+{"(kg/m³)","SI::density %s;","_kg_per_m³","Density in kilograms per cubic meter (using SI lib)"},
+{"(g/m³)","SI::density %s;","_g_per_m³","Density in grams per cubic meter (using SI lib)"},
+{"(mg/m³)","SI::density %s;","_g_per_m³","Density in milligrams per cubic meter (using SI lib)"},
 {"(m/s²)","SI::acceleration %s;","_m_per_s²","Acceleration in meter per square second (using SI lib)"},
-}; // (4 columns x 70 rows = 280 cells)
+}; // (4 columns x 72 rows = 288 cells)
 
 } // namespace dataset
 
