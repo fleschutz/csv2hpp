@@ -12,7 +12,7 @@ csv2hpp
 💡 Hints
 --------
 * Datatype hints are mapped to C/C++ datatypes as follows: `(std::string)` → `std::string`, `(double)` → `double`, `(skip)` skips the entire column. All supported datatype hints are listed in: [datatype_hints.csv](src/datatype_hints.csv)
-* Supports extremely big .CSV files: omits whitespaces, removes trailing '0', it's recommended to use 'const char*' instead of 'std::string' (can break some compilers).
+* Supports also big .CSV files: omits whitespaces, removes trailing '0', it's recommended to use 'const char*' instead of 'std::string' (can break some compilers).
 * Empty CSV cells are mapped to "" for strings and to 00 for everything else (as a hint).
 * Precision hints (e.g. '±05') at float or double value are removed.
 * More conversion examples can be found in the [examples](examples/) subfolder.
