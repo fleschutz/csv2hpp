@@ -47,6 +47,12 @@ const datatype_hint_data datatype_hints[] { // HINT: 00=empty or unknown field
 {"(uint32_t)","uint32_t %s;","CARD","C/C++ datatype to hold a 32-bit unsigned integer"},
 {"(uint64_t)","uint64_t %s;","CARD","C/C++ datatype to hold a 64-bit unsigned integer"},
 {"(uint128_t)","uint128_t %s;","CARD","C/C++ datatype to hold a 128-bit unsigned integer"},
+{"(%)","double %s;","FLOAT","C/C++ datatype to hold a percentage value"},
+{"($)","double %s;","FLOAT","C/C++ datatype to hold an US Dollar value"},
+{"(€)","double %s;","FLOAT","C/C++ datatype to hold an Euro value"},
+{"(¥)","double %s;","FLOAT","C/C++ datatype to hold a Yen value"},
+{"(£)","double %s;","FLOAT","C/C++ datatype to hold a Pound sterling value"},
+{"($/kg)","double %s;","FLOAT","C/C++ datatype to hold US Dollars per kilogram"},
 {"(nm)","SI::length %s;","_nm","Length in nanometers (using SI lib)"},
 {"(mm)","SI::length %s;","_mm","Length in millimeters (using SI lib)"},
 {"(cm)","SI::length %s;","_cm","Length in centimeters (using SI lib)"},
@@ -70,11 +76,12 @@ const datatype_hint_data datatype_hints[] { // HINT: 00=empty or unknown field
 {"(bar)","SI::pressure %s;","_bar","Pressure in bar (using SI lib)"},
 {"(mbar)","SI::pressure %s;","_mbar","Pressure in millibars (using SI lib)"},
 {"(Pa)","SI::pressure %s;","_Pa","Pressure in pascals (using SI lib)"},
+{"(hPa)","SI::pressure %s;","_hPa","Pressure in hectopascals (using SI lib)"},
 {"(kPa)","SI::pressure %s;","_kPa","Pressure in kilopascals (using SI lib)"},
 {"(MPa)","SI::pressure %s;","_MPa","Pressure in megapascals (using SI lib)"},
 {"(GPa)","SI::pressure %s;","_GPa","Pressure in gigapascals (using SI lib)"},
-{"(Hz)","SI::frequency %s;","_Hz","Frequency in Hz (using SI lib)"},
 {"(mHz)","SI::frequency %s;","_mHz","Frequency in millihertz (using SI lib)"},
+{"(Hz)","SI::frequency %s;","_Hz","Frequency in Hz (using SI lib)"},
 {"(kHz)","SI::frequency %s;","_kHz","Frequency in kilohertz (using SI lib)"},
 {"(MHz)","SI::frequency %s;","_MHz","Frequency in megahertz (using SI lib)"},
 {"(GHz)","SI::frequency %s;","_GHz","Frequency in gigahertz (using SI lib)"},
@@ -85,7 +92,7 @@ const datatype_hint_data datatype_hints[] { // HINT: 00=empty or unknown field
 {"(g/m³)","SI::density %s;","_g_per_m³","Density in grams per cubic meter (using SI lib)"},
 {"(mg/m³)","SI::density %s;","_g_per_m³","Density in milligrams per cubic meter (using SI lib)"},
 {"(m/s²)","SI::acceleration %s;","_m_per_s²","Acceleration in meter per square second (using SI lib)"},
-}; // (4 columns x 72 rows = 288 cells)
+}; // (4 columns x 79 rows = 316 cells)
 
 } // namespace dataset
 
