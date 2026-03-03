@@ -1,6 +1,6 @@
 csv2hpp
 =======
-**This useful utility converts databases from CSV file format into C/C++ header files (even BIG ones). Afterward, include the header files in your software projects and immediately work on structured, well-formed datasets (and skip CSV file delivering, loading, parsing, converting, etc.).**
+**This utility converts CSV database tables into C/C++ header files. Afterward, include the header files in your software projects and immediately work on structured, well-formed datasets (and skip CSV file delivering, loading, parsing, converting, etc.).**
 
 👣 Steps
 ---------
@@ -11,12 +11,11 @@ csv2hpp
 
 💡 Hints
 --------
-* Datatype hints are mapped to C/C++ datatypes as follows: `(std::string)` → `std::string`, `(double)` → `double`, `(skip)` skips the entire column. All supported datatype hints are listed in: [datatype_hints.csv](src/datatype_hints.csv)
-* Empty CSV cells are mapped to "" for strings and to 00 for everything else (as a hint).
-* Precision hints (e.g. '±05') at float or double value are removed.
-* Compact header files: omits unnecessary whitespaces and removes trailing '0's for float and double values.
-* For very large .CSV files please use 'const char*' instead of 'std::string' which breaks some compilers.
-* More examples can be found in the [examples](examples/) subfolder.
+* Maps datatype hints to C/C++ datatypes as follows: `(std::string)` → `std::string`, `(double)` → `double`, `(skip)` skips the entire column. All supported datatype hints are listed in: [datatype_hints.csv](src/datatype_hints.csv)
+* Maps empty CSV data cells to "" for strings and to 00 for everything else (as a hint).
+* Removes precision hints (e.g. '±05') in float or double values (not supported in C/C++).
+* Supports also big .CSV files: omits whitespaces, removes trailing '0', it's recommended to use 'const char*' instead of 'std::string' (can break some compilers).
+* More conversion examples can be found in the [examples](examples/) subfolder.
 
 🤝 Contributing
 ----------------
