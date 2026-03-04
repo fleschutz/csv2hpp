@@ -1,5 +1,5 @@
-// DO NOT EDIT! File converted from planets.csv on 2026-02-20 by csv2hpp 0.5
-//              (see https://github.com/fleschutz/csv2hpp for details)
+// DO NOT EDIT! File converted from planets.csv on March 4, 2026 by csv2hpp 0.5
+//              More information at: https://github.com/fleschutz/csv2hpp
 // USAGE: #include "planets.hpp" ... for (auto& planet : dataset::planets) { ...
 #pragma once
 #include <SI/literals.h>

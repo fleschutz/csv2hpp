@@ -1,7 +1,9 @@
-// DO NOT EDIT! File converted from currencies.csv on 2026-02-20 by csv2hpp 0.5
-//              (see https://github.com/fleschutz/csv2hpp for details)
-// USAGE: #include "currencys.hpp" ... for (auto& currency : dataset::currencys) { ...
+// DO NOT EDIT! File converted from currencies.csv on March 4, 2026 by csv2hpp 0.5
+//              More information at: https://github.com/fleschutz/csv2hpp
+// USAGE: #include "currencies.hpp" ... for (auto& currency : dataset::currencies) { ...
 #pragma once
+#include <SI/literals.h>
+using namespace SI;
 
 namespace dataset { 
 
@@ -11,7 +13,7 @@ struct currency_data {
 	const char* Name;                  // from column  3 (string)
 };
 
-const currency_data currencys[] { // HINT: 00=empty or unknown field
+const currency_data currencies[] { // HINT: 00=empty or unknown field
 {"AED","د.إ","United Arab Emirates d"},
 {"AFN","؋","Afghan afghani"},
 {"ALL","L","Albanian lek"},
