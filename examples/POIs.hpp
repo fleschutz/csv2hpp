@@ -1,14 +1,14 @@
-// DO NOT EDIT! File converted from POIs.csv on 2026-02-20 by csv2hpp 0.5
-//              (see https://github.com/fleschutz/csv2hpp for details)
+// DO NOT EDIT! File converted from POIs.csv on March 4, 2026 by csv2hpp 0.5
+//              More information at: https://github.com/fleschutz/csv2hpp
 // USAGE: #include "POIs.hpp" ... for (auto& POI : dataset::POIs) { ...
 #pragma once
 
 namespace dataset { 
 
 struct POI_data {
-	std::string Location;              // from column 1 (std::string)
-	double Latitude;                   // from column 2 (double)
-	double Longitude;                  // from column 3 (double)
+	std::string Location;              // from column  1 (std::string)
+	double Latitude;                   // from column  2 (double)
+	double Longitude;                  // from column  3 (double)
 };
 
 const POI_data POIs[] { // HINT: 00=empty or unknown field
