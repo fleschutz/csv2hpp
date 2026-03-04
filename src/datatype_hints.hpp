@@ -1,5 +1,5 @@
-// DO NOT EDIT! File converted from datatype_hints.csv on 2026-02-20 by csv2hpp 0.5
-//              (see https://github.com/fleschutz/csv2hpp for details)
+// DO NOT EDIT! File converted from datatype_hints.csv on March 4, 2026 by csv2hpp 0.5
+//              More information at: https://github.com/fleschutz/csv2hpp
 // USAGE: #include "datatype_hints.hpp" ... for (auto& datatype_hint : dataset::datatype_hints) { ...
 #pragma once
 
@@ -15,9 +15,9 @@ struct datatype_hint_data {
 const datatype_hint_data datatype_hints[] { // HINT: 00=empty or unknown field
 {"","const char* %s;","TEXT","C/C++ datatype to hold a string when no datatype hint is given"},
 {"(bool)","bool %s;","BOOL","C/C++ datatype to hold either true or false"},
-{"(byte)","unsigned char %s;","CARD","C/C++ datatype to hold one byte"},
-{"(char)","char %s;","CARD","C/C++ datatype to hold one character"},
-{"(unsigned char)","unsigned char %s;","CARD","C/C++ datatype to hold one character"},
+{"(byte)","unsigned char %s;","CARD","C/C++ datatype to hold a single byte"},
+{"(char)","char %s;","CARD","C/C++ datatype to hold a single character"},
+{"(unsigned char)","unsigned char %s;","CARD","C/C++ datatype to hold a single character"},
 {"(char[4])","char %s[4];","TEXT","C/C++ datatype to hold 3 characters maximum"},
 {"(char[8])","char %s[8];","TEXT","C/C++ datatype to hold 7 characters maximum"},
 {"(char[12])","char %s[12];","TEXT","C/C++ datatype to hold 11 characters maximum"},
@@ -48,19 +48,26 @@ const datatype_hint_data datatype_hints[] { // HINT: 00=empty or unknown field
 {"(uint64_t)","uint64_t %s;","CARD","C/C++ datatype to hold a 64-bit unsigned integer"},
 {"(uint128_t)","uint128_t %s;","CARD","C/C++ datatype to hold a 128-bit unsigned integer"},
 {"(%)","double %s;","FLOAT","C/C++ datatype to hold a percentage value"},
-{"($)","double %s;","FLOAT","C/C++ datatype to hold an US Dollar value"},
-{"(€)","double %s;","FLOAT","C/C++ datatype to hold an Euro value"},
-{"(¥)","double %s;","FLOAT","C/C++ datatype to hold a Yen value"},
-{"(£)","double %s;","FLOAT","C/C++ datatype to hold a Pound sterling value"},
-{"($/kg)","double %s;","FLOAT","C/C++ datatype to hold US Dollars per kilogram"},
+{"($)","double %s;","FLOAT","C/C++ datatype to hold amount of US Dollars"},
+{"(€)","double %s;","FLOAT","C/C++ datatype to hold amount of Euros"},
+{"(¥)","double %s;","FLOAT","C/C++ datatype to hold amount of Yens"},
+{"(£)","double %s;","FLOAT","C/C++ datatype to hold amount of Pounds"},
+{"($/kg)","double %s;","FLOAT","C/C++ datatype to hold amount of US Dollars per kilogram"},
+{"(€/kg)","double %s;","FLOAT","C/C++ datatype to hold amount of Euros per kilogram"},
+{"(AUD)","double %s;","FLOAT","C/C++ datatype to hold amount of Australian Dollars"},
+{"(CNY)","double %s;","FLOAT","C/C++ datatype to hold amount of Yuans"},
+{"(EUR)","double %s;","FLOAT","C/C++ datatype to hold amount of Euros"},
+{"(GBP)","double %s;","FLOAT","C/C++ datatype to hold amount of Pounds"},
+{"(JPY)","double %s;","FLOAT","C/C++ datatype to hold amount of Yens"},
+{"(USD)","double %s;","FLOAT","C/C++ datatype to hold amount of US Dollars"},
 {"(nm)","SI::length %s;","_nm","Length in nanometers (using SI lib)"},
 {"(mm)","SI::length %s;","_mm","Length in millimeters (using SI lib)"},
 {"(cm)","SI::length %s;","_cm","Length in centimeters (using SI lib)"},
 {"(m)","SI::length %s;","_m","Length in meters (using SI lib)"},
 {"(km)","SI::length %s;","_km","Length in kilometers (using SI lib)"},
-{"(au)","SI::length %s;","_au","Length in Astronomical Units (using SI lib)"},
+{"(au)","SI::length %s;","_au","Length in astronomical units (using SI lib)"},
 {"(pc)","SI::length %s;","_pc","Length in Parsec (using SI lib)"},
-{"(Da)","SI::mass %s;","_Da","Mass in Daltons (using SI lib)"},
+{"(Da)","SI::mass %s;","_Da","Mass in daltons (using SI lib)"},
 {"(mg)","SI::mass %s;","_mg","Mass in milligrams (using SI lib)"},
 {"(g)","SI::mass %s;","_g","Mass in grams (using SI lib)"},
 {"(kg)","SI::mass %s;","_kg","Mass in kilograms (using SI lib)"},
@@ -70,7 +77,7 @@ const datatype_hint_data datatype_hints[] { // HINT: 00=empty or unknown field
 {"(min)","SI::time %s;","_min","Time in minutes (using SI lib)"},
 {"(h)","SI::time %s;","_h","Time in hours (using SI lib)"},
 {"(days)","SI::time %s;","_days","Time in days (using SI lib)"},
-{"(K)","SI::temperature %s;","_K","Temperature in Kelvins (using SI lib)"},
+{"(K)","SI::temperature %s;","_K","Temperature in kelvins (using SI lib)"},
 {"(°C)","SI::temperature %s;","_degC","Temperature in °Celsius (using SI lib)"},
 {"(°F)","SI::temperature %s;","_degF","Temperature in °Fahrenheit (using SI lib)"},
 {"(bar)","SI::pressure %s;","_bar","Pressure in bar (using SI lib)"},
@@ -81,18 +88,18 @@ const datatype_hint_data datatype_hints[] { // HINT: 00=empty or unknown field
 {"(MPa)","SI::pressure %s;","_MPa","Pressure in megapascals (using SI lib)"},
 {"(GPa)","SI::pressure %s;","_GPa","Pressure in gigapascals (using SI lib)"},
 {"(mHz)","SI::frequency %s;","_mHz","Frequency in millihertz (using SI lib)"},
-{"(Hz)","SI::frequency %s;","_Hz","Frequency in Hz (using SI lib)"},
+{"(Hz)","SI::frequency %s;","_Hz","Frequency in hertz (using SI lib)"},
 {"(kHz)","SI::frequency %s;","_kHz","Frequency in kilohertz (using SI lib)"},
 {"(MHz)","SI::frequency %s;","_MHz","Frequency in megahertz (using SI lib)"},
 {"(GHz)","SI::frequency %s;","_GHz","Frequency in gigahertz (using SI lib)"},
 {"(THz)","SI::frequency %s;","_THz","Frequency in terahertz (using SI lib)"},
-{"(m/s)","SI::velocity %s;","_m_per_s","Velocity in meter per second (using SI lib)"},
+{"(m/s)","SI::velocity %s;","_m_per_s","Velocity in meters per second (using SI lib)"},
 {"(km/h)","SI::velocity %s;","_km_per_h","Velocity in kilometer per hour (using SI lib)"},
 {"(kg/m³)","SI::density %s;","_kg_per_m³","Density in kilograms per cubic meter (using SI lib)"},
 {"(g/m³)","SI::density %s;","_g_per_m³","Density in grams per cubic meter (using SI lib)"},
 {"(mg/m³)","SI::density %s;","_g_per_m³","Density in milligrams per cubic meter (using SI lib)"},
-{"(m/s²)","SI::acceleration %s;","_m_per_s²","Acceleration in meter per square second (using SI lib)"},
-}; // (4 columns x 79 rows = 316 cells)
+{"(m/s²)","SI::acceleration %s;","_m_per_s²","Acceleration in meters per square second (using SI lib)"},
+}; // (4 columns x 86 rows = 344 cells)
 
 } // namespace dataset
 
