@@ -4,7 +4,7 @@ csv2hpp
 
 👣 Steps
 ---------
-1. **Export** or download your database in CSV file format, e.g.: [POIs.csv](examples/POIs.csv)
+1. **Export** or download your database in CSV file format, e.g. to: [POIs.csv](examples/POIs.csv)
 2. **Edit** the CSV file and add a datatype hint to each column in the header line, e.g.: `Location (std::string), Latitude (double), Longitude (double)`
 3. **Convert** by executing: `csv2hpp POIs.csv POI > POIs.hpp`.
 4. **Add** the header file to your project (#include "[POIs.hpp](examples/POIs.hpp)") and immediately start to develop.
