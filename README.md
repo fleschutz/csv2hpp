@@ -1,6 +1,6 @@
 csv2hpp
 =======
-**This utility converts arbitrary CSV database files into C/C++ header files. Afterward, include the header files in your software projects and immediately work on structured, well-formed datasets (and skip CSV file delivering, loading, parsing, converting, etc.).**
+**This utility converts CSV database files into C/C++ header files - then include the header files in your software project and immediately start to develop on structured, well-formed datasets. This skips data file delivering, loading, parsing, converting, etc.**
 
 👣 Steps
 ---------
