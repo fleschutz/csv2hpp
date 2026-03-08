@@ -1,4 +1,4 @@
-// DO NOT EDIT! File converted from datatype_hints.csv on March 4, 2026 by csv2hpp 0.5
+// DO NOT EDIT! File converted from datatype_hints.csv on March 8, 2026 by csv2hpp 0.5
 //              More information at: https://github.com/fleschutz/csv2hpp
 // USAGE: #include "datatype_hints.hpp" ... for (auto& datatype_hint : dataset::datatype_hints) { ...
 #pragma once
@@ -67,6 +67,9 @@ const datatype_hint_data datatype_hints[] { // HINT: 00=empty or unknown field
 {"(km)","SI::length %s;","_km","Length in kilometers (using SI lib)"},
 {"(au)","SI::length %s;","_au","Length in astronomical units (using SI lib)"},
 {"(pc)","SI::length %s;","_pc","Length in Parsec (using SI lib)"},
+{"(ft)","SI::length %s;","_ft","Length in Feet (using SI lib)"},
+{"(in)","SI::length %s;","_in","Length in Inch (using SI lib)"},
+{"(NM)","SI::length %s;","_NM","Length in nautical miles (using SI lib)"},
 {"(Da)","SI::mass %s;","_Da","Mass in daltons (using SI lib)"},
 {"(mg)","SI::mass %s;","_mg","Mass in milligrams (using SI lib)"},
 {"(g)","SI::mass %s;","_g","Mass in grams (using SI lib)"},
@@ -99,7 +102,7 @@ const datatype_hint_data datatype_hints[] { // HINT: 00=empty or unknown field
 {"(g/m³)","SI::density %s;","_g_per_m³","Density in grams per cubic meter (using SI lib)"},
 {"(mg/m³)","SI::density %s;","_g_per_m³","Density in milligrams per cubic meter (using SI lib)"},
 {"(m/s²)","SI::acceleration %s;","_m_per_s²","Acceleration in meters per square second (using SI lib)"},
-}; // (4 columns x 86 rows = 344 cells)
+}; // (4 columns x 89 rows = 356 cells)
 
 } // namespace dataset
 
