@@ -228,17 +228,27 @@ static int readCSVHeader(FILE* file, const char* objectName)
 	return 0;
 }
 
+static std::string pluralize(const std::string& name)
+{
+	if (name.empty())
+		return name;
+	if (name.back() == 'y')
+		return name.substr(0, strlen(name.c_str()) - 1) + "ies";
+	return name + "s";
+}
+
 static int convertCSV2HPP(const char* filename, const char* objectName)
 {
-	auto file = fopen(filename, "rw");
+	auto file = fopen(filename, "r");
 	if (!file)
 	{
 		fprintf(stderr, "Can't open CSV file: %s\n", filename);
 		return 1;
 	}
-	printf("// DO NOT EDIT! File converted from %s on March 8, 2026 by csv2hpp 0.5\n", filename);
+	printf("// DO NOT EDIT! File converted from %s on March 9, 2026 by csv2hpp 0.5\n", filename);
 	printf("//              More information at: https://github.com/fleschutz/csv2hpp\n");
-	printf("// USAGE: #include \"%ss.hpp\" ... for (auto& %s : dataset::%ss) { ...\n", objectName, objectName, objectName);
+	printf("// USAGE: #include \"%s.hpp\" ... for (auto& %s : dataset::%s) { ...\n",
+	    pluralize(objectName).c_str(), objectName, pluralize(objectName).c_str());
 	printf("#pragma once\n#include <SI/literals.h>\nusing namespace SI;\n\nnamespace dataset { \n\n");
 	int result = readCSVHeader(file, objectName);
 	printf("} // namespace dataset\n\n");
@@ -246,17 +256,20 @@ static int convertCSV2HPP(const char* filename, const char* objectName)
 	return result;
 }
 
+int printHelp()
+{
+	printf("csv2hpp - Converts a CSV file into a C/C++ header file for easy #include.\n");
+	printf("          Version 0.6 of March 9, 2026\n");
+	printf("          More information at: https://github.com/fleschutz/csv2hpp\n");
+	printf("\n");
+	printf("USAGE: csv2hpp <path-to-CSV-file> <name-of-object>\n");
+	return 0;
+}
 
 int main(int argc, char **argv)
 {
-	if (argc != 3)
-	{
-		printf("csv2hpp - converts a CSV file into a C/C++ header file for easy #include.\n");
-		printf("\n");
-		printf("Version 0.5 of 2026-02-20, documentation at: https://github.com/fleschutz/csv2hpp\n");
-		printf("\n");
-		printf("Usage:  csv2hpp <CSV-filename> <object-name>\n");
-		return 0;
-	}
-	return convertCSV2HPP(argv[1], argv[2]);
+	if (argc == 3)
+		return convertCSV2HPP(argv[1], argv[2]);
+
+	return printHelp();
 }
