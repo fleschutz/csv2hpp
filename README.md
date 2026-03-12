@@ -11,7 +11,7 @@ csv2hpp
 
 💡 Hints
 --------
-* Build csv2hpp by executing: `cd src && cmake . && make` (requires cmake + C++ compiler)
+* Build csv2hpp by executing: `cd src && cmake . && make` (just requires cmake and a C++ compiler)
 * The datatype hints are mapped to C/C++ datatypes as follows: `(std::string)` → `std::string`, `(double)` → `double`, `(skip)` skips the entire column. See all 87 supported datatype hints in: [datatype_hints.csv](src/datatype_hints.csv)
 * Empty CSV data cells are mapped to "" for strings and to 00 for everything else (as a hint).
 * Precision hints such as '±05' are removed in float or double values (not supported in C/C++).
