@@ -16,7 +16,7 @@ csv2hpp
 * Empty CSV data cells are mapped to "" for strings and to 00 for everything else (as a hint).
 * Precision hints such as '±05' are removed in float or double values (not supported in C/C++).
 * Supports also big .CSV files: omits whitespaces, removes trailing '0'. It's recommended to use 'const char*' instead of 'std::string' which can break some compilers.
-* See the 📁[examples](examples/) subfolder for some conversion examples.
+* Please find 8 more examples in the 📁[examples](examples/) subfolder.
 
 🤝 Contributing
 ----------------
