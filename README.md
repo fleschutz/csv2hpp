@@ -5,7 +5,7 @@ csv2hpp
 👣 Steps
 ---------
 1. **Export** or download your database in CSV file format, e.g. to: [pizzas.csv](examples/pizzas.csv)
-2. **Edit** the CSV file and add a datatype hints in the header line, e.g.: `Company, Pizza_Name, Type, Size, Price ($)`
+2. **Edit** the CSV file and add datatype hints to the header line, e.g.: `Company, Pizza_Name, Type, Size, Price ($)`
 3. **Convert** by executing: `csv2hpp pizzas.csv pizza > pizzas.hpp`.
 4. **Add** the generated header file to your project (#include "[pizzas.hpp](examples/pizzas.hpp)") and start to develop.
 
