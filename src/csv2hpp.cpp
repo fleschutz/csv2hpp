@@ -62,7 +62,12 @@ static std::string getNameInCell(std::string cell)
 	auto ptr = cell.c_str();
 	std::string result = "";
 
-	while (*ptr != '\0' && *ptr != ' ')
+	// skip leading whitespaces:
+	while (*ptr == ' ' || *ptr == '\t')
+		ptr++;
+
+	// add to variable name:
+	while (*ptr != '\0' && *ptr != ' ' && *ptr != '(')
 		result += *ptr++;
 
 	return result;
@@ -153,7 +158,7 @@ static bool printValue(std::string hint, std::string value)
 		if (datatype_hint.TYPE == "TEXT")
 			printf("\"%s\"", value.c_str());
 		else if (datatype_hint.TYPE == "BOOL")
-			printf("%s", (value == "Yes" || value == "yes" || value == "True" || value == "true" || value == "1") ? "true" : "false");
+			printf("%s", (value == "Yes" || value == "Y" || value == "yes" || value == "y" || value == "True" || value == "true" || value == "ON" || value == "on" || value == "1") ? "true" : "false");
 		else if (datatype_hint.TYPE == "CARD")
 			printf("%s", isNumberEmpty(value) ? "00" : value.c_str());
 		else if (datatype_hint.TYPE == "FLOAT")
