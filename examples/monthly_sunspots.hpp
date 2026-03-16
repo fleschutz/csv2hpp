@@ -1,9 +1,9 @@
-// DO NOT EDIT! File converted from monthly_sunspots.csv on March 4, 2026 by csv2hpp 0.5
-//              More information at: https://github.com/fleschutz/csv2hpp
+// NOTE: This C/C++ header file has been converted from 'monthly_sunspots.csv'
+//       on March 16, 2026 by using csv2hpp 0.7 with command-line:
+//       /usr/local/bin/csv2hpp monthly_sunspots.csv monthly_sunspot
+//       (more information at: https://github.com/fleschutz/csv2hpp)
 // USAGE: #include "monthly_sunspots.hpp" ... for (auto& monthly_sunspot : dataset::monthly_sunspots) { ...
 #pragma once
-#include <SI/literals.h>
-using namespace SI;
 
 namespace dataset { 
 
