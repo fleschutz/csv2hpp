@@ -1,8 +1,8 @@
 csv2hpp
 =======
-**This utility converts arbitrary CSV database files into C/C++ header files - to #include the generated header files and immediately start to develop on structured, well-formed datasets. This skips the error-prone data file delivering, loading, parsing, converting, etc.**
+**This command-line utility converts CSV database files into C/C++ header files - to #include them and immediately start to develop on structured, well-formed datasets. This skips error-prone steps like file delivering, loading, parsing, converting, and checking.**
 
-👣 Steps
+⏯ Usage
 ---------
 1. **Export** or download your database in CSV file format, e.g. to: [pizzas.csv](examples/pizzas.csv)
 2. **Edit** the CSV file and add datatype hints to the header line, e.g.: `Company, Pizza_Name, Type, Size, Price ($)`
