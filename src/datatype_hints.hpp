@@ -1,5 +1,7 @@
-// DO NOT EDIT! File converted from datatype_hints.csv on March 9, 2026 by csv2hpp 0.5
-//              More information at: https://github.com/fleschutz/csv2hpp
+// NOTE: This C/C++ header file has been converted from 'datatype_hints.csv'
+//       on March 16, 2026 by using csv2hpp 0.7 with command-line:
+//       /usr/local/bin/csv2hpp datatype_hints.csv datatype_hint
+//       (more information at: https://github.com/fleschutz/csv2hpp)
 // USAGE: #include "datatype_hints.hpp" ... for (auto& datatype_hint : dataset::datatype_hints) { ...
 #pragma once
 
@@ -81,6 +83,7 @@ const datatype_hint_data datatype_hints[] { // HINT: 00=empty or unknown field
 {"(h)","SI::time %s;","_h","Time in hours (using SI lib)"},
 {"(days)","SI::time %s;","_days","Time in days (using SI lib)"},
 {"(K)","SI::temperature %s;","_K","Temperature in kelvins (using SI lib)"},
+{"(°)","double %s;","FLOAT","C/C++ datatype for angle in degree"},
 {"(°C)","SI::temperature %s;","_degC","Temperature in °Celsius (using SI lib)"},
 {"(°F)","SI::temperature %s;","_degF","Temperature in °Fahrenheit (using SI lib)"},
 {"(bar)","SI::pressure %s;","_bar","Pressure in bar (using SI lib)"},
@@ -102,7 +105,7 @@ const datatype_hint_data datatype_hints[] { // HINT: 00=empty or unknown field
 {"(g/m³)","SI::density %s;","_g_per_m³","Density in grams per cubic meter (using SI lib)"},
 {"(mg/m³)","SI::density %s;","_g_per_m³","Density in milligrams per cubic meter (using SI lib)"},
 {"(m/s²)","SI::acceleration %s;","_m_per_s²","Acceleration in meters per square second (using SI lib)"},
-}; // (4 columns x 89 rows = 356 cells)
+}; // (4 columns x 90 rows = 360 cells)
 
 } // namespace dataset
 

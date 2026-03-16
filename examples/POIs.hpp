@@ -8,9 +8,9 @@
 namespace dataset { 
 
 struct POI_data {
-	std::string Location;              // from column  1 (std::string)
-	double Latitude;                   // from column  2 (double)
-	double Longitude;                  // from column  3 (double)
+	const char* Location;              // from column  1 
+	double Latitude;                   // from column  2 (°)
+	double Longitude;                  // from column  3 (°)
 };
 
 const POI_data POIs[] { // HINT: 00=empty or unknown field
