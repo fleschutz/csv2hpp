@@ -107,7 +107,8 @@ const datatype_hint_data datatype_hints[] { // HINT: 00=empty or unknown field
 {"(mg/m³)","SI::density %s;","_g_per_m³","Density in milligrams per cubic meter (using SI lib)"},
 {"(m/s²)","SI::acceleration %s;","_m_per_s²","Acceleration in meters per square second (using SI lib)"},
 {"(kJ/mol)","SI::energy_per_mol %s;","_kJ_per_mol","Energy in kilojoule per mol (using SI lib)"},
-}; // (4 columns x 92 rows = 368 cells)
+{"(km³/s²)","SI::volume_per_time_squared %s;","_km³_per_s²","Volume in cubic kilometers per second squared (using SI lib)"},
+}; // (4 columns x 93 rows = 372 cells)
 
 } // namespace dataset
 
