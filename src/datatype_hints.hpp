@@ -1,4 +1,4 @@
-// DO NOT EDIT! File converted from datatype_hints.csv on March 8, 2026 by csv2hpp 0.5
+// DO NOT EDIT! File converted from datatype_hints.csv on March 9, 2026 by csv2hpp 0.5
 //              More information at: https://github.com/fleschutz/csv2hpp
 // USAGE: #include "datatype_hints.hpp" ... for (auto& datatype_hint : dataset::datatype_hints) { ...
 #pragma once
@@ -48,18 +48,18 @@ const datatype_hint_data datatype_hints[] { // HINT: 00=empty or unknown field
 {"(uint64_t)","uint64_t %s;","CARD","C/C++ datatype to hold a 64-bit unsigned integer"},
 {"(uint128_t)","uint128_t %s;","CARD","C/C++ datatype to hold a 128-bit unsigned integer"},
 {"(%)","double %s;","FLOAT","C/C++ datatype to hold a percentage value"},
-{"($)","double %s;","FLOAT","C/C++ datatype to hold amount of US Dollars"},
-{"(€)","double %s;","FLOAT","C/C++ datatype to hold amount of Euros"},
-{"(¥)","double %s;","FLOAT","C/C++ datatype to hold amount of Yens"},
-{"(£)","double %s;","FLOAT","C/C++ datatype to hold amount of Pounds"},
-{"($/kg)","double %s;","FLOAT","C/C++ datatype to hold amount of US Dollars per kilogram"},
-{"(€/kg)","double %s;","FLOAT","C/C++ datatype to hold amount of Euros per kilogram"},
-{"(AUD)","double %s;","FLOAT","C/C++ datatype to hold amount of Australian Dollars"},
-{"(CNY)","double %s;","FLOAT","C/C++ datatype to hold amount of Yuans"},
-{"(EUR)","double %s;","FLOAT","C/C++ datatype to hold amount of Euros"},
-{"(GBP)","double %s;","FLOAT","C/C++ datatype to hold amount of Pounds"},
-{"(JPY)","double %s;","FLOAT","C/C++ datatype to hold amount of Yens"},
-{"(USD)","double %s;","FLOAT","C/C++ datatype to hold amount of US Dollars"},
+{"($)","float %s;","FLOAT","C/C++ datatype to hold amount of US Dollars"},
+{"(€)","float %s;","FLOAT","C/C++ datatype to hold amount of Euros"},
+{"(¥)","float %s;","FLOAT","C/C++ datatype to hold amount of Yens"},
+{"(£)","float %s;","FLOAT","C/C++ datatype to hold amount of Pounds"},
+{"($/kg)","float %s;","FLOAT","C/C++ datatype to hold amount of US Dollars per kilogram"},
+{"(€/kg)","float %s;","FLOAT","C/C++ datatype to hold amount of Euros per kilogram"},
+{"(AUD)","float %s;","FLOAT","C/C++ datatype to hold amount of Australian Dollars"},
+{"(CNY)","float %s;","FLOAT","C/C++ datatype to hold amount of Yuans"},
+{"(EUR)","float %s;","FLOAT","C/C++ datatype to hold amount of Euros"},
+{"(GBP)","float %s;","FLOAT","C/C++ datatype to hold amount of Pounds"},
+{"(JPY)","float %s;","FLOAT","C/C++ datatype to hold amount of Yens"},
+{"(USD)","float %s;","FLOAT","C/C++ datatype to hold amount of US Dollars"},
 {"(nm)","SI::length %s;","_nm","Length in nanometers (using SI lib)"},
 {"(mm)","SI::length %s;","_mm","Length in millimeters (using SI lib)"},
 {"(cm)","SI::length %s;","_cm","Length in centimeters (using SI lib)"},

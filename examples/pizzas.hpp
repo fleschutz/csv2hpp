@@ -10,7 +10,7 @@ struct pizza_data {
 	const char* Pizza_Name;            // from column  2 
 	const char* Type;                  // from column  3 
 	const char* Size;                  // from column  4 
-	double Price;                      // from column  5 ($)
+	float Price;                       // from column  5 ($)
 };
 
 const pizza_data pizzas[] { // HINT: 00=empty or unknown field
