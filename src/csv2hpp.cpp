@@ -115,7 +115,7 @@ static bool printDeclaration(const std::string& hint, const std::string& name, i
 
 static bool isNumberEmpty(std::string num)
 {
-	return (num == "" || num == " " || num == "?" || num == "-" || num == "Unknown*" || num == "unknown*");
+	return (num == "" || num == " " || num == "?" || num == "-" || num == "N/A" || num == "Unknown*" || num == "unknown*");
 }
 
 static std::string trimFloat(std::string s)
