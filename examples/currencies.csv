@@ -1,4 +1,4 @@
-Code (char[4]),Symbol (string),Name (string)
+Code (char[4]),Symbol (std::string),Name (std::string)
 AED,د.إ,United Arab Emirates d
 AFN,؋,Afghan afghani
 ALL,L,Albanian lek

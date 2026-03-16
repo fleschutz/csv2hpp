@@ -9,8 +9,8 @@ namespace dataset {
 
 struct currency_data {
 	char Code[4];                      // from column  1 (char[4])
-	const char* Symbol;                // from column  2 (string)
-	const char* Name;                  // from column  3 (string)
+	std::string Symbol;                // from column  2 (std::string)
+	std::string Name;                  // from column  3 (std::string)
 };
 
 const currency_data currencys[] { // HINT: 00=empty or unknown field
