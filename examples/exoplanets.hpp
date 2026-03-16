@@ -1,5 +1,7 @@
-// DO NOT EDIT! File converted from exoplanets.csv on March 5, 2026 by csv2hpp 0.5
-//              More information at: https://github.com/fleschutz/csv2hpp
+// NOTE: This C/C++ header file has been converted from 'exoplanets.csv'
+//       on March 16, 2026 by using csv2hpp 0.7 with command-line:
+//       /usr/local/bin/csv2hpp exoplanets.csv exoplanet
+//       (more information at: https://github.com/fleschutz/csv2hpp)
 // USAGE: #include "exoplanets.hpp" ... for (auto& exoplanet : dataset::exoplanets) { ...
 #pragma once
 #include <SI/literals.h>

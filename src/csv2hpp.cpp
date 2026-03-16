@@ -5,7 +5,8 @@
 #include <cstring>
 #include "datatype_hints.hpp" 
 
-static const std::string EOL = "<EOL>";
+const std::string APP_VERSION = "0.7";
+const std::string EOL = "<EOL>";
 
 static std::string nextCell(FILE* file)
 {
@@ -242,7 +243,7 @@ static std::string pluralize(const std::string& name)
 	return name + "s";
 }
 
-static int convertCSV2HPP(const char* filename, const char* objectName)
+static int convertCSV2HPP(const char* filename, const char* objectName, const std::string& cmdLine)
 {
 	auto file = fopen(filename, "r");
 	if (!file)
@@ -250,8 +251,10 @@ static int convertCSV2HPP(const char* filename, const char* objectName)
 		fprintf(stderr, "Can't open CSV file: %s\n", filename);
 		return 1;
 	}
-	printf("// DO NOT EDIT! File converted from %s on March 9, 2026 by csv2hpp 0.5\n", filename);
-	printf("//              More information at: https://github.com/fleschutz/csv2hpp\n");
+	printf("// NOTE: This C/C++ header file has been converted from '%s'\n", filename);
+	printf("//       on March 16, 2026 by using csv2hpp %s with command-line:\n", APP_VERSION.c_str());
+	printf("//       %s\n", cmdLine.c_str());
+	printf("//       (more information at: https://github.com/fleschutz/csv2hpp)\n");
 	printf("// USAGE: #include \"%s.hpp\" ... for (auto& %s : dataset::%s) { ...\n",
 	    pluralize(objectName).c_str(), objectName, pluralize(objectName).c_str());
 	printf("#pragma once\n#include <SI/literals.h>\nusing namespace SI;\n\nnamespace dataset { \n\n");
@@ -261,20 +264,34 @@ static int convertCSV2HPP(const char* filename, const char* objectName)
 	return result;
 }
 
+std::string cmdLine2string(int argc, char **argv)
+{
+	std::string result = argv[0];
+
+	for (int i = 1; i < argc; i++)
+	{
+		result += " ";
+		result += argv[i];
+	}
+
+	return result;
+}
+
 int printHelp()
 {
 	printf("csv2hpp - Converts a CSV file into a C/C++ header file for easy #include.\n");
-	printf("          Version 0.6 of March 9, 2026\n");
+	printf("          Version %s of March 16, 2026\n", APP_VERSION.c_str());
 	printf("          More information at: https://github.com/fleschutz/csv2hpp\n");
 	printf("\n");
 	printf("USAGE: csv2hpp <path-to-CSV-file> <name-of-object>\n");
 	return 0;
 }
 
+
 int main(int argc, char **argv)
 {
 	if (argc == 3)
-		return convertCSV2HPP(argv[1], argv[2]);
+		return convertCSV2HPP(argv[1], argv[2], cmdLine2string(argc, argv));
 
 	return printHelp();
 }

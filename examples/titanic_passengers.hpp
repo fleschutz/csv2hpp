@@ -1,5 +1,7 @@
-// DO NOT EDIT! File converted from titanic_passengers.csv on March 4, 2026 by csv2hpp 0.5
-//              More information at: https://github.com/fleschutz/csv2hpp
+// NOTE: This C/C++ header file has been converted from 'titanic_passengers.csv'
+//       on March 16, 2026 by using csv2hpp 0.7 with command-line:
+//       /usr/local/bin/csv2hpp titanic_passengers.csv titanic_passenger
+//       (more information at: https://github.com/fleschutz/csv2hpp)
 // USAGE: #include "titanic_passengers.hpp" ... for (auto& titanic_passenger : dataset::titanic_passengers) { ...
 #pragma once
 

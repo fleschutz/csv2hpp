@@ -1,5 +1,7 @@
-// DO NOT EDIT! File converted from planets.csv on March 4, 2026 by csv2hpp 0.5
-//              More information at: https://github.com/fleschutz/csv2hpp
+// NOTE: This C/C++ header file has been converted from 'planets.csv'
+//       on March 16, 2026 by using csv2hpp 0.7 with command-line:
+//       /usr/local/bin/csv2hpp planets.csv planet
+//       (more information at: https://github.com/fleschutz/csv2hpp)
 // USAGE: #include "planets.hpp" ... for (auto& planet : dataset::planets) { ...
 #pragma once
 #include <SI/literals.h>

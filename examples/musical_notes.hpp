@@ -1,5 +1,7 @@
-// DO NOT EDIT! File converted from musical_notes.csv on March 4, 2026 by csv2hpp 0.5
-//              More information at: https://github.com/fleschutz/csv2hpp
+// NOTE: This C/C++ header file has been converted from 'musical_notes.csv'
+//       on March 16, 2026 by using csv2hpp 0.7 with command-line:
+//       /usr/local/bin/csv2hpp musical_notes.csv musical_note
+//       (more information at: https://github.com/fleschutz/csv2hpp)
 // USAGE: #include "musical_notes.hpp" ... for (auto& musical_note : dataset::musical_notes) { ...
 #pragma once
 #include <SI/literals.h>
