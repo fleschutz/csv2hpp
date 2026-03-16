@@ -197,7 +197,7 @@ static int readCSVHeader(FILE* file, const char* objectName)
 
 		if (!printDeclaration(hints[i], name, i))
 		{
-			fprintf(stderr, "Datatype hint '%s' in column #%d not listed in datatype_hints.csv yet\n", hints[i].c_str(), i + 1);
+			fprintf(stderr, "Sorry, the '%s' datatype hint in column #%d is not listed yet in datatype_hints.csv\n", hints[i].c_str(), i + 1);
 			return 1;
 		}
 		columns++;

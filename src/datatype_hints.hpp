@@ -62,6 +62,7 @@ const datatype_hint_data datatype_hints[] { // HINT: 00=empty or unknown field
 {"(GBP)","float %s;","FLOAT","C/C++ datatype to hold amount of Pounds"},
 {"(JPY)","float %s;","FLOAT","C/C++ datatype to hold amount of Yens"},
 {"(USD)","float %s;","FLOAT","C/C++ datatype to hold amount of US Dollars"},
+{"(pm)","SI::length %s;","_pm","Length in picometers (using SI lib)"},
 {"(nm)","SI::length %s;","_nm","Length in nanometers (using SI lib)"},
 {"(mm)","SI::length %s;","_mm","Length in millimeters (using SI lib)"},
 {"(cm)","SI::length %s;","_cm","Length in centimeters (using SI lib)"},
@@ -105,7 +106,8 @@ const datatype_hint_data datatype_hints[] { // HINT: 00=empty or unknown field
 {"(g/m³)","SI::density %s;","_g_per_m³","Density in grams per cubic meter (using SI lib)"},
 {"(mg/m³)","SI::density %s;","_g_per_m³","Density in milligrams per cubic meter (using SI lib)"},
 {"(m/s²)","SI::acceleration %s;","_m_per_s²","Acceleration in meters per square second (using SI lib)"},
-}; // (4 columns x 90 rows = 360 cells)
+{"(kJ/mol)","SI::energy_per_mol %s;","_kJ_per_mol","Energy in kilojoule per mol (using SI lib)"},
+}; // (4 columns x 92 rows = 368 cells)
 
 } // namespace dataset
 
