@@ -1,6 +1,6 @@
-csv2hpp
+CSV2HPP
 =======
-**This command-line utility converts CSV database files into C/C++ header files - to #include them and immediately start to develop on structured, well-formed datasets. This skips error-prone steps like file delivering, loading, parsing, converting, and checking.**
+**This command-line utility converts the content of CSV files (comma-separated values) into C/C++ header files (.hpp) - to #include them and immediately start to develop on structured, well-formed datasets. This skips error-prone steps like file delivering, loading, parsing, converting, and checking.**
 
 ▶️ Usage
 ---------
@@ -16,7 +16,7 @@ csv2hpp
 * Empty CSV data cells are mapped to "" for strings and to 00 for everything else (as a hint).
 * Precision hints such as '±05' are removed in float or double values (not supported in C/C++).
 * Supports also big .CSV files: omits whitespaces, removes trailing '0'. It's recommended to use 'const char*' instead of 'std::string' which can break some compilers.
-* Please find 8 more examples in the 📁[examples](examples/) subfolder.
+* More examples can be found in the 📁[examples](examples/) subfolder.
 
 🤝 Contributing
 ----------------
