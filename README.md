@@ -4,7 +4,7 @@ CSV2HPP
 
 ▶️ Usage
 ---------
-1. **Export** or download your database in CSV file format, e.g. to: [bucket_list.csv](examples/bucket_list.csv)
+1. **Export** or download your database in CSV format, e.g. to: [bucket_list.csv](examples/bucket_list.csv)
 2. **Edit** the CSV file and add datatype hints to the header line, e.g.: `Location (std::string), Latitude (°), Longitude (°)`
 3. **Convert** by executing: `csv2hpp bucket_list.csv POI > bucket_list.hpp`.
 4. **Add** the generated header file to your project (#include "[bucket_list.hpp](examples/bucket_list.hpp)") and start to develop.
