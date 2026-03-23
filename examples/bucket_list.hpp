@@ -1,14 +1,14 @@
-// NOTE: This C/C++ header file has been converted from 'POIs.csv'
+// NOTE: This C/C++ header file has been converted from 'bucket_list.csv'
 //       on March 16, 2026 by using csv2hpp 0.7 with command-line:
-//       /usr/local/bin/csv2hpp POIs.csv POI
+//       /usr/local/bin/csv2hpp bucket_list.csv POI
 //       (more information at: https://github.com/fleschutz/csv2hpp)
-// USAGE: #include "POIs.hpp" ... for (auto& POI : dataset::POIs) { ...
+// USAGE: #include "bucket_list.hpp" ... for (auto& POI : dataset::POIs) { ...
 #pragma once
 
 namespace dataset { 
 
 struct POI_data {
-	const char* Location;              // from column  1 
+	std::string Location;              // from column  1 (std::string)
 	double Latitude;                   // from column  2 (°)
 	double Longitude;                  // from column  3 (°)
 };
