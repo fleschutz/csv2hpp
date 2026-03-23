@@ -1,6 +1,6 @@
-csv2hpp
+CSV2HPP
 =======
-**This command-line utility converts CSV database files into C/C++ header files - to #include them and immediately start to develop on structured, well-formed datasets. This skips error-prone steps like file delivering, loading, parsing, converting, and checking.**
+**This command-line utility converts CSV database files into C/C++ header files (.hpp) - to #include them and immediately start to develop on structured, well-formed datasets. This skips error-prone steps like file delivering, loading, parsing, converting, and checking.**
 
 ▶️ Usage
 ---------
