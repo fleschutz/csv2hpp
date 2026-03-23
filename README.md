@@ -6,7 +6,7 @@ CSV2HPP
 ---------
 1. **Export** or download your database in CSV format, e.g. to: [bucket_list.csv](examples/bucket_list.csv)
 2. **Open** the CSV file in a text editor and add datatype hints to the header line, e.g.: `Location (std::string), Latitude (°), Longitude (°)`
-3. **Convert** by executing: `csv2hpp bucket_list.csv POI > bucket_list.hpp`.
+3. **Execute** in a terminal window: `csv2hpp bucket_list.csv POI > bucket_list.hpp`.
 4. **Add** the generated header file to your project (#include "[bucket_list.hpp](examples/bucket_list.hpp)") and start to develop.
 
 💡 Hints
