@@ -1,18 +1,18 @@
 CSV2HPP
 =======
-**This command-line utility converts the content of a CSV file (comma-separated values) into a header file for C/C++ software projects. Just #include the generated header file and immediately start to develop on a structured, well-formed dataset (avoiding error-prone steps like file delivering, loading, parsing, converting, and checking).**
+**This command-line utility converts the content of a CSV file (comma-separated values) into a header file for C/C++ software projects. Just #include the resulting header file and immediately start to develop on a structured, well-formed dataset (avoiding error-prone steps like file delivering, loading, parsing, converting, and checking).**
 
 ▶️ Usage
 ---------
 1. **Export** or download your database in CSV format, e.g. to: [bucket_list.csv](examples/bucket_list.csv)
 2. **Open** the CSV file in a text editor and add datatype hints to the header line, e.g.: `Location (std::string), Latitude (double), Longitude (double)`
 3. **Execute** in a terminal window: `csv2hpp bucket_list.csv POI > bucket_list.hpp`.
-4. **Add** the generated header file to your project (#include "[bucket_list.hpp](examples/bucket_list.hpp)") and start to develop.
+4. **Copy** the generated header file into your project and include it (#include "[bucket_list.hpp](examples/bucket_list.hpp)").
 
 💡 Hints
 --------
 * Build *csv2hpp* by executing: `cd src && cmake . && make` (just requires cmake and a C++ compiler)
-* Datatype hints are mapped to C/C++ datatypes as follows: `(std::string)` → `std::string`, `(double)` → `double`, `(skip)` skips the entire column. See all 95 supported datatype hints in: [datatype_hints.csv](src/datatype_hints.csv)
+* Datatype hints are mapped to C/C++ datatypes as follows: `(std::string)` → `std::string`, `(double)` → `double`, `(skip)` skips the entire column. Supported are 95 datatype hints as defined in: [datatype_hints.csv](src/datatype_hints.csv)
 * Empty CSV data cells are mapped to "" for strings and to 00 for everything else (as a hint).
 * Precision hints such as '±05' are removed in float or double values (not supported in C/C++).
 * Supports also big .CSV files: omits whitespaces, removes trailing '0'. It's recommended to use 'const char*' instead of 'std::string' which can break some compilers.
