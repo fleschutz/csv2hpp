@@ -1,6 +1,6 @@
 CSV2HPP
 =======
-**This command-line utility converts the content of a CSV file (comma-separated values) into a header file for C/C++ - to #include them and immediately start to develop on structured, well-formed datasets. This skips error-prone steps like file delivering, loading, parsing, converting, and checking.**
+**This command-line utility converts the content of a CSV file (comma-separated values) into a header file for C/C++ software projects. Then #include the header file and immediately start to develop on a structured, well-formed dataset. It skips error-prone steps like file delivering, loading, parsing, converting, and checking.**
 
 ▶️ Usage
 ---------
@@ -11,7 +11,7 @@ CSV2HPP
 
 💡 Hints
 --------
-* Build csv2hpp by executing: `cd src && cmake . && make` (just requires cmake and a C++ compiler)
+* Build *csv2hpp* by executing: `cd src && cmake . && make` (just requires cmake and a C++ compiler)
 * Datatype hints are mapped to C/C++ datatypes as follows: `(std::string)` → `std::string`, `(double)` → `double`, no datatype is a string, `(skip)` skips the entire column. See all 87 supported datatype hints in: [datatype_hints.csv](src/datatype_hints.csv)
 * Empty CSV data cells are mapped to "" for strings and to 00 for everything else (as a hint).
 * Precision hints such as '±05' are removed in float or double values (not supported in C/C++).
