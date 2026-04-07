@@ -84,6 +84,8 @@ const datatype_hint_data datatype_hints[] { // HINT: 00=empty or unknown field
 {"(h)","SI::time %s;","_h","Time in hours (using SI lib)"},
 {"(days)","SI::time %s;","_days","Time in days (using SI lib)"},
 {"(K)","SI::temperature %s;","_K","Temperature in kelvins (using SI lib)"},
+{"(degree)","double %s;","FLOAT","C/C++ datatype for angle in degree"},
+{"(deg)","double %s;","FLOAT","C/C++ datatype for angle in degree"},
 {"(°)","double %s;","FLOAT","C/C++ datatype for angle in degree"},
 {"(°C)","SI::temperature %s;","_degC","Temperature in °Celsius (using SI lib)"},
 {"(°F)","SI::temperature %s;","_degF","Temperature in °Fahrenheit (using SI lib)"},
@@ -108,7 +110,7 @@ const datatype_hint_data datatype_hints[] { // HINT: 00=empty or unknown field
 {"(m/s²)","SI::acceleration %s;","_m_per_s²","Acceleration in meters per square second (using SI lib)"},
 {"(kJ/mol)","SI::energy_per_mol %s;","_kJ_per_mol","Energy in kilojoule per mol (using SI lib)"},
 {"(km³/s²)","SI::volume_per_time_squared %s;","_km³_per_s²","Volume in cubic kilometers per second squared (using SI lib)"},
-}; // (4 columns x 93 rows = 372 cells)
+}; // (4 columns x 95 rows = 372 cells)
 
 } // namespace dataset
 

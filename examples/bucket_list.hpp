@@ -1,6 +1,5 @@
-// NOTE: This C/C++ header file has been converted from 'bucket_list.csv'
-//       on March 16, 2026 by using csv2hpp 0.7 with command-line:
-//       /usr/local/bin/csv2hpp bucket_list.csv POI
+// NOTE: This header file was converted from 'bucket_list.csv' on April 7, 2026
+//       by using csv2hpp 0.7 with command-line: /usr/local/bin/csv2hpp bucket_list.csv POI
 //       (more information at: https://github.com/fleschutz/csv2hpp)
 // USAGE: #include "bucket_list.hpp" ... for (auto& POI : dataset::POIs) { ...
 #pragma once
@@ -9,8 +8,8 @@ namespace dataset {
 
 struct POI_data {
 	std::string Location;              // from column  1 (std::string)
-	double Latitude;                   // from column  2 (°)
-	double Longitude;                  // from column  3 (°)
+	double Latitude;                   // from column  2 (double)
+	double Longitude;                  // from column  3 (double)
 };
 
 const POI_data POIs[] { // HINT: 00=empty or unknown field
