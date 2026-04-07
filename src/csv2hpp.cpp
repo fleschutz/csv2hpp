@@ -251,15 +251,14 @@ static int convertCSV2HPP(const char* filename, const char* objectName, const st
 		fprintf(stderr, "Can't open CSV file: %s\n", filename);
 		return 1;
 	}
-	printf("// NOTE: This C/C++ header file has been converted from '%s'\n", filename);
-	printf("//       on March 16, 2026 by using csv2hpp %s with command-line:\n", APP_VERSION.c_str());
-	printf("//       %s\n", cmdLine.c_str());
+	printf("// NOTE: This header file was converted from '%s' on April 7, 2026\n", filename);
+	printf("//       by using csv2hpp %s with command-line: %s\n", APP_VERSION.c_str(), cmdLine.c_str());
 	printf("//       (more information at: https://github.com/fleschutz/csv2hpp)\n");
 	printf("// USAGE: #include \"%s.hpp\" ... for (auto& %s : dataset::%s) { ...\n",
 	    pluralize(objectName).c_str(), objectName, pluralize(objectName).c_str());
-	printf("#pragma once\n#include <SI/literals.h>\nusing namespace SI;\n\nnamespace dataset { \n\n");
+	printf("#pragma once\n#include <SI/literals.h>\n\nnamespace dataset {\nusing namespace SI;\n\n");
 	int result = readCSVHeader(file, objectName);
-	printf("} // namespace dataset\n\n");
+	printf("} // end of namespace 'dataset'\n\n");
 	fclose(file);
 	return result;
 }
