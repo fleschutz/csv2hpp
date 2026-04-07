@@ -1,6 +1,6 @@
 CSV2HPP
 =======
-**This command-line utility converts the content of CSV files (comma-separated values) into .hpp files (C++ header files) - to #include them and immediately start to develop on structured, well-formed datasets. This skips error-prone steps like file delivering, loading, parsing, converting, and checking.**
+**This command-line utility converts the content of a CSV file (comma-separated values) into a header file for C/C++ - to #include them and immediately start to develop on structured, well-formed datasets. This skips error-prone steps like file delivering, loading, parsing, converting, and checking.**
 
 ▶️ Usage
 ---------
