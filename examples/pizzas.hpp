@@ -1,11 +1,9 @@
-// NOTE: This C/C++ header file has been converted from 'pizzas.csv'
-//       on March 16, 2026 by using csv2hpp 0.7 with command-line:
-//       /usr/local/bin/csv2hpp pizzas.csv pizza
-//       (more information at: https://github.com/fleschutz/csv2hpp)
-// USAGE: #include "pizzas.hpp" ... for (auto& pizza : dataset::pizzas) { ...
+// USAGE:  #include "pizzas.hpp" ... for (auto& pizza : dataset::pizzas) { ...
+// SOURCE: pizzas.csv
+// NOTE:   Converted by csv2hpp 0.8 on Sep 05, 2026 (details at https://github.com/fleschutz/csv2hpp)
 #pragma once
 
-namespace dataset { 
+namespace dataset {
 
 struct pizza_data {
 	const char* Company;               // from column  1 
@@ -389,5 +387,5 @@ const pizza_data pizzas[] { // HINT: 00=empty or unknown field
 {"IMO's Pizza","Egg-Ceptional Pizza","Specialty Pizzas","X Large",22.3},
 }; // (5 columns x 371 rows = 1855 cells)
 
-} // namespace dataset
+} // end of namespace 'dataset'
 
