@@ -1,17 +1,17 @@
 // USAGE:  #include "bucket_list.hpp" ... for (auto& POI : dataset::POIs) { ...
 // SOURCE: bucket_list.csv
-// NOTE:   Converted by csv2hpp 0.8 on Sep 05, 2026 (details at https://github.com/fleschutz/csv2hpp)
+// NOTE:   Converted by csv2hpp 0.8 on Sep 05, 2026 (see https://github.com/fleschutz/csv2hpp)
 #pragma once
 
 namespace dataset {
 
-struct POI_data {
+struct POI_details {
 	std::string Location;              // from column  1 (std::string)
 	double Latitude;                   // from column  2 (double)
 	double Longitude;                  // from column  3 (double)
 };
 
-const POI_data POIs[] { // HINT: 00=empty or unknown field
+const POI_details POIs[] { // HINT: 00=empty or unknown field
 {"Bell Rock Lighthouse",56.43416667,-2.387222222},
 {"Brooklyn Bridge",40.70555556,-73.99638889},
 {"Catacombs of Kom el Shoqafa",31.178558,29.892954},

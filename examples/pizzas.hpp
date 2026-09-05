@@ -1,11 +1,11 @@
 // USAGE:  #include "pizzas.hpp" ... for (auto& pizza : dataset::pizzas) { ...
 // SOURCE: pizzas.csv
-// NOTE:   Converted by csv2hpp 0.8 on Sep 05, 2026 (details at https://github.com/fleschutz/csv2hpp)
+// NOTE:   Converted by csv2hpp 0.8 on Sep 05, 2026 (see https://github.com/fleschutz/csv2hpp)
 #pragma once
 
 namespace dataset {
 
-struct pizza_data {
+struct pizza_details {
 	const char* Company;               // from column  1 
 	const char* Pizza_Name;            // from column  2 
 	const char* Type;                  // from column  3 
@@ -13,7 +13,7 @@ struct pizza_data {
 	float Price;                       // from column  5 ($)
 };
 
-const pizza_data pizzas[] { // HINT: 00=empty or unknown field
+const pizza_details pizzas[] { // HINT: 00=empty or unknown field
 {"Domino's Pizza","Hand Tossed","Cheeses Pizza","S",5.99 },
 {"Domino's Pizza","Hand Tossed","Cheeses Pizza","M",7.99 },
 {"Domino's Pizza","Hand Tossed","Cheeses Pizza","L",9.99 },
