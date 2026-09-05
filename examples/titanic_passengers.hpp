@@ -1,13 +1,11 @@
-// NOTE: This C/C++ header file has been converted from 'titanic_passengers.csv'
-//       on March 16, 2026 by using csv2hpp 0.7 with command-line:
-//       /usr/local/bin/csv2hpp titanic_passengers.csv titanic_passenger
-//       (more information at: https://github.com/fleschutz/csv2hpp)
-// USAGE: #include "titanic_passengers.hpp" ... for (auto& titanic_passenger : dataset::titanic_passengers) { ...
+// USAGE:  #include "titanic_passengers.hpp" ... for (auto& titanic_passenger : dataset::titanic_passengers) { ...
+// SOURCE: titanic_passengers.csv
+// NOTE:   Converted by csv2hpp 0.8 on Sep 05, 2026 (see https://github.com/fleschutz/csv2hpp)
 #pragma once
 
-namespace dataset { 
+namespace dataset {
 
-struct titanic_passenger_data {
+struct titanic_passenger_details {
 	int PassengerId;                   // from column  1 (int)
 	bool Survived;                     // from column  2 (bool)
 	int Pclass;                        // from column  3 (int)
@@ -22,7 +20,7 @@ struct titanic_passenger_data {
 	const char* Embarked;              // from column 12 (string)
 };
 
-const titanic_passenger_data titanic_passengers[] { // HINT: 00=empty or unknown field
+const titanic_passenger_details titanic_passengers[] { // HINT: 00=empty or unknown field
 {1,false,3,"Braund, Mr. Owen Harris","male",22,1,0,"A/5 21171",7.25f,"","S"},
 {2,true,1,"Cumings, Mrs. John Bradley (Florence Briggs Thayer)","female",38,1,0,"PC 17599",71.2833f,"C85","C"},
 {3,true,3,"Heikkinen, Miss. Laina","female",26,0,0,"STON/O2. 3101282",7.925f,"","S"},
@@ -916,5 +914,5 @@ const titanic_passenger_data titanic_passengers[] { // HINT: 00=empty or unknown
 {891,false,3,"Dooley, Mr. Patrick","male",32,0,0,"370376",7.75f,"","Q"},
 }; // (12 columns x 891 rows = 10692 cells)
 
-} // namespace dataset
+} // end of namespace 'dataset'
 

@@ -1,15 +1,13 @@
-// NOTE: This C/C++ header file has been converted from 'airport_codes.csv'
-//       on March 16, 2026 by using csv2hpp 0.7 with command-line:
-//       /usr/local/bin/csv2hpp airport_codes.csv airport_code
-//       (more information at: https://github.com/fleschutz/csv2hpp)
-// USAGE: #include "airport_codes.hpp" ... for (auto& airport_code : dataset::airport_codes) { ...
+// USAGE:  #include "airports.hpp" ... for (auto& airport : dataset::airports) { ...
+// SOURCE: airports.csv
+// NOTE:   Converted by csv2hpp 0.8 on Sep 05, 2026 (see https://github.com/fleschutz/csv2hpp)
 #pragma once
 #include <SI/literals.h>
+
+namespace dataset {
 using namespace SI;
 
-namespace dataset { 
-
-struct airport_code_data {
+struct airport_details {
 	const char* type;                  // from column  2 (string)
 	const char* name;                  // from column  3 (string)
 	SI::length elevation;              // from column  4 (ft)
@@ -23,7 +21,7 @@ struct airport_code_data {
 	double longitude;                  // from column 14 (°)
 };
 
-const airport_code_data airport_codes[] { // HINT: 00=empty or unknown field
+const airport_details airports[] {         // HINT: 00=empty or unknown field
 {"heliport","Total RF Heliport",11_ft,"NA","US","US-PA","Bensalem","","",40.070985,-74.933689},
 {"small_airport","Aero B Ranch Airport",3435_ft,"NA","US","US-KS","Leoti","","",38.704022,-101.473911},
 {"small_airport","Lowell Field",450_ft,"NA","US","US-AK","Anchor Point","","",59.947733,-151.692524},
@@ -84680,5 +84678,5 @@ const airport_code_data airport_codes[] { // HINT: 00=empty or unknown field
 {"heliport","(Bogus)Jezero Crater(Location is India not Planet Mars)",8530_ft,"AF","ZZ","ZZ-U-A","","JZRO","",18.44,77.45},
 }; // (11 columns x 84655 rows = 931205 cells)
 
-} // namespace dataset
+} // end of namespace 'dataset'
 
