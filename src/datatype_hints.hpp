@@ -1,11 +1,9 @@
-// NOTE: This C/C++ header file has been converted from 'datatype_hints.csv'
-//       on March 16, 2026 by using csv2hpp 0.7 with command-line:
-//       /usr/local/bin/csv2hpp datatype_hints.csv datatype_hint
-//       (more information at: https://github.com/fleschutz/csv2hpp)
-// USAGE: #include "datatype_hints.hpp" ... for (auto& datatype_hint : dataset::datatype_hints) { ...
+// USAGE:  #include "datatype_hints.hpp" ... for (auto& datatype_hint : dataset::datatype_hints) { ...
+// SOURCE: datatype_hints.csv
+// NOTE:   Converted by csv2hpp 0.8 on Sep 05, 2026 (details at https://github.com/fleschutz/csv2hpp)
 #pragma once
 
-namespace dataset { 
+namespace dataset {
 
 struct datatype_hint_data {
 	const char* HINT;                  // from column  1 
@@ -110,7 +108,7 @@ const datatype_hint_data datatype_hints[] { // HINT: 00=empty or unknown field
 {"(m/s²)","SI::acceleration %s;","_m_per_s²","Acceleration in meters per square second (using SI lib)"},
 {"(kJ/mol)","SI::energy_per_mol %s;","_kJ_per_mol","Energy in kilojoule per mol (using SI lib)"},
 {"(km³/s²)","SI::volume_per_time_squared %s;","_km³_per_s²","Volume in cubic kilometers per second squared (using SI lib)"},
-}; // (4 columns x 95 rows = 372 cells)
+}; // (4 columns x 95 rows = 380 cells)
 
-} // namespace dataset
+} // end of namespace 'dataset'
 

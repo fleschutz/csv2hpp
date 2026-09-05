@@ -5,7 +5,7 @@
 #include <cstring>
 #include "datatype_hints.hpp" 
 
-const std::string APP_VERSION = "0.7";
+const std::string APP_VERSION = "0.8";
 const std::string EOL = "<EOL>";
 
 static std::string nextCell(FILE* file)
@@ -251,11 +251,10 @@ static int convertCSV2HPP(const char* filename, const char* objectName, const st
 		fprintf(stderr, "Can't open CSV file: %s\n", filename);
 		return 1;
 	}
-	printf("// NOTE: This header file was converted from '%s' on April 7, 2026\n", filename);
-	printf("//       by using csv2hpp %s with command-line: %s\n", APP_VERSION.c_str(), cmdLine.c_str());
-	printf("//       (more information at: https://github.com/fleschutz/csv2hpp)\n");
-	printf("// USAGE: #include \"%s.hpp\" ... for (auto& %s : dataset::%s) { ...\n",
+	printf("// USAGE:  #include \"%s.hpp\" ... for (auto& %s : dataset::%s) { ...\n",
 	    pluralize(objectName).c_str(), objectName, pluralize(objectName).c_str());
+	printf("// SOURCE: %s\n", filename);
+	printf("// NOTE:   Converted by csv2hpp %s on Sep 05, 2026 (details at https://github.com/fleschutz/csv2hpp)\n", APP_VERSION.c_str());
 	printf("#pragma once\n#include <SI/literals.h>\n\nnamespace dataset {\nusing namespace SI;\n\n");
 	int result = readCSVHeader(file, objectName);
 	printf("} // end of namespace 'dataset'\n\n");
