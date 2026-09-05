@@ -1,15 +1,13 @@
-// NOTE: This C/C++ header file has been converted from 'planets.csv'
-//       on March 16, 2026 by using csv2hpp 0.7 with command-line:
-//       /usr/local/bin/csv2hpp planets.csv planet
-//       (more information at: https://github.com/fleschutz/csv2hpp)
-// USAGE: #include "planets.hpp" ... for (auto& planet : dataset::planets) { ...
+// USAGE:  #include "planets.hpp" ... for (auto& planet : dataset::planets) { ...
+// SOURCE: planets.csv
+// NOTE:   Converted by csv2hpp 0.8 on Sep 05, 2026 (see https://github.com/fleschutz/csv2hpp)
 #pragma once
 #include <SI/literals.h>
+
+namespace dataset {
 using namespace SI;
 
-namespace dataset { 
-
-struct planet_data {
+struct planet_details {
 	const char* name;                  // from column  1 (string)
 	SI::mass mass;                     // from column  2 (kg)
 	SI::length diameter;               // from column  3 (km)
@@ -33,7 +31,7 @@ struct planet_data {
 	bool has_global_magnetic_field;    // from column 21 (bool)
 };
 
-const planet_data planets[] { // HINT: 00=empty or unknown field
+const planet_details planets[] { // HINT: 00=empty or unknown field
 {"Mercury",0.33_kg,4879_km,5427_kg_per_m³,3.7_m_per_s²,4.3_m_per_s,1407.6_h,4222.6_h,57.9_km,46.f,69.8f,88._h,47.4_m_per_s,7.f,0.205f,0.034f,167_degC,0_bar,0,false,true},
 {"Venus",4.87_kg,12104_km,5243_kg_per_m³,8.9_m_per_s²,10.4_m_per_s,-5832.5_h,2802._h,108.2_km,107.5f,108.9f,224.7_h,35._m_per_s,3.4f,0.007f,177.4f,464_degC,92_bar,0,false,false},
 {"Earth",5.97_kg,12756_km,5514_kg_per_m³,9.8_m_per_s²,11.2_m_per_s,23.9_h,24._h,149.6_km,147.1f,152.1f,365.2_h,29.8_m_per_s,0.f,0.017f,23.4f,15_degC,1_bar,1,false,true},
@@ -45,5 +43,5 @@ const planet_data planets[] { // HINT: 00=empty or unknown field
 {"Pluto",0.0146_kg,2370_km,2095_kg_per_m³,0.7_m_per_s²,1.3_m_per_s,-153.3_h,153.3_h,5906.4_km,4436.8f,7375.9f,90560_h,4.7_m_per_s,17.2f,0.244f,122.5f,-225_degC,0.00001_bar,5,false,false},
 }; // (21 columns x 9 rows = 189 cells)
 
-} // namespace dataset
+} // end of namespace 'dataset'
 
