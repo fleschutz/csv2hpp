@@ -1,19 +1,17 @@
-// NOTE: This C/C++ header file has been converted from 'currencies.csv'
-//       on March 16, 2026 by using csv2hpp 0.7 with command-line:
-//       /usr/local/bin/csv2hpp currencies.csv currency
-//       (more information at: https://github.com/fleschutz/csv2hpp)
-// USAGE: #include "currencies.hpp" ... for (auto& currency : dataset::currencies) { ...
+// USAGE:  #include "currencies.hpp" ... for (auto& currency : dataset::currencies) { ...
+// SOURCE: currencies.csv
+// NOTE:   Converted by csv2hpp 0.8 on Sep 05, 2026 (see https://github.com/fleschutz/csv2hpp)
 #pragma once
 
-namespace dataset { 
+namespace dataset {
 
-struct currency_data {
+struct currency_details {
 	char Code[4];                      // from column  1 (char[4])
 	std::string Symbol;                // from column  2 (std::string)
 	std::string Name;                  // from column  3 (std::string)
 };
 
-const currency_data currencys[] { // HINT: 00=empty or unknown field
+const currency_details currencys[] { // HINT: 00=empty or unknown field
 {"AED","د.إ","United Arab Emirates d"},
 {"AFN","؋","Afghan afghani"},
 {"ALL","L","Albanian lek"},
@@ -179,5 +177,5 @@ const currency_data currencys[] { // HINT: 00=empty or unknown field
 {"ZMW","ZK","Zambian kwacha"},
 }; // (3 columns x 163 rows = 489 cells)
 
-} // namespace dataset
+} // end of namespace 'dataset'
 
