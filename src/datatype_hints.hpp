@@ -1,18 +1,18 @@
 // USAGE:  #include "datatype_hints.hpp" ... for (auto& datatype_hint : dataset::datatype_hints) { ...
 // SOURCE: datatype_hints.csv
-// NOTE:   Converted by csv2hpp 0.8 on Sep 05, 2026 (details at https://github.com/fleschutz/csv2hpp)
+// NOTE:   Converted by csv2hpp 0.8 on Sep 05, 2026 (see https://github.com/fleschutz/csv2hpp)
 #pragma once
 
 namespace dataset {
 
-struct datatype_hint_data {
+struct datatype_hint_details {
 	const char* HINT;                  // from column  1 
 	const char* DECLARATION;           // from column  2 
 	const char* TYPE;                  // from column  3 
 	const char* DESCRIPTION;           // from column  4 
 };
 
-const datatype_hint_data datatype_hints[] { // HINT: 00=empty or unknown field
+const datatype_hint_details datatype_hints[] { // HINT: 00=empty or unknown field
 {"","const char* %s;","TEXT","C/C++ datatype to hold a string when no datatype hint is given"},
 {"(bool)","bool %s;","BOOL","C/C++ datatype to hold either true or false"},
 {"(byte)","unsigned char %s;","CARD","C/C++ datatype to hold a single byte"},
