@@ -1,10 +1,9 @@
-// NOTE: This header file was converted from 'bucket_list.csv' on April 7, 2026
-//       by using csv2hpp 0.7 with command-line: /usr/local/bin/csv2hpp bucket_list.csv POI
-//       (more information at: https://github.com/fleschutz/csv2hpp)
-// USAGE: #include "bucket_list.hpp" ... for (auto& POI : dataset::POIs) { ...
+// USAGE:  #include "POIs.hpp" ... for (auto& POI : dataset::POIs) { ...
+// SOURCE: bucket_list.csv
+// NOTE:   Converted by csv2hpp 0.8 on Sep 05, 2026 (details at https://github.com/fleschutz/csv2hpp)
 #pragma once
 
-namespace dataset { 
+namespace dataset {
 
 struct POI_data {
 	std::string Location;              // from column  1 (std::string)
@@ -56,5 +55,5 @@ const POI_data POIs[] { // HINT: 00=empty or unknown field
 {"Victoria Falls",-16.07555556,25.85666667},
 }; // (3 columns x 42 rows = 126 cells)
 
-} // namespace dataset
+} // end of namespace 'dataset'
 
