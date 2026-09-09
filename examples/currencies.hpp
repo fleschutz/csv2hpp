@@ -6,12 +6,12 @@
 namespace dataset {
 
 struct currency_details {
-	char Code[4];                      // from column  1 (char[4])
-	std::string Symbol;                // from column  2 (std::string)
-	std::string Name;                  // from column  3 (std::string)
+	char code[4];                      // from column  1 (char[4])
+	std::string symbol;                // from column  2 (std::string)
+	std::string name;                  // from column  3 (std::string)
 };
 
-const currency_details currencys[] { // HINT: 00=empty or unknown field
+const currency_details currencies[] {      // NOTE: 00=empty or unknown field
 {"AED","د.إ","United Arab Emirates d"},
 {"AFN","؋","Afghan afghani"},
 {"ALL","L","Albanian lek"},
