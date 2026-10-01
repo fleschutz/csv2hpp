@@ -1,18 +1,20 @@
-// USAGE:  #include "world_cities.hpp" ... for (auto& city : dataset::world_cities) { ...
-// SOURCE: world_cities.csv
-// NOTE:   Converted by csv2hpp 0.8 on Sep 05, 2026 (see https://github.com/fleschutz/csv2hpp)
+/// @file     cities.hpp
+/// @brief    Contains the dataset from cities.csv
+/// @details  Converted by csv2hpp 0.9 on Oct 1, 2026 (see https://github.com/fleschutz/csv2hpp)
+///           USAGE:  #include "cities.hpp" ... for (auto& city : dataset::cities) { ...
+
 #pragma once
 
 namespace dataset {
 
 struct city_details {
-	const char* country;               // from column  1 (string)
-	const char* name;                  // from column  2 (string)
-	double latitude;                   // from column  3 (double)
-	double longitude;                  // from column  4 (double)
+	const char* country;               ///< from column  1 (string)
+	const char* name;                  ///< from column  2 (string)
+	double latitude;                   ///< from column  3 (double)
+	double longitude;                  ///< from column  4 (double)
 };
 
-const city_details world_cities[] {        // NOTE: 00=empty or unknown field
+const city_details cities[] {              // NOTE: 00=empty or unknown field
 {"AD","Vila",42.53176,1.56654},
 {"AD","El Tarter",42.57952,1.65362},
 {"AD","Sant Julià de Lòria",42.46372,1.49129},
