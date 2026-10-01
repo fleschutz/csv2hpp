@@ -1,27 +1,28 @@
-// USAGE:  #include "airports.hpp" ... for (auto& airport : dataset::airports) { ...
-// SOURCE: airports.csv
-// NOTE:   Converted by csv2hpp 0.8 on Sep 05, 2026 (see https://github.com/fleschutz/csv2hpp)
+/// @file     airports.hpp
+/// @brief    Contains the dataset from airports.csv
+/// @details  Converted by csv2hpp 0.9 on Oct 1, 2026 (see https://github.com/fleschutz/csv2hpp)
+///           USAGE:  #include "airports.hpp" ... for (auto& airport : dataset::airports) { ...
+
 #pragma once
 #include <SI/literals.h>
 
 namespace dataset {
-using namespace SI;
 
 struct airport_details {
-	const char* type;                  // from column  2 (string)
-	const char* name;                  // from column  3 (string)
-	SI::length elevation;              // from column  4 (ft)
-	const char* continent;             // from column  5 (string)
-	const char* iso_country;           // from column  6 (string)
-	const char* iso_region;            // from column  7 (string)
-	const char* municipality;          // from column  8 (string)
-	const char* icao_code;             // from column  9 (string)
-	const char* iata_code;             // from column 10 (string)
-	double latitude;                   // from column 13 (°)
-	double longitude;                  // from column 14 (°)
+	const char* type;                  ///< from column  2 (string)
+	const char* name;                  ///< from column  3 (string)
+	SI::length elevation;              ///< from column  4 (ft)
+	const char* continent;             ///< from column  5 (string)
+	const char* iso_country;           ///< from column  6 (string)
+	const char* iso_region;            ///< from column  7 (string)
+	const char* municipality;          ///< from column  8 (string)
+	const char* icao_code;             ///< from column  9 (string)
+	const char* iata_code;             ///< from column 10 (string)
+	double latitude;                   ///< from column 13 (°)
+	double longitude;                  ///< from column 14 (°)
 };
 
-const airport_details airports[] {         // HINT: 00=empty or unknown field
+const airport_details airports[] {         // NOTE: 00=empty or unknown field
 {"heliport","Total RF Heliport",11_ft,"NA","US","US-PA","Bensalem","","",40.070985,-74.933689},
 {"small_airport","Aero B Ranch Airport",3435_ft,"NA","US","US-KS","Leoti","","",38.704022,-101.473911},
 {"small_airport","Lowell Field",450_ft,"NA","US","US-AK","Anchor Point","","",59.947733,-151.692524},
