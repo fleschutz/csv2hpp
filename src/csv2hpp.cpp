@@ -254,7 +254,7 @@ static int convertCSV2HPP(const char* filename, const char* objectName, const st
 		return 1;
 	}
 	printf("/// @file     %s.hpp\n", pluralize(objectName).c_str());
-	printf("/// @brief    Contains the dataset of %s\n", filename);
+	printf("/// @brief    Contains the dataset from %s\n", filename);
 	printf("/// @details  Converted by csv2hpp %s on Oct 1, 2026 (see https://github.com/fleschutz/csv2hpp)\n", APP_VERSION.c_str());
 	printf("///           USAGE:  #include \"%s.hpp\" ... for (auto& %s : dataset::%s) { ...\n",
 	    pluralize(objectName).c_str(), objectName, pluralize(objectName).c_str());
@@ -282,7 +282,7 @@ std::string cmdLine2string(int argc, char **argv)
 int printHelp()
 {
 	printf("csv2hpp - Converts a CSV file into a C/C++ header file for easy #include.\n");
-	printf("          Version %s of March 16, 2026\n", APP_VERSION.c_str());
+	printf("          Version %s of Oct 1, 2026\n", APP_VERSION.c_str());
 	printf("          More information at: https://github.com/fleschutz/csv2hpp\n");
 	printf("\n");
 	printf("USAGE: csv2hpp <path-to-CSV-file> <name-of-object>\n");
