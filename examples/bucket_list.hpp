@@ -1,5 +1,5 @@
 /// @file     bucket_list.hpp
-/// @brief    Contains the dataset of bucket_list.csv
+/// @brief    Contains the dataset from bucket_list.csv
 /// @details  Converted by csv2hpp 0.9 on Oct 1, 2026 (see https://github.com/fleschutz/csv2hpp)
 ///           USAGE:  #include "bucket_list.hpp" ... for (auto& POI : dataset::POIs) { ...
 
