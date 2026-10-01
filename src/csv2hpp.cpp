@@ -1,11 +1,13 @@
-// csv2hpp.cpp - the 'main' code
+/// @file   csv2hpp.cpp
+/// @brief  Contains the main code of csv2hpp
+
 #include <stdio.h>
 #include <string>
 #include <algorithm>
 #include <cstring>
 #include "datatype_hints.hpp" 
 
-const std::string APP_VERSION = "0.8";
+const std::string APP_VERSION = "0.9";
 const std::string EOL = "<EOL>";
 
 static std::string nextCell(FILE* file)
@@ -91,7 +93,7 @@ static std::string getDatatypeHint(std::string cell)
 	return hint;
 }
 
-// Prints the C/C++ declaration line, e.g. int value; // from column 1 (int)
+// Prints the C/C++ declaration line, e.g. int value; ///< from column 1 (int)
 static bool printDeclaration(const std::string& hint, const std::string& name, int column)
 {
 	for (auto& datatype_hint : dataset::datatype_hints)
@@ -107,7 +109,7 @@ static bool printDeclaration(const std::string& hint, const std::string& name, i
 		for (int i = 0; i < numWhitespaces; i++)
 			printf(" ");
 
-		printf("// from column %2d %s\n", column + 1, hint.c_str());
+		printf("///< from column %2d %s\n", column + 1, hint.c_str());
 		return true;
 	}
 	return false;
@@ -205,7 +207,7 @@ static int readCSVHeader(FILE* file, const char* objectName)
 	printf("};\n\n");
 
 	// parse CSV data cells
-	printf("const %s_details %ss[] { // HINT: 00=empty or unknown field\n", objectName, objectName);
+	printf("const %s_details %ss[] { // NOTE: 00=empty or unknown field\n", objectName, objectName);
 	int rows = 0;
 	for (; !feof(file); rows++)
 	{
@@ -251,10 +253,12 @@ static int convertCSV2HPP(const char* filename, const char* objectName, const st
 		fprintf(stderr, "Can't open CSV file: %s\n", filename);
 		return 1;
 	}
-	printf("// USAGE:  #include \"%s.hpp\" ... for (auto& %s : dataset::%s) { ...\n",
+	printf("/// @file     %s.hpp\n", pluralize(objectName).c_str());
+	printf("/// @brief    Contains the dataset of %s\n", filename);
+	printf("/// @details  Converted by csv2hpp %s on Oct 1, 2026 (see https://github.com/fleschutz/csv2hpp)\n", APP_VERSION.c_str());
+	printf("///           USAGE:  #include \"%s.hpp\" ... for (auto& %s : dataset::%s) { ...\n",
 	    pluralize(objectName).c_str(), objectName, pluralize(objectName).c_str());
-	printf("// SOURCE: %s\n", filename);
-	printf("// NOTE:   Converted by csv2hpp %s on Sep 05, 2026 (see https://github.com/fleschutz/csv2hpp)\n", APP_VERSION.c_str());
+	printf("\n");
 	printf("#pragma once\n#include <SI/literals.h>\n\nnamespace dataset {\nusing namespace SI;\n\n");
 	int result = readCSVHeader(file, objectName);
 	printf("} // end of namespace 'dataset'\n\n");
