@@ -1,6 +1,8 @@
-// USAGE:  #include "planets.hpp" ... for (auto& planet : dataset::planets) { ...
-// SOURCE: planets.csv
-// NOTE:   Converted by csv2hpp 0.8 on Sep 05, 2026 (see https://github.com/fleschutz/csv2hpp)
+/// @file     planets.hpp
+/// @brief    Contains the dataset from planets.csv
+/// @details  Converted by csv2hpp 0.9 on Oct 1, 2026 (see https://github.com/fleschutz/csv2hpp)
+///           USAGE:  #include "planets.hpp" ... for (auto& planet : dataset::planets) { ...
+
 #pragma once
 #include <SI/literals.h>
 
@@ -8,30 +10,30 @@ namespace dataset {
 using namespace SI;
 
 struct planet_details {
-	const char* name;                  // from column  1 (string)
-	SI::mass mass;                     // from column  2 (kg)
-	SI::length diameter;               // from column  3 (km)
-	SI::density density;               // from column  4 (kg/m³)
-	SI::acceleration gravity;          // from column  5 (m/s²)
-	SI::velocity escape_velocity;      // from column  6 (m/s)
-	SI::time rotation_period;          // from column  7 (h)
-	SI::time length_of_day;            // from column  8 (h)
-	SI::length distance_from_sun;      // from column  9 (km)
-	float perihelion;                  // from column 10 (float)
-	float aphelion;                    // from column 11 (float)
-	SI::time orbital_period;           // from column 12 (h)
-	SI::velocity orbital_velocity;     // from column 13 (m/s)
-	float orbital_inclination;         // from column 14 (float)
-	float orbital_eccentricity;        // from column 15 (float)
-	float obliquity_to_orbit;          // from column 16 (float)
-	SI::temperature mean_temperature;  // from column 17 (°C)
-	SI::pressure surface_pressure;     // from column 18 (bar)
-	int number_of_moons;               // from column 19 (int)
-	bool has_ring_system;              // from column 20 (bool)
-	bool has_global_magnetic_field;    // from column 21 (bool)
+	const char* name;                  ///< from column  1 (string)
+	SI::mass mass;                     ///< from column  2 (kg)
+	SI::length diameter;               ///< from column  3 (km)
+	SI::density density;               ///< from column  4 (kg/m³)
+	SI::acceleration gravity;          ///< from column  5 (m/s²)
+	SI::velocity escape_velocity;      ///< from column  6 (m/s)
+	SI::time rotation_period;          ///< from column  7 (h)
+	SI::time length_of_day;            ///< from column  8 (h)
+	SI::length distance_from_sun;      ///< from column  9 (km)
+	float perihelion;                  ///< from column 10 (float)
+	float aphelion;                    ///< from column 11 (float)
+	SI::time orbital_period;           ///< from column 12 (h)
+	SI::velocity orbital_velocity;     ///< from column 13 (m/s)
+	float orbital_inclination;         ///< from column 14 (float)
+	float orbital_eccentricity;        ///< from column 15 (float)
+	float obliquity_to_orbit;          ///< from column 16 (float)
+	SI::temperature mean_temperature;  ///< from column 17 (°C)
+	SI::pressure surface_pressure;     ///< from column 18 (bar)
+	int number_of_moons;               ///< from column 19 (int)
+	bool has_ring_system;              ///< from column 20 (bool)
+	bool has_global_magnetic_field;    ///< from column 21 (bool)
 };
 
-const planet_details planets[] { // HINT: 00=empty or unknown field
+const planet_details planets[] { // NOTE: 00=empty or unknown field
 {"Mercury",0.33_kg,4879_km,5427_kg_per_m³,3.7_m_per_s²,4.3_m_per_s,1407.6_h,4222.6_h,57.9_km,46.f,69.8f,88._h,47.4_m_per_s,7.f,0.205f,0.034f,167_degC,0_bar,0,false,true},
 {"Venus",4.87_kg,12104_km,5243_kg_per_m³,8.9_m_per_s²,10.4_m_per_s,-5832.5_h,2802._h,108.2_km,107.5f,108.9f,224.7_h,35._m_per_s,3.4f,0.007f,177.4f,464_degC,92_bar,0,false,false},
 {"Earth",5.97_kg,12756_km,5514_kg_per_m³,9.8_m_per_s²,11.2_m_per_s,23.9_h,24._h,149.6_km,147.1f,152.1f,365.2_h,29.8_m_per_s,0.f,0.017f,23.4f,15_degC,1_bar,1,false,true},
