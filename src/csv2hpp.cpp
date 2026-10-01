@@ -207,7 +207,7 @@ static int readCSVHeader(FILE* file, const char* objectName)
 	printf("};\n\n");
 
 	// parse CSV data cells
-	printf("const %s_details %ss[] { // NOTE: 00=empty or unknown field\n", objectName, objectName);
+	printf("const %s_details %ss[] {      // NOTE: 00=empty or unknown field\n", objectName, objectName);
 	int rows = 0;
 	for (; !feof(file); rows++)
 	{
@@ -256,7 +256,7 @@ static int convertCSV2HPP(const char* filename, const char* objectName, const st
 	printf("/// @file     %s.hpp\n", pluralize(objectName).c_str());
 	printf("/// @brief    Contains the dataset from %s\n", filename);
 	printf("/// @details  Converted by csv2hpp %s on Oct 1, 2026 (see https://github.com/fleschutz/csv2hpp)\n", APP_VERSION.c_str());
-	printf("///           USAGE:  #include \"%s.hpp\" ... for (auto& %s : dataset::%s) { ...\n",
+	printf("///           USAGE: #include \"%s.hpp\" ... for (auto& %s : dataset::%s) { ...\n",
 	    pluralize(objectName).c_str(), objectName, pluralize(objectName).c_str());
 	printf("\n");
 	printf("#pragma once\n#include <SI/literals.h>\n\nnamespace dataset {\nusing namespace SI;\n\n");
