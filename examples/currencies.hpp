@@ -1,14 +1,16 @@
-// USAGE:  #include "currencies.hpp" ... for (auto& currency : dataset::currencies) { ...
-// SOURCE: currencies.csv
-// NOTE:   Converted by csv2hpp 0.8 on Sep 05, 2026 (see https://github.com/fleschutz/csv2hpp)
+/// @file     currencies.hpp
+/// @brief    Contains the dataset from currencies.csv
+/// @details  Converted by csv2hpp 0.9 on Oct 1, 2026 (see https://github.com/fleschutz/csv2hpp)
+///           USAGE:  #include "currencies.hpp" ... for (auto& currency : dataset::currencies) { ...
+
 #pragma once
 
 namespace dataset {
 
 struct currency_details {
-	char code[4];                      // from column  1 (char[4])
-	std::string symbol;                // from column  2 (std::string)
-	std::string name;                  // from column  3 (std::string)
+	char code[4];                      ///< from column  1 (char[4])
+	std::string symbol;                ///< from column  2 (std::string)
+	std::string name;                  ///< from column  3 (std::string)
 };
 
 const currency_details currencies[] {      // NOTE: 00=empty or unknown field
