@@ -1,7 +1,7 @@
 /// @file     bucket_list.hpp
 /// @brief    Contains the dataset from bucket_list.csv
 /// @details  Converted by csv2hpp 0.9 on Oct 1, 2026 (see https://github.com/fleschutz/csv2hpp)
-///           USAGE:  #include "bucket_list.hpp" ... for (auto& POI : dataset::POIs) { ...
+///           USAGE: #include "bucket_list.hpp" ... for (auto& POI : dataset::POIs) { ...
 
 #pragma once
 
@@ -13,7 +13,7 @@ struct POI_details {
 	double Longitude;                  ///< from column  3 (double)
 };
 
-const POI_details POIs[] { // NOTE: 00=empty or unknown field
+const POI_details POIs[] {                 // NOTE: 00=empty or unknown field
 {"Bell Rock Lighthouse",56.43416667,-2.387222222},
 {"Brooklyn Bridge",40.70555556,-73.99638889},
 {"Catacombs of Kom el Shoqafa",31.178558,29.892954},
