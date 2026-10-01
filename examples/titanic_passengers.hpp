@@ -1,26 +1,28 @@
-// USAGE:  #include "titanic_passengers.hpp" ... for (auto& titanic_passenger : dataset::titanic_passengers) { ...
-// SOURCE: titanic_passengers.csv
-// NOTE:   Converted by csv2hpp 0.8 on Sep 05, 2026 (see https://github.com/fleschutz/csv2hpp)
+/// @file     titanic_passengers.hpp
+/// @brief    Contains the dataset from titanic_passengers.csv
+/// @details  Converted by csv2hpp 0.9 on Oct 1, 2026 (see https://github.com/fleschutz/csv2hpp)
+///           USAGE:  #include "titanic_passengers.hpp" ... for (auto& titanic_passenger : dataset::titanic_passengers) { ...
+
 #pragma once
 
 namespace dataset {
 
 struct titanic_passenger_details {
-	int PassengerId;                   // from column  1 (int)
-	bool Survived;                     // from column  2 (bool)
-	int Pclass;                        // from column  3 (int)
-	const char* Name;                  // from column  4 (string)
-	const char* Sex;                   // from column  5 (string)
-	int Age;                           // from column  6 (int)
-	int SibSp;                         // from column  7 (int)
-	int Parch;                         // from column  8 (int)
-	const char* Ticket;                // from column  9 (string)
-	float Fare;                        // from column 10 (float)
-	const char* Cabin;                 // from column 11 (string)
-	const char* Embarked;              // from column 12 (string)
+	int PassengerId;                   ///< from column  1 (int)
+	bool Survived;                     ///< from column  2 (bool)
+	int Pclass;                        ///< from column  3 (int)
+	const char* Name;                  ///< from column  4 (string)
+	const char* Sex;                   ///< from column  5 (string)
+	int Age;                           ///< from column  6 (int)
+	int SibSp;                         ///< from column  7 (int)
+	int Parch;                         ///< from column  8 (int)
+	const char* Ticket;                ///< from column  9 (string)
+	float Fare;                        ///< from column 10 (float)
+	const char* Cabin;                 ///< from column 11 (string)
+	const char* Embarked;              ///< from column 12 (string)
 };
 
-const titanic_passenger_details titanic_passengers[] { // HINT: 00=empty or unknown field
+const titanic_passenger_details titanic_passengers[] { // NOTE: 00=empty or unknown field
 {1,false,3,"Braund, Mr. Owen Harris","male",22,1,0,"A/5 21171",7.25f,"","S"},
 {2,true,1,"Cumings, Mrs. John Bradley (Florence Briggs Thayer)","female",38,1,0,"PC 17599",71.2833f,"C85","C"},
 {3,true,3,"Heikkinen, Miss. Laina","female",26,0,0,"STON/O2. 3101282",7.925f,"","S"},
