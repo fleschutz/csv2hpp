@@ -1,7 +1,7 @@
 /// @file     datatype_hints.hpp
 /// @brief    Contains the dataset from datatype_hints.csv
 /// @details  Converted by csv2hpp 0.9 on Oct 1, 2026 (see https://github.com/fleschutz/csv2hpp)
-///           USAGE:  #include "datatype_hints.hpp" ... for (auto& datatype_hint : dataset::datatype_hints) { ...
+///           USAGE: #include "datatype_hints.hpp" ... for (auto& datatype_hint : dataset::datatype_hints) { ...
 
 #pragma once
 
