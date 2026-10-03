@@ -3,8 +3,10 @@
 
 #include <stdio.h>
 #include <string>
+#include <cstdint>
 #include <algorithm>
 #include <cstring>
+#include <time.h>
 #include "datatype_hints.hpp" 
 
 const std::string APP_VERSION = "0.9";
@@ -151,6 +153,13 @@ static std::string trimFloat(std::string s)
 	return s;
 }
 
+static uint64_t epoch2timestamp(std::string s)
+{
+	struct tm tm = {};
+	strptime(s.c_str(), "%Y-%m-%dT%H:%M:%S", &tm);
+	return (uint64_t)mktime(&tm);
+}
+
 static bool printValue(std::string hint, std::string value)
 {
 	for (auto& datatype_hint : dataset::datatype_hints)
@@ -173,6 +182,8 @@ static bool printValue(std::string hint, std::string value)
 			else
 				printf("%s", trimFloat(value).c_str());
 		}
+		else if (datatype_hint.TYPE == "EPOCH")
+			printf("%lu", epoch2timestamp(value));
 		else if (datatype_hint.TYPE[0] == '_')
 			printf("%s%s", trimFloat(value).c_str(), datatype_hint.TYPE); // using C++ literal
 		else
@@ -292,8 +303,8 @@ int printHelp()
 
 int main(int argc, char **argv)
 {
-	if (argc == 3)
-		return convertCSV2HPP(argv[1], argv[2], cmdLine2string(argc, argv));
+	if (argc != 3)
+		return printHelp();
 
-	return printHelp();
+	return convertCSV2HPP(argv[1], argv[2], cmdLine2string(argc, argv));
 }
