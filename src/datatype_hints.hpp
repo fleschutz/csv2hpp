@@ -88,6 +88,7 @@ const datatype_hint_details datatype_hints[] {      // NOTE: 00=empty or unknown
 {"(degree)","double %s;","FLOAT","C/C++ datatype for angle in degree"},
 {"(deg)","double %s;","FLOAT","C/C++ datatype for angle in degree"},
 {"(°)","double %s;","FLOAT","C/C++ datatype for angle in degree"},
+{"(angle)","SI::angle %s;","_deg","Angle in degrees for libSI"},
 {"(°C)","SI::temperature %s;","_degC","Temperature in °Celsius for libSI"},
 {"(°F)","SI::temperature %s;","_degF","Temperature in °Fahrenheit for libSI"},
 {"(bar)","SI::pressure %s;","_bar","Pressure in bar for libSI"},
@@ -111,7 +112,7 @@ const datatype_hint_details datatype_hints[] {      // NOTE: 00=empty or unknown
 {"(m/s²)","SI::acceleration %s;","_m_per_s²","Acceleration in m/s² for libSI"},
 {"(kJ/mol)","SI::energy_per_mol %s;","_kJ_per_mol","Energy in kilojoule per mol for libSI"},
 {"(km³/s²)","SI::volume_per_time_squared %s;","_km³_per_s²","Volume in km³/s² for libSI"},
-}; // (4 columns x 96 rows = 384 cells)
+}; // (4 columns x 97 rows = 388 cells)
 
 } // end of namespace 'dataset'
 
