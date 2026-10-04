@@ -1,4 +1,4 @@
-ident (skip),type (skip),name (string),elevation (ft),continent (skip),iso_country (string),iso_region (string),municipality (string),icao_code (string),iata_code (skip),gps_code (skip),local_code (skip),latitude (°), longitude (°)
+ident (skip),type (skip),name (string),elevation (ft),continent (skip),iso_country (string),iso_region (skip),municipality (string),icao_code (skip),iata_code (skip),gps_code (skip),local_code (skip),latitude (angle), longitude (angle)
 00A,heliport,Total RF Heliport,11,NA,US,US-PA,Bensalem,,,K00A,00A,40.070985, -74.933689
 00AA,small_airport,Aero B Ranch Airport,3435,NA,US,US-KS,Leoti,,,00AA,00AA,38.704022, -101.473911
 00AK,small_airport,Lowell Field,450,NA,US,US-AK,Anchor Point,,,00AK,00AK,59.947733, -151.692524
