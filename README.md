@@ -6,7 +6,7 @@ CSV2HPP Converter
 ▶️ Usage
 ---------
 1. **Export or download** your database in CSV format, e.g. [bucket_list.csv](examples/bucket_list.csv)
-2. **Open** the CSV file in a text editor and add datatype hints to the header line, <br /> e.g.: `Location (std::string), Latitude (double), Longitude (double)`
+2. **Open** the CSV file in a text editor and add datatype hints to the header line, e.g.: <br /> `Location (std::string), Latitude (double), Longitude (double)`
 3. **Execute** in a terminal window: `csv2hpp bucket_list.csv POI > bucket_list.hpp`.
 4. **Copy** the generated header file (e.g. [bucket_list.hpp](examples/bucket_list.hpp)) into your project and #include it.
 
