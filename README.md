@@ -13,7 +13,7 @@ CSV2HPP Converter
 💡 Hints
 --------
 * **Build** it by executing: `cd src && cmake . && make` (just requires cmake and a C++ compiler)
-* **Datatype hints** are mapped to C/C++ datatypes as follows: `(std::string)` → `std::string`, `(double)` → `double`, `(skip)` skips the entire column. All supported datatype hints are defined in: [datatype_hints.csv](src/datatype_hints.csv)
+* **Datatype hints** are mapped to C/C++ datatypes as follows: `(std::string)` → `std::string`, `(double)` → `double`, and so on (`(skip)` skips the column). All supported datatype hints are listed in: [datatype_hints.csv](src/datatype_hints.csv)
 * Empty CSV data cells are mapped to "" for strings and to 00 for everything else (as a hint).
 * Precision hints such as '±05' are removed in float or double values (not supported in C/C++).
 * Supports huge .CSV files by omitting whitespaces and removing trailing 0's. It's also recommended to use 'const char*' instead of 'std::string' which can break some compilers.
