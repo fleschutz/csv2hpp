@@ -1,14 +1,14 @@
 CSV2HPP Converter
 =================
 
-**Convert the content of a .CSV file (comma-separated values) into a header file for C/C++ software projects with this command-line utility. Then #include the header file and immediately start to develop on a structured, well-formed dataset (and skip error-prone steps like file delivering, loading, parsing, converting, and checking).**
+**Convert the content of a .CSV file (comma-separated values) into a header file for C/C++ software projects with this command-line utility. Then #include the new header file and immediately start to develop on a structured, well-formed dataset (and skip error-prone steps like file delivering, loading, parsing, converting, and checking).**
 
 ▶️ Usage
 ---------
 1. **Export or download** your database in CSV format, e.g. [bucket_list.csv](examples/bucket_list.csv)
 2. **Open** the CSV file in a text editor and add datatype hints to the header line, e.g.: <br /> `Location (std::string), Latitude (double), Longitude (double)`
-3. **Execute** in a terminal window: `csv2hpp bucket_list.csv POI > bucket_list.hpp`.
-4. **Copy** the generated header file (e.g. [bucket_list.hpp](examples/bucket_list.hpp)) into your project and #include it.
+3. **Execute** in a terminal window: `csv2hpp bucket_list.csv POI > bucket_list.hpp`
+4. **Copy** the new header file (e.g. [bucket_list.hpp](examples/bucket_list.hpp)) into your project and #include it.
 
 💡 Hints
 --------
